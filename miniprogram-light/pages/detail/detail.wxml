@@ -1,0 +1,35 @@
+<!--pages/detail/detail.wxml-->
+<view style="min-height:{{screen.minHeight}};background-color: #2f2f2f;">
+  <view class="banner">
+    <view class="poster">
+      <image mode="aspectFit" src="{{movie.images.large}}"></image>
+    </view>
+
+    <view class="info">
+      <view class="title">{{device.dname}}</view>
+      <view>{{movie.aka[moive.aka.length-1]}}</view>
+      <view class="score">{{movie.rating.average}}<view>分</view></view>
+      <view class="subinfo">
+        <view>{{movie.genresStr}}</view>
+        <view>{{movie.year}}</view>
+      </view>
+      <image class="backgroud" mode="aspectFill" src="{{movie.images.large}}"></image>
+    </view>
+  </view>
+  
+  <view class="summary">
+    {{movie.summary}}
+  </view>
+
+  <view class="casts">
+    <view class="title">主创</view>
+    <scroll-view srcoll-x>
+      <view class="casts-wrapper" style="width:{{movie.staff.length*183}}rpx;">
+        <view class="avatat" wx:for="{{movie.staff}}">
+          <image mode="aspectFill" src="{{item.avatars.large}}"></image>
+          <view>{{item.name}}</view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</view>

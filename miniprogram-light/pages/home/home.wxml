@@ -1,0 +1,23 @@
+<!--pages/home/home.wxml-->
+
+<view class="header">
+  <view class="nav" bindtap="changeTab">
+    <view class="nav-wrapper">
+    <block wx:for="{{tabs.list}}">
+      <view class="tab current" data-type="{{item.type}}" data-index="{{index}}" wx:if="{{ index/1 == tabs.currentIndex/1 }}">{{item.text}}</view>
+      <view class="tab" data-type="{{iten.type}}" data-index="{{index}}" wx:else>{{item.text}}</view>
+    </block>
+    </view>
+  </view>
+</view>
+
+<view class="list basestyle">
+  <block wx:for="{{devices.datas}}">
+    <view class="item">
+      <navigator url="../detail/detail?dname={{item.dname}}">
+        <image mode="aspectFill" src="{{item.images.large}}"></image>
+        <text>{{item.dname}}</text>
+      </navigator>
+    </view>
+  </block>
+</view>
