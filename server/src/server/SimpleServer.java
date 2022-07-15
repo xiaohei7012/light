@@ -1,6 +1,7 @@
 package server;
 
 import java.io.IOException;
+import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -12,12 +13,19 @@ import java.util.Set;
 public abstract class SimpleServer implements ServerInterface {
 
 	private ByteBuffer buffer =  ByteBuffer.allocateDirect(1024);
+	protected int port;
+	
+	
+	public SimpleServer(int port){
+		this.port = port;
+	}
 	
 	@Override
 	public void start() {
 		try {
 			Selector selector = Selector.open();
 			ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+			serverSocketChannel.bind(new InetSocketAddress(port));
 			serverSocketChannel.configureBlocking(false);
 			serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 			while (true) {
@@ -56,22 +64,5 @@ public abstract class SimpleServer implements ServerInterface {
 
 	}
 
-	@Override
-	public void onConnected(SocketChannel sc) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onRead(SocketChannel sc, ByteBuffer temp) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onDisconnected(SocketChannel sc) {
-		// TODO Auto-generated method stub
-
-	}
 
 }
