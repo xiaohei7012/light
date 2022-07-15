@@ -14,7 +14,7 @@ public class Device {
 	
 	private String fan;
 	
-	private String l1;
+	private String l1;//开，关，故障
 	
 	private String l2;
 	
@@ -34,7 +34,7 @@ public class Device {
 	
 	private Double longitude;//经度
 	
-	private String status;
+	private String status;// 在线，离线，有故障
 	
 	private int expire;
 	
