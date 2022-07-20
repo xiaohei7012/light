@@ -30,7 +30,7 @@ public class Device {
 	
 	private String l8;
 	
-	private Double temperature;//
+	private Double temperature;//温度
 	
 	private Double longitude;//经度
 	
