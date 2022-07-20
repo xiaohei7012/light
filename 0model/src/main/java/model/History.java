@@ -26,6 +26,12 @@ public class History {
 	
 	private String l8;
 	
+	private Double temperature;//温度
+	
+	private Double longitude;//经度
+	
+	private Double latitude;//纬度
+	
 	private Date date;
 	
 	private Date dateTime;
@@ -110,6 +116,30 @@ public class History {
 		this.l8 = l8;
 	}
 
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
+	}
+
+	public Double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(Double latitude) {
+		this.latitude = latitude;
+	}
+
+	public Double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(Double longitude) {
+		this.longitude = longitude;
+	}
+	
 	public Date getDate() {
 		return date;
 	}

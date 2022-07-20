@@ -12,9 +12,9 @@ public class Device {
 	
 	private Integer groupId;
 	
-	private String fan;
+	private String fan;//é£æ‰‡
 	
-	private String l1;//¿ª£¬¹Ø£¬¹ÊÕÏ
+	private String l1;// å¼€ å…³ å
 	
 	private String l2;
 	
@@ -30,13 +30,15 @@ public class Device {
 	
 	private String l8;
 	
-	private Double latitude;//Î³¶È
+	private Double temperature;//
 	
-	private Double longitude;//¾­¶È
+	private Double longitude;//ç»åº¦
 	
-	private String status;// ÔÚÏß£¬ÀëÏß£¬ÓĞ¹ÊÕÏ
+	private Double latitude;//çº¬åº¦
+
+	private String status;//çŠ¶æ€ 
 	
-	private int expire;
+	private int expire;//ä½¿ç”¨æ—¶é—´
 	
 	private Date createTime;
 
@@ -152,6 +154,14 @@ public class Device {
 		this.l8 = l8;
 	}
 
+	public Double getTemperature() {
+		return temperature;
+	}
+
+	public void setTemperature(Double temperature) {
+		this.temperature = temperature;
+	}
+	
 	public Double getLatitude() {
 		return latitude;
 	}
