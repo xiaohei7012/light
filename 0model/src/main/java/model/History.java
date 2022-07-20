@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class History {
 	
-	private int Id;
+	private int id;
 	
 	private int did;
 	
@@ -31,11 +31,11 @@ public class History {
 	private Date dateTime;
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getFan() {
