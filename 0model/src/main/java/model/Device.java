@@ -2,6 +2,11 @@ package model;
 
 import java.util.Date;
 
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "device")
 public class Device {
 
 	private int id;

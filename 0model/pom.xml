@@ -6,7 +6,15 @@
   <name>模型</name>
   
   <properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	<java.version>1.8</java.version>
+  </properties>
+
+  <dependencies>
+   <dependency>
+		<groupId>org.hibernate.javax.persistence</groupId>
+		<artifactId>hibernate-jpa-2.1-api</artifactId>
+		<version>1.0.0.Final</version>
+   </dependency>
+  </dependencies>
 </project>
