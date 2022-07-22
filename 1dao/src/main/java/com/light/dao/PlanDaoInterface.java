@@ -1,4 +1,4 @@
-package dao;
+package com.light.dao;
 
 public interface PlanDaoInterface {
 	

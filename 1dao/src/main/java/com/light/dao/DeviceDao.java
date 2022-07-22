@@ -1,0 +1,69 @@
+package com.light.dao;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.EntityManager;
+
+import org.springframework.stereotype.Repository;
+
+import com.light.model.Device;
+import com.light.util.JPAUtils;
+
+@Repository
+public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
+
+	@Override
+	public List<Device> getAll() throws Exception {
+		EntityManager entityManager = null;
+		List<Device> result = new ArrayList<Device>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Device", Device.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+
+	@Override
+	public Device getById() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void reset() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void remove() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void updateGroup() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public List<Device> getByGroupId() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void expireIncrement() {
+		// TODO Auto-generated method stub
+
+	}
+
+}

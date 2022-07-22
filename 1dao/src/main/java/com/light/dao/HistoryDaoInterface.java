@@ -1,8 +1,8 @@
-package dao;
+package com.light.dao;
 
 import java.util.List;
 
-import model.History;
+import com.light.model.History;
 
 public interface HistoryDaoInterface {
 

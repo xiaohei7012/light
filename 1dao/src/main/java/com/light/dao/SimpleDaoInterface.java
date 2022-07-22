@@ -1,8 +1,8 @@
-package dao;
+package com.light.dao;
 
 public interface SimpleDaoInterface<T> {
 
-	public void create(T entity);
+	public void create(T entity) throws Exception;
 
 	public void update(T entity);
 

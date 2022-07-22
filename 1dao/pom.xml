@@ -24,6 +24,18 @@
 		</dependency>
 
 		<dependency>
+			<groupId>com.zaxxer</groupId>
+			<artifactId>HikariCP</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>4.2.8.RELEASE</version>
+		</dependency>
+
+		<dependency>
 			<groupId>com.light</groupId>
 			<artifactId>model</artifactId>
 			<version>1.0.0</version>

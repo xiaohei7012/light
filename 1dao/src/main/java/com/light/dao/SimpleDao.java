@@ -1,13 +1,13 @@
-package dao;
+package com.light.dao;
 
 import java.lang.reflect.ParameterizedType;
 
 import javax.persistence.EntityManager;
 
-import util.JPAUtils;
+import com.light.util.JPAUtils;
 
 public abstract class SimpleDao<T> implements SimpleDaoInterface<T> {
-	
+
 	Class<T> clasz;
 
 	@SuppressWarnings("unchecked")
@@ -17,14 +17,17 @@ public abstract class SimpleDao<T> implements SimpleDaoInterface<T> {
 	}
 
 	@Override
-	public void create(T entity) {
-		EntityManager entityManager = JPAUtils.getEntityManger();
+	public void create(T entity) throws Exception{
+		EntityManager entityManager = null;
 		try {
+			entityManager = JPAUtils.getEntityManger();
 			entityManager.persist(entity);
 		}catch(Exception e) {
 			e.printStackTrace();
+			throw e;
 		}finally {
-			entityManager.close();
+			if(entityManager!=null)
+				entityManager.close();
 		}
 		
 	}
@@ -32,18 +35,18 @@ public abstract class SimpleDao<T> implements SimpleDaoInterface<T> {
 	@Override
 	public void update(T entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	@Override
 	public void delete(T entity) {
 		// TODO Auto-generated method stub
-		
+
 	}
-	
+
 	public T getById(int id) {
 		return null;
-		
+
 	}
 
 }

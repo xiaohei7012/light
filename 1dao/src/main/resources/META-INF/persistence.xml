@@ -2,10 +2,10 @@
 <persistence version="2.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd ">
 	<persistence-unit name="mysql-jpa">
-		<class>model.Device</class>
-		<class>model.Group</class>
-		<class>model.Plan</class>
-		<class>model.History</class>
+		<class>com.light.model.Device</class>
+		<class>com.light.model.Group</class>
+		<class>com.light.model.Plan</class>
+		<class>com.light.model.History</class>
 
 		<properties>
 			<property name="hibernate.connection.driver_class" value="com.mysql.jdbc.Driver" />

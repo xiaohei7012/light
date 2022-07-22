@@ -1,11 +1,11 @@
-package dao;
+package com.light.dao;
 
 import java.util.List;
 
-import model.Device;
+import com.light.model.Device;
 
 public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
-	public List<Device> getAll();
+	public List<Device> getAll() throws Exception;
 	
 	public Device getById();
 	

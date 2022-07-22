@@ -1,30 +1,30 @@
-package dao;
+package com.light.dao;
 
 import java.util.List;
 
-import model.Device;
-import model.Group;
+import com.light.model.Device;
+import com.light.model.Group;
 
 public interface GroupDaoInterface {
 	public List<Group> getAll();
 	
-	//Ìí¼Ó¶¥¼¶Ä¿Â¼
+	//ï¿½ï¿½Ó¶ï¿½ï¿½ï¿½Ä¿Â¼
 	public void addParentGroup();
 	
 	public Device getById();
 	
-	//ÖØÃüÃû
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public void rename();
 	
-	//Ìí¼Ó×ÓÄ¿Â¼
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Ä¿Â¼
 	public void addChildGroup();
 	
-	//ÐÞ¸Ä·½°¸
+	//ï¿½Þ¸Ä·ï¿½ï¿½ï¿½
 	public void updatePlan();
 	
-	//»ñÈ¡×Ó½Úµã
+	//ï¿½ï¿½È¡ï¿½Ó½Úµï¿½
 	public List<Group> getByParentId();
 	
-	//ÊÇ·ñÒ¶×Ó½Úµã
+	//ï¿½Ç·ï¿½Ò¶ï¿½Ó½Úµï¿½
 	public boolean isLeftNode();
 }
