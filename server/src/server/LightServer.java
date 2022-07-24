@@ -1,6 +1,5 @@
 package server;
 
-import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
 
 public class LightServer extends SimpleServer {
@@ -19,8 +18,8 @@ public class LightServer extends SimpleServer {
 	}
 
 	@Override
-	public void onRead(SocketChannel sc, ByteBuffer temp) {
-
+	public void onRead(SocketChannel sc, String data) {
+		System.out.println(data);
 	}
 
 	@Override

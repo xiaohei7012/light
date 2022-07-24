@@ -38,6 +38,8 @@ public abstract class SimpleServer implements ServerInterface {
 					if(key.isAcceptable()) {
 						ServerSocketChannel channel = (ServerSocketChannel)key.channel();
 						SocketChannel socketChannel = channel.accept();
+						socketChannel.configureBlocking(false);
+						socketChannel.register(selector, SelectionKey.OP_READ);
 						onConnected(socketChannel);
 					}
 					
@@ -46,14 +48,16 @@ public abstract class SimpleServer implements ServerInterface {
 						buffer.clear();
 						int count = socketChannel.read(buffer);
 						if(count > 0) {
-							onRead(socketChannel,(ByteBuffer)buffer.flip());
+							String data = buffer.flip().toString();
+							onRead(socketChannel,data);
 						}
 						else {
 							key.cancel();
 							onDisconnected(socketChannel);
 						}
-							
 					}
+					
+					it.remove();
 				}
 
 			}
