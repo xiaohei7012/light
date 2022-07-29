@@ -19,7 +19,7 @@ public class DeviceController {
 	DeviceService deviceService;
 
 	// 添加设备
-	@RequestMapping(value = "/device", method = RequestMethod.PUT)
+	@RequestMapping(value = "/device", method = RequestMethod.POST)
 	public Object addDevice(Model model, HttpServletRequest request, HttpSession session, Device device) {
 		return deviceService.addDevice(device);
 	}
@@ -28,5 +28,11 @@ public class DeviceController {
 	@RequestMapping(value = "/device", method = RequestMethod.GET)
 	public Object getDevice(Model model, HttpServletRequest request, HttpSession session, Device device) {
 		return deviceService.getDevice();
+	}
+
+	// 更新设备
+	@RequestMapping(value = "/device", method = RequestMethod.PUT)
+	public Object eidtDevice(Model model, HttpServletRequest request, HttpSession session, Device device) {
+		return deviceService.editDevice();
 	}
 }
