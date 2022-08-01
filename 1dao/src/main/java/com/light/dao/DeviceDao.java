@@ -31,6 +31,73 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 
 	@Override
+	public int countOffline() {
+		EntityManager entityManager = null;
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = 'OFFLINE' ").getSingleResult().toString());
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+	}
+	
+	@Override
+	public List<Device> getOffline(int pageNum, int pageSize) {
+		EntityManager entityManager = null;
+		List<Device> result = new ArrayList<Device>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Device where status = 'OFFLINE' ", Device.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+	
+	@Override
+	public int countOnline() {
+		EntityManager entityManager = null;
+		List<Device> result = new ArrayList<Device>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Device where status = 'OFFLINE' ", Device.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return 0;
+	}
+	
+	@Override
+	public List<Device> getOnline(int pageNum, int pageSize) {
+		EntityManager entityManager = null;
+		List<Device> result = new ArrayList<Device>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Device where status = 'ONLINE'", Device.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+	
+	@Override
 	public Device getById() {
 		// TODO Auto-generated method stub
 		return null;

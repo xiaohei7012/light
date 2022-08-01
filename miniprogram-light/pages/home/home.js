@@ -13,11 +13,11 @@ Page({
     tabs:{
       currentIndex:0,
       list:[{
-        text:'正在工作',
-        type:'1'
-      },{
         text:'离线状态',
         type:'0'
+      },{
+        text:'联网中',
+        type:'1'
       }]
     }
   },
@@ -92,9 +92,10 @@ _fn = {
       'tabs.currentIndex':index
     });
     utils.handle.showLoading();
-    service.getDeviceList(tabs.index,function(data){
+    service.getDeviceList(tabs.list[index].type,function(data){
       utils.handle.hideLoading();
-      _fn.renderList.call(self,data);
+      console.log(data)
+      _fn.renderList.call(self,data.info);
     });
   },
   renderList:function(data){
@@ -108,9 +109,10 @@ _fn = {
           }
       ]
     };
-    data = data || listData;
+    listData.datas = data.list || listData.datas;
+    console.log(data)
     this.setData({
-      devices:data
+      devices:listData
     });
   }
 }

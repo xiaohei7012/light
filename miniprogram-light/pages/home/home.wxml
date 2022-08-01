@@ -5,7 +5,7 @@
     <view class="nav-wrapper">
     <block wx:for="{{tabs.list}}">
       <view class="tab current" data-type="{{item.type}}" data-index="{{index}}" wx:if="{{ index/1 == tabs.currentIndex/1 }}">{{item.text}}</view>
-      <view class="tab" data-type="{{iten.type}}" data-index="{{index}}" wx:else>{{item.text}}</view>
+      <view class="tab" data-type="{{item.type}}" data-index="{{index}}" wx:else>{{item.text}}</view>
     </block>
     </view>
   </view>

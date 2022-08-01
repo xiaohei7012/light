@@ -1,18 +1,18 @@
 var handle,URL,LISTTYPE,_fn;
 
 URL = {
-  deviceList:'/',
-  deviceDetail:'/'
+  deviceList:'device/',
+  deviceDetail:'device/detail/'
 }
 
 LISTTYPE = {
-  0:'ON',
-  1:'OFF'
+  0:'offline',
+  1:'online'
 }
 
 handle = {
   getDeviceList:function(type,callback){
-    var url = URL.deviceList + LISTTYPE[type];
+    var url = getApp().globalData.url + URL.deviceList + LISTTYPE[type];
     _fn.getData({
       url:url
     },callback);
@@ -31,7 +31,8 @@ _fn = {
       url:param.url,
       method:'get',
       data:{
-
+        pageNum:1,
+        pageSize:10
       },
       header:{
         'Content-Type':'application/json'

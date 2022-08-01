@@ -15,42 +15,42 @@ public class Device {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
-	private String dname;
-	
-	private String imei;
-	
-	private Integer groupId;
-	
-	private String fan;//风扇
-	
-	private String l1;// 开 关 坏
-	
-	private String l2;
-	
-	private String l3;
-	
-	private String l4;
-	
-	private String l5;
-	
-	private String l6;
-	
-	private String l7;
-	
-	private String l8;
-	
-	private Double temperature;//温度
-	
-	private Double longitude;//经度
-	
-	private Double latitude;//纬度
 
-	private String status;//状态 
-	
-	private int expire;//使用时间
-	
-	private Date createTime;
+	private String dname;
+
+	private String imei;
+
+	private Integer groupId;
+
+	private String fan = "OFF";// on off bad
+
+	private String l1 = "OFF";// on off bad
+
+	private String l2 = "OFF";
+
+	private String l3 = "OFF";
+
+	private String l4 = "OFF";
+
+	private String l5 = "OFF";
+
+	private String l6 = "OFF";
+
+	private String l7 = "OFF";
+
+	private String l8 = "OFF";
+
+	private Double temperature;// 温度
+
+	private Double longitude;// 经度
+
+	private Double latitude;// 纬度
+
+	private String status = "OFFLINE";// 状态  OFFLINE ONLINE
+
+	private int expire;// 使用时间
+
+	private Date createTime = new Date();
 
 	public Date getCreateTime() {
 		return createTime;
@@ -171,7 +171,7 @@ public class Device {
 	public void setTemperature(Double temperature) {
 		this.temperature = temperature;
 	}
-	
+
 	public Double getLatitude() {
 		return latitude;
 	}
