@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "group")
+@Table(name = "dgroup")
 public class Group {
 	
 	@Id
@@ -22,7 +22,7 @@ public class Group {
 	
 	private Integer planId;
 	
-	private Date createTime;
+	private Date createTime = new Date();
 
 	public int getId() {
 		return id;

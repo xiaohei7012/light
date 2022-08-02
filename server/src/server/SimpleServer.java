@@ -7,14 +7,18 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
 
-public abstract class SimpleServer implements ServerInterface {
 
+public abstract class SimpleServer implements ServerInterface {
 	private ByteBuffer buffer =  ByteBuffer.allocateDirect(1024);
-	protected int port;
 	
+	protected int port;
+	protected Map<String,SocketChannel> socketMap = new HashMap<String,SocketChannel>();
+//	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public SimpleServer(int port){
 		this.port = port;

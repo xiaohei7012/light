@@ -15,8 +15,7 @@
   <block wx:for="{{devices.datas}}">
     <view class="item">
       <navigator url="../detail/detail?dname={{item.dname}}">
-        <image mode="aspectFill" src="{{item.images.large}}"></image>
-        <text>{{item.dname}}</text>
+        <text>{{item.dname}} - {{item.imei}} - {{item.createTime}}</text>
       </navigator>
     </view>
   </block>

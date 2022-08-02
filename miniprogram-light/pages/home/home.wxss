@@ -65,17 +65,14 @@
 .list .item{
   font-size: 24rpx;
   text-align:center;
-  width:210rpx;
+  width:630rpx;
   margin-top:30rpx;
   margin-right:30rpx;
 }
-.list .item image{
-  height:325rpx;
-  width:100%;
-  box-shadow: 3px 3px 4px #111;
-}
+
 .list .item text{
   width:100%;
+  left:0px;
   height:32rpx;
   margin-top:10rpx;
   color:#fff;

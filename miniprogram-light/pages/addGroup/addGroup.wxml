@@ -1,0 +1,11 @@
+<!--pages/addGroup/addGroup.wxml-->
+<text>pages/addGroup/addGroup.wxml</text>
+<form catchsubmit="formSubmit">
+<view>分组名</view>
+<input name='gname'/>
+<view>上级分组</view>
+<input name='parentId'/>
+<view>分案</view>
+<input name='planId'/>
+<button form-type="submit">创建分组</button>
+</form>

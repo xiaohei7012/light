@@ -55,7 +55,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 			result = entityManager.createQuery("from Device where status = 'OFFLINE' ", Device.class).getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+//			throw e;
 		} finally {
 			if (entityManager != null)
 				entityManager.close();
@@ -66,18 +66,17 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	@Override
 	public int countOnline() {
 		EntityManager entityManager = null;
-		List<Device> result = new ArrayList<Device>();
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			result = entityManager.createQuery("from Device where status = 'OFFLINE' ", Device.class).getResultList();
+			int result = Integer.parseInt(entityManager.createQuery("from Device where status = 'OFFLINE' ", Device.class).getResultList().toString());
+			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+			return 0;
 		} finally {
 			if (entityManager != null)
 				entityManager.close();
 		}
-		return 0;
 	}
 	
 	@Override
@@ -89,7 +88,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 			result = entityManager.createQuery("from Device where status = 'ONLINE'", Device.class).getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
-			throw e;
+//			throw e;
 		} finally {
 			if (entityManager != null)
 				entityManager.close();

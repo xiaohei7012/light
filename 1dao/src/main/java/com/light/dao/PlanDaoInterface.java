@@ -1,6 +1,8 @@
 package com.light.dao;
 
-public interface PlanDaoInterface {
+import com.light.model.Plan;
+
+public interface PlanDaoInterface extends SimpleDaoInterface<Plan>{
 	
 	public void add();
 	

@@ -20,7 +20,7 @@ public class Plan {
 	
 	private String expression;
 	
-	private Date createTime;
+	private Date createTime = new Date();
 
 	public int getId() {
 		return id;

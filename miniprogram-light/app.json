@@ -1,10 +1,14 @@
 {
   "pages": [
+    "pages/addPlan/addPlan",
+    "pages/addGroup/addGroup",
     "pages/home/home",
     "pages/addDevice/addDevice",
     "pages/logs/logs",
     "pages/index/index",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/group/group",
+    "pages/plan/plan"
   ],
   "window": {
     "backgroundTextStyle": "light",
