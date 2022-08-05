@@ -5,5 +5,7 @@
 	<classpathentry kind="lib" path="lib/log4j-1.2.15.jar"/>
 	<classpathentry kind="lib" path="lib/slf4j-log4j12-1.7.25.jar"/>
 	<classpathentry kind="lib" path="lib/quartz-2.3.0.jar"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/0model"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/1dao"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

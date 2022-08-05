@@ -16,8 +16,10 @@ public class LightServer extends SimpleServer {
 
 	public void start() {
 		super.start();
+		InstructionTask insTask = new InstructionTask(this);
+		insTask.start();
 //		new Timer().schedule(new InstructionTask(this), 24* 60* 60 * 1000);
-		new Timer().schedule(new InstructionTask(this), 5 * 1000);
+//		new Timer().schedule(new InstructionTask(this), 5 * 1000);
 	}
 	
 	@Override
@@ -36,6 +38,8 @@ public class LightServer extends SimpleServer {
 			System.out.println(imei);
 		}else if(dataArray.length >2 && dataArray[0].equalsIgnoreCase("???")) {
 			
+		}else {
+			System.out.println(data);
 		}
 	}
 

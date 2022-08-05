@@ -2,6 +2,7 @@ package server;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.Buffer;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -52,7 +53,7 @@ public abstract class SimpleServer implements ServerInterface {
 						buffer.clear();
 						int count = socketChannel.read(buffer);
 						if(count > 0) {
-							String data = buffer.flip().toString();
+							String data = bufferRead(buffer);
 							onRead(socketChannel,data);
 						}
 						else {
@@ -72,5 +73,12 @@ public abstract class SimpleServer implements ServerInterface {
 
 	}
 
-
+	public String bufferRead(ByteBuffer buffer) {
+		buffer.flip();
+		StringBuffer sb = new StringBuffer();
+		while(buffer.hasRemaining()){
+			sb.append((char) buffer.get());
+		  }
+		return sb.toString();
+	}
 }
