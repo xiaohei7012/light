@@ -121,9 +121,20 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 
 	@Override
-	public List<Device> getByGroupId() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Device> getByGroupId(int gid) {
+		EntityManager entityManager = null;
+		List<Device> result = new ArrayList<Device>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Device where groupId = :gid", Device.class).setParameter("gid", gid).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+//			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
 	}
 
 	@Override

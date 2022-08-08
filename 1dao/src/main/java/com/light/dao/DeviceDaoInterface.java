@@ -23,7 +23,7 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public void updateGroup();
 	
-	public List<Device> getByGroupId();
+	public List<Device> getByGroupId(int gid);
 	
 	public void expireIncrement();
 

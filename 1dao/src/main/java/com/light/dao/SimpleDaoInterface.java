@@ -7,4 +7,6 @@ public interface SimpleDaoInterface<T> {
 	public void update(T entity);
 
 	public void delete(T entity);
+	
+	public T getById(int id);
 }

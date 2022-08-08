@@ -1,6 +1,7 @@
 package com.light.dao;
 
 import java.lang.reflect.ParameterizedType;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -51,8 +52,18 @@ public abstract class SimpleDao<T> implements SimpleDaoInterface<T> {
 	}
 
 	public T getById(int id) {
-		return null;
+		EntityManager entityManager = JPAUtils.getEntityManger();
+		try {
+			List<T> list = entityManager.createQuery("from " + clasz.getSimpleName() + " where id = :id", clasz).setParameter("id", id).getResultList();
+			if (list.size() == 0)
+				return null;
+			return list.get(0);
+		} catch (Exception e) {
 
+		} finally {
+			entityManager.close();
+		}
+		return null;
 	}
 
 }
