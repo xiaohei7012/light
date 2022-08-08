@@ -1,8 +1,12 @@
 package com.light.dao;
 
+import java.util.List;
+
 import com.light.model.Plan;
 
 public interface PlanDaoInterface extends SimpleDaoInterface<Plan>{
+	
+	public List<Plan> getAll();
 	
 	public void add();
 	
