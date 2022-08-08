@@ -44,10 +44,10 @@ public class LightServer extends SimpleServer {
 		if (dataArray.length == 2 && dataArray[0].equalsIgnoreCase("imei")) {
 			String imei = dataArray[1];
 			socketMap.put(imei, sc);
-		} else if (dataArray.length > 2 && dataArray[0].equalsIgnoreCase("???")) {// 如果收到重置调度命令即删除调度再添加
-			insTask.reset();
-		} else {
-			
+		} else if (dataArray.length == 2 && dataArray[0].equalsIgnoreCase("reset")) {// 如果收到重置调度命令即删除调度再添加
+			insTask.resetPlan(dataArray[1]);
+		} else if (dataArray.length == 2 && dataArray[0].equalsIgnoreCase("add")) {
+			insTask.addPlan(dataArray[1]);
 		}
 		System.out.println(data);
 	}

@@ -15,6 +15,22 @@ import com.light.util.JPAUtils;
 public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 
 	@Override
+	public List<Group> getAll() {
+		EntityManager entityManager = null;
+		List<Group> result = new ArrayList<Group>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Group", Group.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+	
+	@Override
 	public List<Group> getGroupWithPlan() {
 		EntityManager entityManager = null;
 		List<Group> result = new ArrayList<Group>();

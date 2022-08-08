@@ -6,6 +6,8 @@ import com.light.model.Device;
 import com.light.model.Group;
 
 public interface GroupDaoInterface extends SimpleDaoInterface<Group>{
+	public List<Group> getAll();
+	
 	public List<Group> getGroupWithPlan();
 	
 	public void addParentGroup();
