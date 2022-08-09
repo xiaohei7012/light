@@ -17,25 +17,11 @@ public class PlanService {
 	PlanDaoInterface planDao;
 
 	public static void sendPlanReset(int id) {
-		Socket socket = null;
-		try {
-			socket = new Socket("localhost", 14332);
-			OutputStream out = socket.getOutputStream();
-			out.write(("Hello resetPlan " + id).getBytes());
+		sendData("reset " + id);
+	}
 
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (socket != null) {
-				try {
-					socket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
-
+	public static void sendPlanAdd(int id) {
+		sendData("add " + id);
 	}
 
 	public Object addPlan(Plan plan) {
@@ -55,4 +41,24 @@ public class PlanService {
 		return result;
 	}
 
+	private static void sendData(String data) {
+		Socket socket = null;
+		try {
+			socket = new Socket("localhost", 14332);
+			OutputStream out = socket.getOutputStream();
+			out.write(data.getBytes());
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (socket != null) {
+				try {
+					socket.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+
+		}
+	}
 }

@@ -1,4 +1,6 @@
 <!--pages/addDevice/addDevice.wxml-->
+<view style="display:inline;border:solid 1px;">添加</view>
+<view style="display:inline;border:solid 1px;">添加</view>
 <form catchsubmit="formSubmit">
 <view>imei</view>
 <input name="imei"/>

@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/home/home",
     "pages/addPlan/addPlan",
     "pages/addGroup/addGroup",
-    "pages/home/home",
     "pages/addDevice/addDevice",
     "pages/logs/logs",
     "pages/index/index",

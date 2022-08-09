@@ -28,18 +28,17 @@ public class InstructionTask extends Thread {
 	public InstructionTask() {
 	}
 
+	// 每次运行调度器清理上次的任务 然后重新根据方案生成调度
+	// 每个方案生成一个调度 每个调度查询有多少个设备 每个设备发送命令
 	@Override
 	public void run() {
 		try {
-			// 每次运行调度器清理上次的任务 然后重新根据方案生成调度
-			// 每个方案生成一个调度 每个调度查询有多少个设备 每个设备发送命令
 			List<Group> groupList = groupDao.getAll();
 			scheduler = StdSchedulerFactory.getDefaultScheduler();
 			for (Group group : groupList) {
 				Plan plan = planDao.getById(group.getPlanId());
 				JobDetail j = JobBuilder.newJob(InstrctionJob.class).build();
 				j.getJobDataMap().put("group", group);
-//				TriggerKey key = TriggerKey.triggerKey("plan" + plan.getId());
 				Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
 				scheduler.scheduleJob(j, t);

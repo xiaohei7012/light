@@ -9,14 +9,22 @@
     </block>
     </view>
   </view>
+  <view class="add-device-button">添加</view>
 </view>
 
 <view class="list basestyle">
+  <view class="item">
+    <text class="item-1">设备名字</text>
+    <text class="item-2">设备编号</text>
+    <text class="item-3">状态</text>
+    <text class="item-4">所属分组</text>
+  </view>
   <block wx:for="{{devices.datas}}">
     <view class="item">
-      <navigator url="../detail/detail?dname={{item.dname}}">
-        <text>{{item.dname}} - {{item.imei}} - {{item.createTime}}</text>
-      </navigator>
+      <navigator class="item-1" url="../detail/detail?dname={{item.dname}}">{{item.dname}}</navigator>
+      <text class="item-2">{{item.imei}}</text>
+      <text class="item-3">{{item.status}}</text>
+      <text class="item-4">{{item.group}}</text>
     </view>
   </block>
 </view>
