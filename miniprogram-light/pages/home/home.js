@@ -22,6 +22,11 @@ Page({
     }
   },
 
+  changeTab:function(e){
+    var targe = e.target;
+    _fn.selectTab.call(this,targe.dataset.index);
+  },
+
   /**
    * Lifecycle function--Called when page load
    */
@@ -34,11 +39,6 @@ Page({
    */
   onReady: function () {
     _fn.selectTab.call(this,0);
-  },
-
-  changeTab:function(e){
-    var targe = e.target;
-    _fn.selectTab.call(this,targe.dataset.index);
   },
 
   /**

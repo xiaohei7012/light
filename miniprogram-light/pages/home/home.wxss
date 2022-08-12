@@ -1,13 +1,17 @@
 /* pages/home/home.wxss */
+page{
+  height:100%;
+}
+
 .header{
   position: fixed;
   top:0;
   left:0;
   padding:10rpx 30rpx 15rpx 30rpx;
   width:691rpx;
-  background: -webkit-gradient(linear,0 0,0 100% from(#3f3f3f),to(#2f2f2f));
+  /* background: -webkit-gradient(linear,0 0,0 100% from(#3f3f3f),to(#2f2f2f)); */
   border-bottom: solid 1px #000;
-  box-shadow: 0 2px 4px #111;
+  /* box-shadow: 0 2px 4px #111; */
 }
 
 .header .bar{
@@ -18,18 +22,34 @@
 }
 
 .nav{
-  display: inline;
-  position: relative;
+  display: inline-block;
+  width:588rpx;
   height:60rpx;
-  width:291rpx;
+  vertical-align: top;
+
+  margin-right:30rpx;
   background-color: #373737;
-  border:solid 1px #000;
-  border-radius: 5px;
-  overflow: hidden;
-  box-shadow: 0 -1px 0px #777;
+  /* border:solid 1px #000; */
+  /* border-radius: 5px; */
+
+  /* box-shadow: 0 -1px 0px #777; */
 }
+
+.butt{
+  display: inline-block;
+  width:60rpx;
+  height:60rpx;
+  vertical-align: top;
+  
+  background-color: #373737;
+  /* border:solid 1px #000; */
+  /* border-radius: 5px; */
+  /* box-shadow: 0 -1px 0px #777; */
+  
+}
+
 .nav .nav-wrapper{
-  width:491rpx;
+  width:590rpx;
   height:100%;
   display: flex;
   position: relative;
@@ -57,14 +77,12 @@
   box-shadow: inset 0 0 4px #111;text-shadow: 0 2px 3px #000;
 }
 
-.add-device-button{
-  width:10rpx;
-  display: inline;
-}
+
 
 .list{
   display: flex;
   flex-wrap: wrap;
+  height:100%;
   padding:90rpx 0 30rpx 30rpx;
   background-color: #3f3f3f;
 }

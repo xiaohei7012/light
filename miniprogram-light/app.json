@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/group/group",
     "pages/home/home",
     "pages/addPlan/addPlan",
     "pages/addGroup/addGroup",
@@ -7,9 +8,36 @@
     "pages/logs/logs",
     "pages/index/index",
     "pages/detail/detail",
-    "pages/group/group",
+    
     "pages/plan/plan"
   ],
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "common/basestyle/images/icon_component.png",
+        "selectedIconPath": "common/basestyle/images/icon_component_HL.png",
+        "text": "设备"
+      },
+      {
+        "pagePath": "pages/group/group",
+        "iconPath": "common/basestyle/images/icon_API.png",
+        "selectedIconPath": "common/basestyle/images/icon_API_HL.png",
+        "text": "分组"
+      },
+      {
+        "pagePath": "pages/plan/plan",
+        "iconPath": "common/basestyle/images/icon_API.png",
+        "selectedIconPath": "common/basestyle/images/icon_API_HL.png",
+        "text": "方案"
+      }
+    ]
+  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
