@@ -29,6 +29,7 @@ public class InstructionTask extends Thread {
 	}
 
 	// 每次运行调度器清理上次的任务 然后重新根据方案生成调度
+	// 每个方案都生成一个调度的开 调度的关 即两个调度
 	// 每个方案生成一个调度 每个调度查询有多少个设备 每个设备发送命令
 	@Override
 	public void run() {
@@ -37,10 +38,10 @@ public class InstructionTask extends Thread {
 			scheduler = StdSchedulerFactory.getDefaultScheduler();
 			for (Group group : groupList) {
 				Plan plan = planDao.getById(group.getPlanId());
-				JobDetail j = JobBuilder.newJob(InstrctionJob.class).build();
+				JobDetail j = JobBuilder.newJob(OnInstrctionJob.class).build();
 				j.getJobDataMap().put("group", group);
 				Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
-						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
+						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();//开的调度
 				scheduler.scheduleJob(j, t);
 			}
 			scheduler.start();
@@ -67,7 +68,7 @@ public class InstructionTask extends Thread {
 			Integer groupIdInt = Integer.parseInt(groupId);
 			Group group = groupDao.getById(groupIdInt);
 			Plan plan = planDao.getById(group.getPlanId());
-			JobDetail j = JobBuilder.newJob(InstrctionJob.class).build();
+			JobDetail j = JobBuilder.newJob(OnInstrctionJob.class).build();
 			j.getJobDataMap().put("group", group);
 			Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();

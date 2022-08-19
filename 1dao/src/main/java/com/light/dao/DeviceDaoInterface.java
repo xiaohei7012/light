@@ -33,7 +33,7 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 
 	public void turnOn(Device d);
 	
-	public void turnOFF(Device d);
+	public void turnOff(Device d);
 
 	
 }

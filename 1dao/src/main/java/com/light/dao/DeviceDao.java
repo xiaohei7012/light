@@ -135,12 +135,12 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		d.setL4(LIGHT_TYPE.ON.toString());
 		d.setL5(LIGHT_TYPE.ON.toString());
 		d.setL6(LIGHT_TYPE.ON.toString());
-		d.setFan("F10");
+		d.setFan("F9");
 		update(d);
 	}
 	
 	@Override
-	public void turnOFF(Device d) {
+	public void turnOff(Device d) {
 		d.setL1(LIGHT_TYPE.OFF.toString());
 		d.setL2(LIGHT_TYPE.OFF.toString());
 		d.setL3(LIGHT_TYPE.OFF.toString());

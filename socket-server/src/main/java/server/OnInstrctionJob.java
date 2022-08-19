@@ -13,22 +13,22 @@ import com.light.model.Group;
 
 import service.LightService;
 
-public class InstrctionJob implements Job{
+public class OnInstrctionJob implements Job{
 	private static LightServer server = LightServer.getInstance();
 	private static DeviceDaoInterface deviceDao = new DeviceDao();
 	
-	public InstrctionJob() {
+	public OnInstrctionJob() {
 		server = LightServer.getInstance();
 	}
 	
-
 	@Override
-	public void execute(JobExecutionContext arg0) throws JobExecutionException {
-		Group g = (Group)arg0.getMergedJobDataMap().get("group");
+	public void execute(JobExecutionContext context) throws JobExecutionException {
+		Group g = (Group)context.getMergedJobDataMap().get("group");
 		List<Device> deviceList = deviceDao.getByGroupId(g.getId());
 		for(Device d:deviceList) {
 			deviceDao.turnOn(d);//开了还要处理关
 			server.sendData(d.getImei(),LightService.parseInstruction(d));
+			
 		}
 	}
 
