@@ -11,6 +11,8 @@ import com.light.dao.DeviceDaoInterface;
 import com.light.model.Device;
 import com.light.model.Group;
 
+import service.LightService;
+
 public class InstrctionJob implements Job{
 	private static LightServer server = LightServer.getInstance();
 	private static DeviceDaoInterface deviceDao = new DeviceDao();
@@ -25,11 +27,9 @@ public class InstrctionJob implements Job{
 		Group g = (Group)arg0.getMergedJobDataMap().get("group");
 		List<Device> deviceList = deviceDao.getByGroupId(g.getId());
 		for(Device d:deviceList) {
-			server.sendData(d.getImei(),onInstruction());
+			deviceDao.turnOn(d);//开了还要处理关
+			server.sendData(d.getImei(),LightService.parseInstruction(d));
 		}
 	}
 
-	private static String onInstruction() {
-		return "hello World";
-	}
 }

@@ -2,8 +2,18 @@ package server;
 
 import java.nio.channels.SocketChannel;
 
+import service.LightService;
+
 public class LightServer extends SimpleServer {
 	private static LightServer instance;
+	private static LightService service;
+	
+	public final static String HEAD = "YTE";
+	public final static String SPLITWORD = " ";
+
+	public static enum INSTRUCTION_TYPE {
+		ZWXD, DATA, ACK, IRYK, RESET, ADD, UNKNWON;
+	}
 
 	public static final int port = 14332;
 	InstructionTask insTask;
@@ -40,16 +50,59 @@ public class LightServer extends SimpleServer {
 
 	@Override
 	public void onRead(SocketChannel sc, String data) {
-		String[] dataArray = data.split(" ");
-		if (dataArray.length == 2 && dataArray[0].equalsIgnoreCase("imei")) {
-			String imei = dataArray[1];
-			socketMap.put(imei, sc);
-		} else if (dataArray.length == 2 && dataArray[0].equalsIgnoreCase("reset")) {// 如果收到重置调度命令即删除调度再添加
-			insTask.resetPlan(dataArray[1]);
-		} else if (dataArray.length == 2 && dataArray[0].equalsIgnoreCase("add")) {
-			insTask.addPlan(dataArray[1]);
+		try {
+			String[] dataArray = data.split(SPLITWORD);
+			switch (getInsType(dataArray)) {
+			case ZWXD:
+				String imei = dataArray[1];
+				socketMap.put(imei, sc);
+				service.signIn(dataArray, sc);
+				break;
+			case DATA:
+				service.uploadStatus(dataArray);
+				break;
+			case ACK:
+				service.confirm();
+				break;
+			case IRYK:
+				service.manual(dataArray);
+				break;
+			case RESET:
+				insTask.resetPlan(dataArray[1]);
+				break;
+			case ADD:
+				insTask.addPlan(dataArray[1]);
+				break;
+			default:
+				break;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();//处理数据时发生错误
 		}
 		System.out.println(data);
+	}
+
+	
+
+	private INSTRUCTION_TYPE getInsType(String[] dataArray) {
+		if (dataArray.length >= 3 && dataArray[0].equalsIgnoreCase(HEAD)) {
+			if (dataArray[2].equalsIgnoreCase("ZWXD")) {
+				return INSTRUCTION_TYPE.ZWXD;
+			} else if (dataArray[2].equalsIgnoreCase("DATA")) {
+				return INSTRUCTION_TYPE.DATA;
+			} else if (dataArray[2].equalsIgnoreCase("ACK")) {
+				return INSTRUCTION_TYPE.ACK;
+			} else if (dataArray[2].equalsIgnoreCase("IRYK ")) {
+				return INSTRUCTION_TYPE.IRYK;
+			}
+		} else if (dataArray.length == 2) {
+			if (dataArray[0].equalsIgnoreCase("RESET")) {// 如果收到重置调度命令即删除调度再添加
+				return INSTRUCTION_TYPE.RESET;
+			} else if (dataArray[0].equalsIgnoreCase("ADD")) {
+				return INSTRUCTION_TYPE.ADD;
+			}
+		}
+		return INSTRUCTION_TYPE.UNKNWON;
 	}
 
 	@Override

@@ -32,40 +32,47 @@ public abstract class SimpleServer implements ServerInterface {
 			serverSocketChannel.configureBlocking(false);
 			serverSocketChannel.register(selector, SelectionKey.OP_ACCEPT);
 			while (true) {
-				selector.select();
+				try {
+					selector.select();
 
-				Set<SelectionKey> selectKeys = selector.selectedKeys();
-				Iterator<SelectionKey> it = selectKeys.iterator();
-				while (it.hasNext()) {
-					SelectionKey key = it.next();
-					if (key.isAcceptable()) {
-						ServerSocketChannel channel = (ServerSocketChannel) key.channel();
-						SocketChannel socketChannel = channel.accept();
-						socketChannel.configureBlocking(false);
-						socketChannel.register(selector, SelectionKey.OP_READ);
-						onConnected(socketChannel);
-					}
+					Set<SelectionKey> selectKeys = selector.selectedKeys();
+					Iterator<SelectionKey> it = selectKeys.iterator();
+					while (it.hasNext()) {
+						SelectionKey key = it.next();
+						try {
+							if (key.isAcceptable()) {
+								ServerSocketChannel channel = (ServerSocketChannel) key.channel();
+								SocketChannel socketChannel = channel.accept();
+								socketChannel.configureBlocking(false);
+								socketChannel.register(selector, SelectionKey.OP_READ);
+								onConnected(socketChannel);
+							}
 
-					if (key.isReadable()) {
-						SocketChannel socketChannel = (SocketChannel) key.channel();
-						buffer.clear();
-						int count = socketChannel.read(buffer);
-						if (count > 0) {
-							String data = bufferRead(buffer);
-							onRead(socketChannel, data);
-						} else {
-							key.cancel();
-							onDisconnected(socketChannel);
+							if (key.isReadable()) {
+								SocketChannel socketChannel = (SocketChannel) key.channel();
+								buffer.clear();
+								int count = socketChannel.read(buffer);
+								if (count > 0) {
+									String data = bufferRead(buffer);
+									onRead(socketChannel, data);
+								} else {
+									key.cancel();
+									onDisconnected(socketChannel);
+								}
+							}
+						} catch (Exception e) {
+							e.printStackTrace();// 进入处理后错误
 						}
+						it.remove();
+
 					}
-
-					it.remove();
+				} catch (Exception e) {
+					e.printStackTrace();// 进入选择后错误
 				}
-
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();
+			e.printStackTrace();//启动时出错
 		}
 
 	}

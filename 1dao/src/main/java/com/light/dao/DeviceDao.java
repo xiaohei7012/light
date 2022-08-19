@@ -12,6 +12,10 @@ import com.light.util.JPAUtils;
 
 @Repository
 public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
+	
+	public static enum LIGHT_TYPE{
+		ON,OFF,BAD
+	}
 
 	@Override
 	public List<Device> getAll() throws Exception {
@@ -97,11 +101,56 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 	
 	@Override
-	public Device getById() {
+	public Device getByImei(String imei) {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public void setCoord(String imei,double lon,double lat) {
+		Device device = getByImei(imei);
+		device.setLongitude(lon);
+		device.setLatitude(lat);
+		update(device);
+	}
 
+	public void setStatus(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,double temp) {
+		Device device = getByImei(imei);
+		device.setImei(imei);
+		device.setL1(l1);
+		device.setL2(l2);
+		device.setL3(l3);
+		device.setL4(l4);
+		device.setL5(l5);
+		device.setL6(l6);
+		device.setFan(fan);
+		device.setTemperature(temp);
+		update(device);
+	}
+
+	@Override
+	public void turnOn(Device d) {
+		d.setL1(LIGHT_TYPE.ON.toString());
+		d.setL2(LIGHT_TYPE.ON.toString());
+		d.setL3(LIGHT_TYPE.ON.toString());
+		d.setL4(LIGHT_TYPE.ON.toString());
+		d.setL5(LIGHT_TYPE.ON.toString());
+		d.setL6(LIGHT_TYPE.ON.toString());
+		d.setFan("F10");
+		update(d);
+	}
+	
+	@Override
+	public void turnOFF(Device d) {
+		d.setL1(LIGHT_TYPE.OFF.toString());
+		d.setL2(LIGHT_TYPE.OFF.toString());
+		d.setL3(LIGHT_TYPE.OFF.toString());
+		d.setL4(LIGHT_TYPE.OFF.toString());
+		d.setL5(LIGHT_TYPE.OFF.toString());
+		d.setL6(LIGHT_TYPE.OFF.toString());
+		d.setFan(LIGHT_TYPE.OFF.toString());
+		update(d);
+	}
+	
 	@Override
 	public void reset() {
 		// TODO Auto-generated method stub
@@ -142,5 +191,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		// TODO Auto-generated method stub
 
 	}
+
+	
 
 }

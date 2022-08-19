@@ -15,7 +15,11 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public List<Device> getOnline(int pageNum, int pageSize);
 	
-	public Device getById();
+	public Device getByImei(String imei);
+	
+	public void setCoord(String imei,double lon,double lat);
+	
+	public void setStatus(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,double temp);
 	
 	public void reset();
 	
@@ -26,6 +30,10 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	public List<Device> getByGroupId(int gid);
 	
 	public void expireIncrement();
+
+	public void turnOn(Device d);
+	
+	public void turnOFF(Device d);
 
 	
 }

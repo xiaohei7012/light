@@ -16,7 +16,7 @@ public class History {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
 	
-	private int did;
+	private String imei;
 	
 	private String fan;
 	
@@ -166,11 +166,12 @@ public class History {
 		this.dateTime = dateTime;
 	}
 
-	public int getDid() {
-		return did;
+	public String getImei() {
+		return imei;
 	}
 
-	public void setDid(int did) {
-		this.did = did;
+	public void setImei(String imei) {
+		this.imei = imei;
 	}
+
 }
