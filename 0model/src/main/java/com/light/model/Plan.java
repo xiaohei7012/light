@@ -20,6 +20,8 @@ public class Plan {
 	
 	private String expression;
 	
+	private String expressionOff;
+	
 	private Date createTime = new Date();
 
 	public int getId() {
@@ -54,4 +56,11 @@ public class Plan {
 		this.createTime = createTime;
 	}
  
+	public String getExpressionOff() {
+		return expressionOff;
+	}
+
+	public void setExpressionOff(String expressionOff) {
+		this.expressionOff = expressionOff;
+	}
 }
