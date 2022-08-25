@@ -38,11 +38,18 @@ public class InstructionTask extends Thread {
 			scheduler = StdSchedulerFactory.getDefaultScheduler();
 			for (Group group : groupList) {
 				Plan plan = planDao.getById(group.getPlanId());
+
 				JobDetail j = JobBuilder.newJob(OnInstrctionJob.class).build();
 				j.getJobDataMap().put("group", group);
 				Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
-						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();//开的调度
+						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();// 开的调度
 				scheduler.scheduleJob(j, t);
+
+				JobDetail offj = JobBuilder.newJob(OffInstrctionJob.class).build();
+				j.getJobDataMap().put("group", group);
+				Trigger offt = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId() + "_off", "plan")
+						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressionOff())).build();// 关的调度
+				scheduler.scheduleJob(offj, offt);
 			}
 			scheduler.start();
 		} catch (Exception e) {
@@ -50,29 +57,42 @@ public class InstructionTask extends Thread {
 		}
 	}
 
+	// 重启也要重启两个
 	public void resetPlan(String groupId) {
 		try {
 			Integer groupIdInt = Integer.parseInt(groupId);
 			Group group = groupDao.getById(groupIdInt);
 			Plan plan = planDao.getById(group.getPlanId());
-			Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
+			Trigger on = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
-			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId()), t);
+
+			Trigger off = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
+					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressionOff())).build();
+			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId()), on);
+			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId() + "_off"), off);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
+	// 加也要加两个
 	public void addPlan(String groupId) {
 		try {
 			Integer groupIdInt = Integer.parseInt(groupId);
 			Group group = groupDao.getById(groupIdInt);
 			Plan plan = planDao.getById(group.getPlanId());
+			
 			JobDetail j = JobBuilder.newJob(OnInstrctionJob.class).build();
 			j.getJobDataMap().put("group", group);
 			Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
 			scheduler.scheduleJob(j, t);
+			
+			JobDetail offj = JobBuilder.newJob(OffInstrctionJob.class).build();
+			j.getJobDataMap().put("group", group);
+			Trigger offt = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId()+"_off", "plan")
+					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
+			scheduler.scheduleJob(offj, offt);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
