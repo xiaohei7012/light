@@ -2,11 +2,16 @@ package server;
 
 import java.nio.channels.SocketChannel;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import service.LightService;
 
 public class LightServer extends SimpleServer {
 	private static LightServer instance;
 	private static LightService service;
+	
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 	
 	public final static String HEAD = "YTE";
 	public final static String SPLITWORD = " ";
@@ -15,7 +20,7 @@ public class LightServer extends SimpleServer {
 		ZWXD, DATA, ACK, IRYK, RESET, ADD, UNKNWON;
 	}
 
-	public static final int port = 14332;
+	public static final int port = 14334;
 	InstructionTask insTask;
 
 	private LightServer(int port) {
@@ -46,6 +51,7 @@ public class LightServer extends SimpleServer {
 //		socketMap.put(sc.socket().getInetAddress().getHostAddress() + " " + sc.socket().getPort(), sc);
 //		logger.info("有新的连接:" + sc.socket().getInetAddress().getHostAddress());
 		System.out.println("有新的连接:" + sc.socket().getInetAddress().getHostAddress());
+		logger.info("有新的连接:" + sc.socket().getInetAddress().getHostAddress());
 	}
 
 	@Override
@@ -61,10 +67,10 @@ public class LightServer extends SimpleServer {
 			case DATA:
 				service.uploadStatus(dataArray);
 				break;
-			case ACK:
+			case ACK://确认
 				service.confirm();
 				break;
-			case IRYK:
+			case IRYK://遥控
 				service.manual(dataArray);
 				break;
 			case RESET:
@@ -80,6 +86,7 @@ public class LightServer extends SimpleServer {
 			e.printStackTrace();//处理数据时发生错误
 		}
 		System.out.println(data);
+		logger.debug(data);
 	}
 
 	
