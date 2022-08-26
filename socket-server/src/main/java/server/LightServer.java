@@ -86,7 +86,7 @@ public class LightServer extends SimpleServer {
 			e.printStackTrace();//处理数据时发生错误
 		}
 		System.out.println(data);
-		logger.debug(data);
+		logger.info(data);
 	}
 
 	

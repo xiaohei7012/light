@@ -47,6 +47,39 @@ public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 	}
 
 	@Override
+	public int count() {
+		EntityManager entityManager = null;
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from dgroup ").getSingleResult().toString());
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+	}
+
+	@Override
+	public List<Group> getList(int pageNum, int pageSize) {
+		EntityManager entityManager = null;
+		List<Group> result = new ArrayList<Group>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Group ", Group.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+//			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+	
+	@Override
 	public void addParentGroup() {
 		// TODO Auto-generated method stub
 		
@@ -87,6 +120,8 @@ public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+	
 	
 	
 }

@@ -24,4 +24,8 @@ public interface GroupDaoInterface extends SimpleDaoInterface<Group>{
 	
 	public boolean isLeftNode();
 
+	public int count();
+
+	public List<Group> getList(int pageNum, int pageSize);
+
 }

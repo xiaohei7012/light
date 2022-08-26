@@ -19,6 +19,11 @@ public class PlanController {
 	@Autowired
 	PlanService planService;
 	
+	@RequestMapping(value = "/plan", method = RequestMethod.GET)
+	public Object listPlan(Model model, HttpServletRequest request, HttpSession session, int pageNum,int pageSize) {
+		return planService.listPlan(pageNum,pageSize);
+	}
+	
 	@RequestMapping(value = "/plan", method = RequestMethod.POST)
 	public Object addPlan(Model model, HttpServletRequest request, HttpSession session, @RequestBody Plan plan) {
 		return planService.addPlan(plan);

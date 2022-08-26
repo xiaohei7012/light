@@ -1,2 +1,9 @@
-<!--pages/plan/plan.wxml-->
-<text>pages/plan/plan.wxml</text>
+<view>
+  <block wx:for="{{plans.datas}}">
+    <view class="item">
+      <text class="item-2">{{item.id}}</text>
+      <navigator class="item-1" url="../detail/detail?dname={{item.gname}}">{{item.gname}}</navigator>
+      <text class="item-2">{{item.createTime}}</text>
+    </view>
+  </block>
+</view>

@@ -1,2 +1,10 @@
 <!--pages/group/group.wxml-->
-<text>pages/group/group.wxml</text>
+<view>
+  <block wx:for="{{groups.datas}}">
+    <view class="item">
+      <text class="item-2">{{item.id}}</text>
+      <navigator class="item-1" url="../detail/detail?dname={{item.gname}}">{{item.gname}}</navigator>
+      <text class="item-2">{{item.createTime}}</text>
+    </view>
+  </block>
+</view>

@@ -1,25 +1,24 @@
 {
   "pages": [
+    "pages/device/device",
     "pages/group/group",
-    "pages/home/home",
     "pages/addPlan/addPlan",
     "pages/addGroup/addGroup",
     "pages/addDevice/addDevice",
     "pages/logs/logs",
     "pages/index/index",
-    "pages/detail/detail",
-    
+    "pages/deviceDetail/deviceDetail",
     "pages/plan/plan"
   ],
   "tabBar": {
-    "custom": true,
+    "custom": false,
     "color": "#7A7E83",
     "selectedColor": "#3cc51f",
     "borderStyle": "black",
-    "backgroundColor": "#ffffff",
+    "backgroundColor": "#373737",
     "list": [
       {
-        "pagePath": "pages/home/home",
+        "pagePath": "pages/device/device",
         "iconPath": "common/basestyle/images/icon_component.png",
         "selectedIconPath": "common/basestyle/images/icon_component_HL.png",
         "text": "设备"

@@ -20,7 +20,13 @@ public class Plan {
 	
 	private String expression;
 	
-	private String expressionOff;
+	private String expressioff;
+	
+	private String startTime;
+	
+	private String endTime;
+	
+	private String instruction;
 	
 	private Date createTime = new Date();
 
@@ -55,12 +61,38 @@ public class Plan {
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
 	}
- 
-	public String getExpressionOff() {
-		return expressionOff;
+
+	public String getStartTime() {
+		return startTime;
 	}
 
-	public void setExpressionOff(String expressionOff) {
-		this.expressionOff = expressionOff;
+	public void setStartTime(String startTime) {
+		this.startTime = startTime;
 	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public void setEndTime(String endTime) {
+		this.endTime = endTime;
+	}
+
+	public String getInstruction() {
+		return instruction;
+	}
+
+	public void setInstruction(String instruction) {
+		this.instruction = instruction;
+	}
+
+	public String getExpressioff() {
+		return expressioff;
+	}
+
+	public void setExpressioff(String expressioff) {
+		this.expressioff = expressioff;
+	}
+ 
+	
 }

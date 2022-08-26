@@ -19,6 +19,11 @@ public class GroupController {
 	@Autowired
 	GroupService groupService;
 
+	@RequestMapping(value = "/group", method = RequestMethod.GET)
+	public Object listGroup(Model model, HttpServletRequest request, HttpSession session, int pageNum,int pageSize) {
+		return groupService.listGroup(pageNum, pageSize);
+	}
+	
 	@RequestMapping(value = "/group", method = RequestMethod.POST)
 	public Object addGroup(Model model, HttpServletRequest request, HttpSession session, @RequestBody Group group) {
 		return groupService.addGroup(group);

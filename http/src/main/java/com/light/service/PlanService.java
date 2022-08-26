@@ -3,11 +3,16 @@ package com.light.service;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.light.dao.PlanDaoInterface;
+import com.light.model.Group;
 import com.light.model.Plan;
 
 @Service
@@ -60,5 +65,22 @@ public class PlanService {
 			}
 
 		}
+	}
+
+	public Object listPlan(int pageNum,int pageSize) {
+		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
+		Map<String,Object> rmap = new HashMap<String,Object>();
+		List<Plan> dlist = new ArrayList<Plan>();
+		try {
+			int count = planDao.count();
+			dlist = planDao.getList(pageNum,pageSize);
+			rmap.put("count",count);
+			rmap.put("list",dlist);
+			result.setRet(true);
+		} catch (Exception e) {
+			result.setRet(false);
+		}
+		result.setInfo(rmap);
+		return result;
 	}
 }

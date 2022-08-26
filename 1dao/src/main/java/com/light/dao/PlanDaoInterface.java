@@ -13,4 +13,8 @@ public interface PlanDaoInterface extends SimpleDaoInterface<Plan>{
 	public void rename();
 	
 	public void updateExpretion();
+
+	public int count();
+
+	public List<Plan> getList(int pageNum, int pageSize);
 }
