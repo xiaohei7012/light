@@ -1,12 +1,10 @@
-<!--pages/addPlan/addPlan.wxml-->
-<text>pages/addPlan/addPlan.wxml</text>
 <form catchsubmit="formSubmit">
 <view>方案名</view>
 <input name='pname'/>
-<view>分案:</view>
 <view>开始时间</view>
 <input name='startTime'/>
 <view>结束时间</view>
 <input name='endTime'/>
+<view>开关情况</view>
 <button form-type="submit">创建方案</button>
 </form>

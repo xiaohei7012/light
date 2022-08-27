@@ -70,4 +70,32 @@ public class DeviceService {
 		return null;
 	}
 
+	public Object getById(int id) {
+		Result<Device> result = new Result<Device>();
+		try {
+			Device d = deviceDao.getById(id);
+			result.setInfo(d);
+			result.setRet(true);
+		} catch (Exception e) {
+			result.setInfo(null);
+			result.setErrMsg(e.getMessage());
+			result.setRet(false);
+		}
+		return result;
+	}
+
+	public Object getAll() {
+		Result<List<Device>> result = new Result<List<Device>>();
+		try {
+			List<Device> d = deviceDao.getAll();
+			result.setInfo(d);
+			result.setRet(true);
+		} catch (Exception e) {
+			result.setInfo(null);
+			result.setErrMsg(e.getMessage());
+			result.setRet(false);
+		}
+		return result;
+	}
+
 }

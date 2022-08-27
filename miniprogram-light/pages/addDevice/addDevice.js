@@ -21,7 +21,7 @@ Page({
           success (res) {
             if (res.confirm&&e.data.ret==true) {
               wx.redirectTo({
-                url: '../home/home'
+                url: '../device/device'
               })
             }
           }

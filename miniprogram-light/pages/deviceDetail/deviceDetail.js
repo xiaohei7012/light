@@ -30,11 +30,11 @@ Page({
         })
       }
     })
-    service.getDeviceDetail(query.dname,function(data){
+    service.getDeviceDetail(query.id,function(data){
       var deviceDetail = {
-        dname:query.dname
+        dname:"不存在"
       }
-      data = data || deviceDetail;
+      data = data.info || deviceDetail;
       console.log(data);
       utils.handle.hideLoading();
       _fn.render.call(self,data);

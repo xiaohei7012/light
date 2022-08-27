@@ -1,9 +1,17 @@
 <!--pages/group/group.wxml-->
-<view>
+<view class='header'>
+  <view class="nav">分组列表</view>
+  <view class="butt" >
+    <navigator url="../addGroup/addGroup">
+      添加分组
+    </navigator>
+  </view>
+</view>
+<view class="list basestyle">
   <block wx:for="{{groups.datas}}">
     <view class="item">
-      <text class="item-2">{{item.id}}</text>
-      <navigator class="item-1" url="../detail/detail?dname={{item.gname}}">{{item.gname}}</navigator>
+      <navigator url="../groupDetail/groupDetail?id={{item.id}}">  <text class="item-1">{{item.id}}</text></navigator>
+      <text class="item-2">{{item.gname}}</text>
       <text class="item-2">{{item.createTime}}</text>
     </view>
   </block>

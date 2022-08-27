@@ -72,7 +72,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		EntityManager entityManager = null;
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			int result = Integer.parseInt(entityManager.createQuery("select count(*) from device where status = 'ONLINE'", Device.class).getResultList().toString());
+			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = 'ONLINE'", Device.class).getResultList().toString());
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();

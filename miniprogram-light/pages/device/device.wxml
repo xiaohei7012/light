@@ -23,7 +23,7 @@
   </view>
   <block wx:for="{{devices.datas}}">
     <view class="item">
-      <navigator class="item-1" url="../detail/detail?dname={{item.dname}}">{{item.dname}}</navigator>
+      <navigator class="item-1" url="../deviceDetail/deviceDetail?id={{item.id}}">{{item.dname}}</navigator>
       <text class="item-2">{{item.imei}}</text>
       <text class="item-3">{{item.status}}</text>
       <text class="item-4">{{item.group}}</text>

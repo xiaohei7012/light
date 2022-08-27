@@ -1,1 +1,60 @@
 /* pages/group/group.wxss */
+page{
+  height:100%;
+}
+
+.header{
+  position: fixed;
+  top:0;
+  left:0;
+  padding:10rpx 30rpx 15rpx 30rpx;
+  width:691rpx;
+  /* background: -webkit-gradient(linear,0 0,0 100% from(#3f3f3f),to(#2f2f2f)); */
+  border-bottom: solid 1px #000;
+  /* box-shadow: 0 2px 4px #111; */
+}
+
+.list{
+  display: flex;
+  flex-wrap: wrap;
+  height:100%;
+  padding:90rpx 0 30rpx 30rpx;
+  background-color: #3f3f3f;
+}
+
+.list .item{
+  display: flex;
+  flex-wrap: wrap;
+  text-align: center;
+  font-size: 24rpx;
+  height:64rpx;
+  width:630rpx;
+  margin-top:5rpx;
+  margin-bottom:5rpx;
+  margin-left:10rpx;
+  margin-right:10rpx;
+}
+
+.list navigator{
+  display: inline;
+}
+
+.list .item .item-1{
+  width:25%;
+  margin-top:10rpx;
+  color:#fff;
+  line-height:32rpx;
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list .item .item-2{
+  width:25%;
+  margin-top:10rpx;
+  color:#fff;
+  line-height:32rpx;
+  white-space:nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

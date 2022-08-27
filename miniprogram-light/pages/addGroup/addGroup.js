@@ -1,11 +1,13 @@
 // pages/addGroup/addGroup.js
+var service = require('../../service/device');
+
 Page({
 
   /**
    * Page initial data
    */
   data: {
-
+    selectedDevices:[]
   },
 
   formSubmit:function(e){
@@ -30,6 +32,9 @@ Page({
     })
   },
 
+  selectDevice(options){
+    console.log(options.target.dataset)
+  },
   /**
    * Lifecycle function--Called when page load
    */
@@ -41,7 +46,13 @@ Page({
    * Lifecycle function--Called when page is initially rendered
    */
   onReady() {
-
+    var that = this;
+    service.getAllDeviceList(function(data){
+      console.log(data)
+      that.setData({
+        deviceList:data.info
+      })
+    })
   },
 
   /**

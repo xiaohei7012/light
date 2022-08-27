@@ -1,0 +1,5 @@
+<!--pages/planDetail/planDetail.wxml-->
+<view>方案名字</view>
+<view>{{plan.pname}}</view>
+<view>开关情况</view>
+<view>{{plan.pname}}</view>

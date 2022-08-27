@@ -8,7 +8,9 @@
     "pages/logs/logs",
     "pages/index/index",
     "pages/deviceDetail/deviceDetail",
-    "pages/plan/plan"
+    "pages/plan/plan",
+    "pages/groupDetail/groupDetail",
+    "pages/planDetail/planDetail"
   ],
   "tabBar": {
     "custom": false,
