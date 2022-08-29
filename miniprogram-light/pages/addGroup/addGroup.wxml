@@ -6,12 +6,12 @@
 <view>所属分案</view>
 <input name='planId'/>
 <view>设备列表</view>
+<checkbox-group bindchange="selectDevice">
 <block wx:for="{{deviceList}}">
-  <radio-group bindtap="selectDevice">
     <view class="item">
-    <radio value="{{item.id}}" />{{item.dname}}
+    <checkbox value="{{item.id}}" />{{item.dname}}
     </view>
-  </radio-group>
 </block>
+</checkbox-group>
 <button form-type="submit">创建分组</button>
 </form>

@@ -97,5 +97,4 @@ public class DeviceService {
 		}
 		return result;
 	}
-
 }

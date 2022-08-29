@@ -11,10 +11,13 @@ Page({
   },
 
   formSubmit:function(e){
+    var data = e.detail.value;
+    data.ids = this.data.selectedDevices;
+    console.log(data)
     wx.request({
       url: 'https://localhost:442/group',
       method:'POST',
-      data:e.detail.value,
+      data:data,
       success:function(e){
         wx.showModal({
           title: e.data.info,
@@ -23,7 +26,7 @@ Page({
           success (res) {
             if (res.confirm&&e.data.ret==true) {
               wx.redirectTo({
-                url: '../home/home'
+                url: '../group/group'
               })
             }
           }
@@ -33,7 +36,7 @@ Page({
   },
 
   selectDevice(options){
-    console.log(options.target.dataset)
+    this.data.selectedDevices = options.detail.value;
   },
   /**
    * Lifecycle function--Called when page load

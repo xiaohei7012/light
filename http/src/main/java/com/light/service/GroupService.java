@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.light.dao.DeviceDaoInterface;
 import com.light.dao.GroupDaoInterface;
 import com.light.model.Device;
 import com.light.model.Group;
@@ -18,10 +19,19 @@ public class GroupService {
 	@Autowired
 	GroupDaoInterface groupDao;
 	
+	@Autowired
+	public DeviceDaoInterface deviceDao;
+	
 	public Object addGroup(Group group) {
 		Result<String> result = new Result<String>();
 		try {
 			groupDao.create(group);
+			
+			for(String d:group.getIds()) {
+				Device device = deviceDao.getById(Integer.parseInt(d));
+				device.setGroupId(group.getId());
+				deviceDao.update(device);
+			}
 			result.setInfo("成功");
 			result.setRet(true);
 		} catch (Exception e) {

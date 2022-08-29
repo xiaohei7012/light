@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
 @Table(name = "dgroup")
@@ -23,6 +24,9 @@ public class Group {
 	private Integer planId;
 	
 	private Date createTime = new Date();
+	
+	@Transient
+	private String[] ids;
 
 	public int getId() {
 		return id;
@@ -62,5 +66,13 @@ public class Group {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+	
+	public String[] getIds() {
+		return ids;
+	}
+
+	public void setIds(String[] ids) {
+		this.ids = ids;
 	}
 }
