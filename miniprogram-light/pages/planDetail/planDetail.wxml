@@ -2,7 +2,7 @@
 <form>
 <view>方案名字</view>
 <input value="{{plan.pname}}"/>
-<picker put mode="time" name="startTime" value='{{startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
+<picker put mode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
   <view class="picker">  
     开始时间:{{startTime}}</view>
 </picker>
