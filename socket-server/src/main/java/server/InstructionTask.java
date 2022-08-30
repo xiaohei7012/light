@@ -46,9 +46,9 @@ public class InstructionTask extends Thread {
 				scheduler.scheduleJob(j, t);
 
 				JobDetail offj = JobBuilder.newJob(OffInstrctionJob.class).build();
-				j.getJobDataMap().put("group", group);
+				offj.getJobDataMap().put("group", group);
 				Trigger offt = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId() + "_off", "plan")
-						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressionOff())).build();// 关的调度
+						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressioff())).build();// 关的调度
 				scheduler.scheduleJob(offj, offt);
 			}
 			scheduler.start();
@@ -58,16 +58,14 @@ public class InstructionTask extends Thread {
 	}
 
 	// 重启也要重启两个
-	public void resetPlan(String groupId) {
+	public void resetPlan(String planId) {
 		try {
-			Integer groupIdInt = Integer.parseInt(groupId);
-			Group group = groupDao.getById(groupIdInt);
-			Plan plan = planDao.getById(group.getPlanId());
+			Plan plan = planDao.getById(Integer.parseInt(planId));
 			Trigger on = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
 
 			Trigger off = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
-					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressionOff())).build();
+					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressioff())).build();
 			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId()), on);
 			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId() + "_off"), off);
 		} catch (Exception e) {

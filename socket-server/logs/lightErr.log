@@ -1,0 +1,13 @@
+2022-08-30 16:24:00 - ERROR [org.quartz.core.JobRunShell]  Job DEFAULT.6da64b5bd2ee-a6a825cd-ae5e-4109-86d8-36e686eb3b75 threw an unhandled Exception: 
+java.lang.NullPointerException
+	at server.OffInstrctionJob.execute(OffInstrctionJob.java:23)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+2022-08-30 16:24:00 - ERROR [org.quartz.core.ErrorLogger]  Job (DEFAULT.6da64b5bd2ee-a6a825cd-ae5e-4109-86d8-36e686eb3b75 threw an exception.
+org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: java.lang.NullPointerException]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.NullPointerException
+	at server.OffInstrctionJob.execute(OffInstrctionJob.java:23)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more

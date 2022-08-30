@@ -17,7 +17,11 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public Device getByImei(String imei);
 	
-	public void setCoord(String imei,double lon,double lat);
+	public void setOnline(String imei);
+	
+	public void setOnline(String imei,double lon,double lat);
+	
+	public void setOffline(String imei);
 	
 	public void setStatus(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,double temp);
 	

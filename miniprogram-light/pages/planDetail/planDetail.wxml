@@ -1,5 +1,39 @@
 <!--pages/planDetail/planDetail.wxml-->
+<form>
 <view>方案名字</view>
-<view>{{plan.pname}}</view>
+<input value="{{plan.pname}}"/>
+<picker put mode="time" name="startTime" value='{{startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
+  <view class="picker">  
+    开始时间:{{startTime}}</view>
+</picker>
+<picker put mode="time" name="endTime" value='{{endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
+  <view class="picker">  
+    结束时间:{{endTime}}</view>
+</picker>
 <view>开关情况</view>
-<view>{{plan.instruction}}</view>
+<view>灯1</view>
+<switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+<view>灯2</view>
+<switch checked="{{switch1Checked}}" bindchange="switch2Change"/>
+<view>灯3</view>
+<switch checked="{{switch1Checked}}" bindchange="switch3Change"/>
+<view>灯4</view>
+<switch checked="{{switch1Checked}}" bindchange="switch4Change"/>
+<view>灯5</view>
+<switch checked="{{switch1Checked}}" bindchange="switch5Change"/>
+<view>灯6</view>
+<switch checked="{{switch1Checked}}" bindchange="switch6Change"/>
+<view>风扇</view>
+<radio-group name="fan" bindchange="selectFan">
+1<radio value="f1"></radio>
+2<radio value="f2"></radio>
+3<radio value="f3"></radio>
+4<radio value="f4"></radio>
+5<radio value="f5"></radio>
+6<radio value="f6"></radio>
+7<radio value="f7"></radio>
+8<radio value="f8"></radio>
+9<radio value="f9"></radio>
+</radio-group>
+<button form-type="submit">修改方案</button>
+</form>

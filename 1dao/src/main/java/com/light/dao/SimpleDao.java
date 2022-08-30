@@ -41,8 +41,21 @@ public abstract class SimpleDao<T> implements SimpleDaoInterface<T> {
 
 	@Override
 	public void update(T entity) {
-		// TODO Auto-generated method stub
-
+		EntityManager entityManager = null;
+		EntityTransaction tra = null;
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			tra = entityManager.getTransaction();
+			tra.begin();
+			entityManager.merge(entity);
+			tra.commit();
+		} catch (Exception e) {
+			e.printStackTrace();
+			tra.rollback();
+		} finally {
+			if(entityManager!=null)
+				entityManager.close();
+		}
 	}
 
 	@Override

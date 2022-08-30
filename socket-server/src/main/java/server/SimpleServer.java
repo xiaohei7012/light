@@ -12,8 +12,12 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public abstract class SimpleServer implements ServerInterface {
 	private ByteBuffer buffer = ByteBuffer.allocateDirect(1024);
+	protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
 	protected int port;
 	protected Map<String, SocketChannel> socketMap = new HashMap<String, SocketChannel>();
@@ -91,6 +95,7 @@ public abstract class SimpleServer implements ServerInterface {
 			SocketChannel s = socketMap.get(key);
 			if (s != null) {
 				s.write(ByteBuffer.wrap(data.getBytes()));
+				logger.info("send:" + data);
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

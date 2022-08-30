@@ -1,7 +1,6 @@
 <form catchsubmit="formSubmit">
 <view>方案名</view>
 <input name='pname'/>
-<view></view>
 <picker put mode="time" name="startTime" value='{{startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
   <view class="picker">  
     开始时间:{{startTime}}</view>
