@@ -10,7 +10,7 @@
 <view class="list basestyle">
   <block wx:for="{{groups.datas}}">
     <view class="item">
-      <navigator url="../groupDetail/groupDetail?id={{item.id}}">  <text class="item-1">{{item.id}}</text></navigator>
+      <navigator class="item-1" url="../groupDetail/groupDetail?id={{item.id}}">  <text>{{item.id}}</text></navigator>
       <text class="item-2">{{item.gname}}</text>
       <text class="item-2">{{item.createTime}}</text>
     </view>

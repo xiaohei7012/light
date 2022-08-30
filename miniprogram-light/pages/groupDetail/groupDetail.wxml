@@ -1,2 +1,16 @@
-<!--pages/groupDetail/groupDetail.wxml-->
-<text>分组详细</text>
+
+<view>
+  名字：{{group.gname}}
+</view>
+<view>
+  设备列表：
+  <block wx:for="{{group.deviceList}}">
+    <view>{{item.dname}}</view>
+  </block>
+</view>
+<view>
+  规划方案：{{group.plan.pname}}
+</view>
+<view>
+  下级列表：{{group.childGroups}}
+</view>

@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import com.light.dao.DeviceDaoInterface;
 import com.light.dao.GroupDaoInterface;
+import com.light.dao.PlanDaoInterface;
 import com.light.model.Device;
 import com.light.model.Group;
+import com.light.model.Plan;
 
 @Service
 public class GroupService {
@@ -21,6 +23,9 @@ public class GroupService {
 	
 	@Autowired
 	public DeviceDaoInterface deviceDao;
+	
+	@Autowired
+	public PlanDaoInterface planDao;
 	
 	public Object addGroup(Group group) {
 		Result<String> result = new Result<String>();
@@ -57,6 +62,26 @@ public class GroupService {
 			result.setRet(false);
 		}
 		result.setInfo(rmap);
+		return result;
+	}
+
+
+	public Object getDetail(int id) {
+		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
+		Map<String,Object> map = new HashMap<String,Object>();
+		try {
+			Group group = groupDao.getById(id);
+			map.put("gname", group.getGname());
+			List<Device> devices = deviceDao.getByGroupId(group.getId());
+			Plan plan = planDao.getById(group.getPlanId());
+			map.put("deviceList", devices);
+			map.put("plan", plan);
+			result.setInfo(map);
+			result.setRet(true);
+		} catch (Exception e) {
+			result.setErrMsg(e.getMessage());
+			result.setRet(false);
+		}
 		return result;
 	}
 }

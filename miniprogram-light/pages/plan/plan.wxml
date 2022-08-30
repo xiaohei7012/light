@@ -9,7 +9,7 @@
 <view class="list basestyle">
   <block wx:for="{{plans.datas}}">
     <view class="item">
-      <navigator class="item-1" url="../planDetail/planDetail?dname={{item.pname}}"> <text class="item-2">{{item.id}}</text></navigator>
+      <navigator class="item-1" url="../planDetail/planDetail?id={{item.id}}"> <text class="item-2">{{item.id}}</text></navigator>
      <text class="item-2">{{item.pname}}</text>
       <text class="item-2">{{item.createTime}}</text>
     </view>

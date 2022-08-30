@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.light.model.Group;
@@ -20,6 +19,11 @@ public class GroupController {
 	@Autowired
 	GroupService groupService;
 
+	@RequestMapping(value = "/group/detail", method = RequestMethod.GET)
+	public Object getDetail(Model model, HttpServletRequest request, HttpSession session, int id) {
+		return groupService.getDetail(id);
+	}
+	
 	@RequestMapping(value = "/group", method = RequestMethod.GET)
 	public Object listGroup(Model model, HttpServletRequest request, HttpSession session, int pageNum,int pageSize) {
 		return groupService.listGroup(pageNum, pageSize);

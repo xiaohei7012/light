@@ -1,4 +1,8 @@
 // pages/planDetail/planDetail.js
+var service = require('../../service/plan');
+var utils = require('../../common/utils/utils');
+
+
 Page({
 
   /**
@@ -12,7 +16,13 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-
+    console.log(options)
+    var that = this;
+    service.getPlanDetail(options.id,function(data){
+      that.setData({
+        plan:data.info
+      })
+    })
   },
 
   /**

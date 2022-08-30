@@ -1,4 +1,8 @@
 // pages/groupDetail/groupDetail.js
+var service = require('../../service/group');
+var utils = require('../../common/utils/utils');
+
+
 Page({
 
   /**
@@ -12,7 +16,12 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad(options) {
-
+    var that = this;
+    service.getGroupDetail(options.id,function(data){
+      that.setData({
+        group:data.info
+      })
+    })
   },
 
   /**

@@ -12,7 +12,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.light.dao.PlanDaoInterface;
-import com.light.model.Group;
 import com.light.model.Plan;
 
 @Service
@@ -81,6 +80,19 @@ public class PlanService {
 			result.setRet(false);
 		}
 		result.setInfo(rmap);
+		return result;
+	}
+
+	public Object getDetail(int id) {
+		Result<Plan> result = new Result<Plan>();
+		try {
+			Plan plan = planDao.getById(id);
+			result.setInfo(plan);
+			result.setRet(true);
+		} catch (Exception e) {
+			result.setErrMsg(e.getMessage());
+			result.setRet(false);
+		}
 		return result;
 	}
 }

@@ -2,7 +2,7 @@ var handle,URL,LISTTYPE,_fn;
 
 URL = {
   groupList:'group/',
-  groupDetail:'group/detail/'
+  groupDetail:'group/detail'
 }
 
 LISTTYPE = {
@@ -22,9 +22,12 @@ handle = {
     },callback);
   },
   getGroupDetail:function(id,callback){
-    var url = getApp().globalData.url + URL.groupDetail + id;
+    var url = getApp().globalData.url + URL.groupDetail;
     _fn.getData({
-      url:url
+      url:url,
+      data:{
+        id:id
+      }
     },callback);
   }
 }
