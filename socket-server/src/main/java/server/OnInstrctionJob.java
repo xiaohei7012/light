@@ -23,6 +23,7 @@ public class OnInstrctionJob implements Job{
 	
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
+		System.out.print("????");
 		Group g = (Group)context.getMergedJobDataMap().get("group");
 		List<Device> deviceList = deviceDao.getByGroupId(g.getId());
 		for(Device d:deviceList) {

@@ -669,3 +669,408 @@ YTE 123 INIT off off off off off off f0 78.5
 
 2022-08-30 18:02:32 - INFO [server.LightServer]  reset 1
 2022-08-30 18:02:51 - INFO [server.LightServer]  reset 1
+2022-08-31 04:52:41 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 04:52:41 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 04:52:41 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 04:52:41 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 04:52:41 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 04:52:41 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 04:52:41 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 04:52:41 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 04:52:41 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 04:52:41 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 04:52:52 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 04:52:52 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 04:52:52 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 04:52:52 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 04:52:52 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 04:52:52 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 04:52:52 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 04:52:52 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 04:52:52 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 04:52:52 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 04:52:52 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 04:52:52 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 04:54:32 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 04:54:37 - INFO [server.LightServer]  YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 04:55:42 - INFO [server.LightServer]  YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 04:56:05 - INFO [server.LightServer]  YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 04:57:45 - INFO [server.LightServer]  reset 1
+2022-08-31 05:02:27 - INFO [server.LightServer]  reset 1
+2022-08-31 05:02:54 - INFO [server.LightServer]  reset 1
+2022-08-31 05:04:04 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:04:04 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:04:04 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:04:05 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:04:05 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:04:05 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:04:05 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:04:05 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:04:05 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:04:05 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:04:15 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:04:15 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:04:15 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:04:16 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:04:16 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:04:16 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:04:16 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:04:16 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:04:16 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:04:16 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:04:16 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:04:16 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:05:48 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:05:48 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:05:48 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:05:48 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:05:48 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:05:48 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:05:48 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:05:49 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:05:49 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:05:49 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:05:55 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:05:59 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:05:59 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:05:59 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:05:59 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:05:59 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:05:59 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:05:59 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:05:59 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:05:59 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:05:59 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:05:59 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:06:00 - INFO [server.LightServer]  YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 05:06:00 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:06:00 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON ON ON ON F9 
+
+2022-08-31 05:07:00 - INFO [server.LightServer]  send:YTE 863488056201919 SET OFF OFF OFF OFF OFF OFF F0 
+
+2022-08-31 05:07:05 - INFO [server.LightServer]  reset 1
+2022-08-31 05:12:31 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:12:31 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:12:31 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:12:31 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:12:31 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:12:31 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:12:31 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:12:32 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:12:32 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:12:32 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:12:42 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:12:42 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:12:42 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:12:42 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:12:42 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:12:42 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:12:42 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:12:42 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:12:42 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:12:42 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:12:42 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:14:21 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:14:31 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:14:46 - INFO [server.LightServer]  reset 1
+2022-08-31 05:15:47 - INFO [server.LightServer]  reset 1
+2022-08-31 05:15:54 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:15:54 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:15:54 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:15:54 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:15:54 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:15:54 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:15:54 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:15:54 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:15:54 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:15:54 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:16:03 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:16:03 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:16:03 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:16:04 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:16:04 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:16:04 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:16:04 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:16:04 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:16:04 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:16:04 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:16:04 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:17:31 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:18:52 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:18:52 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:18:52 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:18:52 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:18:52 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:18:52 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:18:52 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:18:52 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:18:52 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:18:52 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:19:02 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:19:02 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:19:02 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:19:02 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:19:02 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:19:02 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:19:02 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:19:02 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:19:02 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:19:02 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:19:02 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:19:06 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:19:13 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:20:08 - INFO [server.LightServer]  reset 1
+2022-08-31 05:20:23 - INFO [server.LightServer]  YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 05:20:49 - INFO [server.LightServer]  reset 1
+2022-08-31 05:23:21 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:23:21 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:23:21 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:23:21 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:23:21 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:23:21 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:23:21 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:23:22 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:23:22 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:23:22 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:23:32 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:23:32 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:23:32 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:23:32 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:23:32 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:23:32 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:23:32 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:23:32 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:23:32 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:23:32 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:23:32 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:23:33 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:23:34 - INFO [server.LightServer]  
+YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 05:23:38 - INFO [server.LightServer]  
+YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 05:23:52 - INFO [server.LightServer]  reset 1
+2022-08-31 05:25:50 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:25:50 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:25:50 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:25:50 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:25:50 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:25:50 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:25:50 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:25:50 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:25:50 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:25:50 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:25:56 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:25:56 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:25:56 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:25:56 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:25:56 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:25:56 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:25:56 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:25:56 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:25:56 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:25:56 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:25:56 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:25:56 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:26:01 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:26:10 - INFO [server.LightServer]  
+YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 05:26:28 - INFO [server.LightServer]  reset 1
+2022-08-31 05:27:12 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:27:12 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:27:12 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:27:12 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:27:12 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:27:12 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:27:12 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:27:12 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:27:12 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:27:12 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:27:22 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:27:22 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:27:22 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:27:22 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:27:22 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:27:22 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:27:22 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:27:22 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:27:22 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:27:22 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:27:22 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:27:22 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:33:40 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:33:41 - INFO [server.LightServer]  reset 1
+2022-08-31 05:33:42 - INFO [server.LightServer]  reset 1
+2022-08-31 05:33:43 - INFO [server.LightServer]  reset 1
+2022-08-31 05:33:43 - INFO [server.LightServer]  reset 1
+2022-08-31 05:33:43 - INFO [server.LightServer]  reset 1
+2022-08-31 05:33:43 - INFO [server.LightServer]  reset 1
+2022-08-31 05:34:16 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:34:16 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:34:16 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:34:16 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:34:16 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:34:16 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:34:16 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:34:17 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:34:17 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:34:17 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:34:28 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:34:28 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:34:28 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:34:28 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:34:28 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:34:28 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:34:28 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:34:28 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:34:28 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:34:28 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:34:28 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:36:59 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:37:01 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:37:04 - INFO [server.LightServer]  reset 1
+2022-08-31 05:37:11 - INFO [server.LightServer]  reset 1
+2022-08-31 05:37:11 - INFO [server.LightServer]  reset 1reset 1reset 1
+2022-08-31 05:37:22 - INFO [server.LightServer]  reset 1
+2022-08-31 05:37:33 - INFO [server.LightServer]  reset 1
+2022-08-31 05:39:36 - INFO [server.LightServer]  reset 1
+2022-08-31 05:40:51 - INFO [server.LightServer]  reset 1
+2022-08-31 05:41:06 - INFO [server.LightServer]  reset 1
+2022-08-31 05:41:11 - INFO [server.LightServer]  reset 1
+2022-08-31 05:43:26 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:43:26 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:43:26 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-08-31 05:43:26 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-08-31 05:43:27 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-08-31 05:43:27 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-08-31 05:43:27 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-08-31 05:43:27 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-08-31 05:43:27 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-08-31 05:43:27 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-08-31 05:43:37 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-08-31 05:43:37 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-08-31 05:43:37 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-08-31 05:43:38 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-08-31 05:43:38 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-08-31 05:43:38 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-08-31 05:43:38 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-08-31 05:43:38 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-08-31 05:43:38 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-08-31 05:43:38 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-08-31 05:43:38 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-08-31 05:43:38 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-08-31 05:43:58 - INFO [server.LightServer]  有新的连接:192.168.0.102
+2022-08-31 05:44:00 - INFO [server.LightServer]  
+YTE 863488056201919 ZWXD 1 113.276897 23.080739
+YTE 863488056201919 INIT off off off off off off f0 78.5
+2022-08-31 05:44:06 - INFO [server.LightServer]  reset 1
+2022-08-31 05:45:00 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON ON ON ON F9 
+
+2022-08-31 05:46:00 - INFO [server.LightServer]  send:YTE 863488056201919 SET OFF OFF OFF OFF OFF OFF F0 
+

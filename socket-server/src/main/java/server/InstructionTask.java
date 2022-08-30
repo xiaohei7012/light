@@ -63,11 +63,12 @@ public class InstructionTask extends Thread {
 			Plan plan = planDao.getById(Integer.parseInt(planId));
 			Trigger on = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
+			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId(), "plan"), on);
 
-			Trigger off = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
+			Trigger off = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId() + "_off", "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressioff())).build();
-			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId()), on);
-			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId() + "_off"), off);
+			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId() + "_off", "plan"), off);
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -79,16 +80,16 @@ public class InstructionTask extends Thread {
 			Integer groupIdInt = Integer.parseInt(groupId);
 			Group group = groupDao.getById(groupIdInt);
 			Plan plan = planDao.getById(group.getPlanId());
-			
+
 			JobDetail j = JobBuilder.newJob(OnInstrctionJob.class).build();
 			j.getJobDataMap().put("group", group);
 			Trigger t = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId(), "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
 			scheduler.scheduleJob(j, t);
-			
+
 			JobDetail offj = JobBuilder.newJob(OffInstrctionJob.class).build();
 			j.getJobDataMap().put("group", group);
-			Trigger offt = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId()+"_off", "plan")
+			Trigger offt = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId() + "_off", "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpression())).build();
 			scheduler.scheduleJob(offj, offt);
 		} catch (Exception e) {
