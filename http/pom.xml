@@ -54,8 +54,8 @@
 				<configuration>
 					<requiresUnpack>
 						<requiresUnpack>
-							<groupId>com.hskj</groupId>
-							<artifactId>dao</artifactId>
+							<groupId>com.light</groupId>
+							<artifactId>1dao</artifactId>
 							<version>1.0.0</version>
 						</requiresUnpack>
 					</requiresUnpack>

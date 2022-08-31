@@ -15,7 +15,7 @@ App({
   },
   globalData: {
     // url:'https://localhost:442/',
-    url:'https://hanshou.hskj-voc.com:442',
+    url:'https://hanshou.hskj-voc.com:442/',
     userInfo: null
   }
 })
