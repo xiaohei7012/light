@@ -1,39 +1,41 @@
 <!--pages/planDetail/planDetail.wxml-->
-<form>
+<form catchsubmit="formSubmit">
 <view>方案名字</view>
-<input value="{{plan.pname}}"/>
-<picker put mode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
+<input name="pname" value="{{plan.pname}}"/>
+<picker pmode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
   <view class="picker">  
-    开始时间:{{startTime}}</view>
+    开始时间:{{plan.startTime}}</view>
 </picker>
-<picker put mode="time" name="endTime" value='{{endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
+<picker mode="time" name="endTime" value='{{plan.endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
   <view class="picker">  
-    结束时间:{{endTime}}</view>
+    结束时间:{{plan.endTime}}</view>
 </picker>
 <view>开关情况</view>
 <view>灯1</view>
-<switch checked="{{switch1Checked}}" bindchange="switch1Change"/>
+<switch checked="{{l1 == 'ON'}}" bindchange="switch1Change"/>
 <view>灯2</view>
-<switch checked="{{switch1Checked}}" bindchange="switch2Change"/>
+<switch checked="{{l2 == 'ON'}}" bindchange="switch2Change"/>
 <view>灯3</view>
-<switch checked="{{switch1Checked}}" bindchange="switch3Change"/>
+<switch checked="{{l3 == 'ON'}}" bindchange="switch3Change"/>
 <view>灯4</view>
-<switch checked="{{switch1Checked}}" bindchange="switch4Change"/>
+<switch checked="{{l4 == 'ON'}}" bindchange="switch4Change"/>
 <view>灯5</view>
-<switch checked="{{switch1Checked}}" bindchange="switch5Change"/>
+<switch checked="{{l5 == 'ON'}}" bindchange="switch5Change"/>
 <view>灯6</view>
-<switch checked="{{switch1Checked}}" bindchange="switch6Change"/>
+<switch checked="{{l6 == 'ON'}}" bindchange="switch6Change"/>
 <view>风扇</view>
+{{fan}}
+{{fan == 'F4'}}
 <radio-group name="fan" bindchange="selectFan">
-1<radio value="f1"></radio>
-2<radio value="f2"></radio>
-3<radio value="f3"></radio>
-4<radio value="f4"></radio>
-5<radio value="f5"></radio>
-6<radio value="f6"></radio>
-7<radio value="f7"></radio>
-8<radio value="f8"></radio>
-9<radio value="f9"></radio>
+1<radio checked="{{fan == 'F1'}}" value="F1"></radio>
+2<radio checked="{{fan == 'F2'}}" value="F2"></radio>
+3<radio checked="{{fan == 'F3'}}" value="F3"></radio>
+4<radio checked="{{fan == 'F4'}}" value="F4"></radio>
+5<radio checked="{{fan == 'F5'}}" value="F5"></radio>
+6<radio checked="{{fan == 'F6'}}" value="F6"></radio>
+7<radio checked="{{fan == 'F7'}}" value="F7"></radio>
+8<radio checked="{{fan == 'F8'}}" value="F8"></radio>
+9<radio checked="{{fan == 'F9'}}" value="F9"></radio>
 </radio-group>
 <button form-type="submit">修改方案</button>
 </form>

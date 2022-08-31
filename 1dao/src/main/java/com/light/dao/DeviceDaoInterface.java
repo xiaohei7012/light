@@ -3,6 +3,7 @@ package com.light.dao;
 import java.util.List;
 
 import com.light.model.Device;
+import com.light.model.Plan;
 
 public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	public List<Device> getAll() throws Exception;
@@ -38,6 +39,10 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	public void turnOn(Device d);
 	
 	public void turnOff(Device d);
+
+	public void setPlan(String imei,Plan plan);
+
+	public void setPlan(Device device, Plan plan);
 
 	
 }

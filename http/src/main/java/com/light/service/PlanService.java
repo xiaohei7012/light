@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import com.light.dao.PlanDaoInterface;
 import com.light.model.Plan;
+import com.light.util.Util;
 
 @Service
 public class PlanService {
@@ -35,7 +36,7 @@ public class PlanService {
 			result.setInfo("成功");
 			result.setRet(true);
 
-			sendPlanReset(plan.getId());
+			sendPlanAdd(plan.getId());
 		} catch (Exception e) {
 			result.setInfo("失败");
 			result.setErrMsg(e.getMessage());
@@ -45,10 +46,31 @@ public class PlanService {
 		return result;
 	}
 
+	public Object editPlan(Plan plan) {
+		Result<String> result = new Result<String>();
+		try {
+			String[] exp = plan.getStartTime().split(":");
+			plan.setExpression("0" + " " + exp[1] + " " + exp[0] + " * * ?");
+			String[] expe = plan.getEndTime().split(":");
+			plan.setExpressioff("0" + " " + expe[1] + " " + expe[0] + " * * ?");
+			planDao.update(plan);
+			result.setInfo("成功");
+			result.setRet(true);
+
+			sendPlanReset(plan.getId());
+		} catch (Exception e) {
+			result.setInfo("失败");
+			result.setErrMsg(e.getMessage());
+			result.setRet(false);
+		}
+		return result;
+	}
+
 	private static void sendData(String data) {
 		Socket socket = null;
+		int port = Util.port;
 		try {
-			socket = new Socket("localhost", 14332);
+			socket = new Socket("localhost", port);
 			OutputStream out = socket.getOutputStream();
 			out.write(data.getBytes());
 
@@ -66,15 +88,15 @@ public class PlanService {
 		}
 	}
 
-	public Object listPlan(int pageNum,int pageSize) {
-		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
-		Map<String,Object> rmap = new HashMap<String,Object>();
+	public Object listPlan(int pageNum, int pageSize) {
+		Result<Map<String, Object>> result = new Result<Map<String, Object>>();
+		Map<String, Object> rmap = new HashMap<String, Object>();
 		List<Plan> dlist = new ArrayList<Plan>();
 		try {
 			int count = planDao.count();
-			dlist = planDao.getList(pageNum,pageSize);
-			rmap.put("count",count);
-			rmap.put("list",dlist);
+			dlist = planDao.getList(pageNum, pageSize);
+			rmap.put("count", count);
+			rmap.put("list", dlist);
 			result.setRet(true);
 		} catch (Exception e) {
 			result.setRet(false);
@@ -95,4 +117,5 @@ public class PlanService {
 		}
 		return result;
 	}
+
 }

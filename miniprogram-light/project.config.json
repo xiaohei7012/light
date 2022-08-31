@@ -1,9 +1,5 @@
 {
   "description": "Project configuration file, more information: https://developers.weixin.qq.com/miniprogram/dev/devtools/projectconfig.html",
-  "packOptions": {
-    "ignore": [],
-    "include": []
-  },
   "setting": {
     "urlCheck": false,
     "es6": true,
@@ -24,8 +20,6 @@
     "compileHotReLoad": false,
     "lazyloadPlaceholderEnable": false,
     "useMultiFrameRuntime": true,
-    "useApiHook": false,
-    "useApiHostProcess": false,
     "babelSetting": {
       "ignore": [],
       "disablePlugins": [],
@@ -40,15 +34,21 @@
     "disableUseStrict": false,
     "showES6CompileOption": false,
     "useCompilerPlugins": false,
-    "useStaticServer": true
+    "useStaticServer": true,
+    "ignoreUploadUnusedFiles": true,
+    "useApiHook": false,
+    "useApiHostProcess": false
   },
   "compileType": "miniprogram",
-  "libVersion": "2.21.0",
-  "appid": "wx3ab3d8803dace842",
-  "projectname": "miniprogram-demo-device",
   "condition": {},
   "editorSetting": {
     "tabIndent": "insertSpaces",
     "tabSize": 2
-  }
+  },
+  "libVersion": "2.21.0",
+  "packOptions": {
+    "ignore": [],
+    "include": []
+  },
+  "appid": "wx3ab3d8803dace842"
 }

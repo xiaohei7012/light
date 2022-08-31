@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 import org.springframework.stereotype.Repository;
 
 import com.light.model.Device;
+import com.light.model.Plan;
 import com.light.util.JPAUtils;
 
 @Repository
@@ -185,6 +186,32 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		d.setL6(LIGHT_TYPE.OFF.toString());
 		d.setFan("F0");
 		update(d);
+	}
+	
+	@Override
+	public void setPlan(Device device, Plan plan) {
+//		Device device = getByImei(imei);
+		device.setL1(plan.getInsByIndex(0));
+		device.setL2(plan.getInsByIndex(1));
+		device.setL3(plan.getInsByIndex(2));
+		device.setL4(plan.getInsByIndex(3));
+		device.setL5(plan.getInsByIndex(4));
+		device.setL6(plan.getInsByIndex(5));
+		device.setFan(plan.getInsByIndex(6));
+		update(device);
+	}
+	
+	@Override
+	public void setPlan(String imei, Plan plan) {
+		Device device = getByImei(imei);
+		device.setL1(plan.getInsByIndex(0));
+		device.setL2(plan.getInsByIndex(1));
+		device.setL3(plan.getInsByIndex(2));
+		device.setL4(plan.getInsByIndex(3));
+		device.setL5(plan.getInsByIndex(4));
+		device.setL6(plan.getInsByIndex(5));
+		device.setFan(plan.getInsByIndex(6));
+		update(device);
 	}
 	
 	@Override

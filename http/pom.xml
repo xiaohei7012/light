@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.light</groupId>
 	<artifactId>http</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>20220831</version>
 	<name>http服务器</name>
 	<description>http请求应答</description>
 
@@ -45,4 +45,22 @@
 			<artifactId>jackson-databind</artifactId>
 		</dependency>
 	</dependencies>
+	
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<requiresUnpack>
+						<requiresUnpack>
+							<groupId>com.hskj</groupId>
+							<artifactId>dao</artifactId>
+							<version>1.0.0</version>
+						</requiresUnpack>
+					</requiresUnpack>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>

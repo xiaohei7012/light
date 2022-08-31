@@ -17,4 +17,6 @@ public interface PlanDaoInterface extends SimpleDaoInterface<Plan>{
 	public int count();
 
 	public List<Plan> getList(int pageNum, int pageSize);
+	
+	public Plan getPlanByImei(String imei);
 }

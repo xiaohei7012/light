@@ -27,6 +27,4 @@ public class OffInstrctionJob implements Job{
 			
 		}
 	}
-	
-
 }

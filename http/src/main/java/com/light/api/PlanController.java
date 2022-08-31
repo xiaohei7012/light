@@ -33,4 +33,9 @@ public class PlanController {
 	public Object addPlan(Model model, HttpServletRequest request, HttpSession session, @RequestBody Plan plan) {
 		return planService.addPlan(plan);
 	}
+	
+	@RequestMapping(value = "/plan", method = RequestMethod.PUT)
+	public Object editPlan(Model model, HttpServletRequest request, HttpSession session, @RequestBody Plan plan) {
+		return planService.editPlan(plan);
+	}
 }

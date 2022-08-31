@@ -90,12 +90,12 @@ public abstract class SimpleServer implements ServerInterface {
 		return sb.toString();
 	}
 
-	public void sendData(String key, String data) {
+	public void sendData(String imei, String data) {
 		try {
-			SocketChannel s = socketMap.get(key);
+			SocketChannel s = socketMap.get(imei);
 			if (s != null) {
-				s.write(ByteBuffer.wrap(data.getBytes()));
-				logger.info("send:" + data);
+				s.write(ByteBuffer.wrap(data.toUpperCase().getBytes()));
+				logger.info("send:" + data.toUpperCase());
 			}
 		} catch (IOException e) {
 			e.printStackTrace();

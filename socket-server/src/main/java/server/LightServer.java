@@ -5,6 +5,8 @@ import java.nio.channels.SocketChannel;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.light.util.Util;
+
 import service.LightService;
 
 public class LightServer extends SimpleServer {
@@ -36,7 +38,6 @@ public class LightServer extends SimpleServer {
 		UNKNWON;
 	}
 
-	public static final int port = 14334;
 	InstructionTask insTask;
 
 	private LightServer(int port) {
@@ -50,7 +51,7 @@ public class LightServer extends SimpleServer {
 
 	public static LightServer getInstance() {
 		if (instance == null) {
-			instance = new LightServer(port);
+			instance = new LightServer(Util.port);
 		}
 		return instance;
 	}
@@ -64,9 +65,6 @@ public class LightServer extends SimpleServer {
 
 	@Override
 	public void onConnected(SocketChannel sc) {
-//		socketMap.put(sc.socket().getInetAddress().getHostAddress() + " " + sc.socket().getPort(), sc);
-//		logger.info("有新的连接:" + sc.socket().getInetAddress().getHostAddress());
-		System.out.println("有新的连接:" + sc.socket().getInetAddress().getHostAddress());
 		logger.info("有新的连接:" + sc.socket().getInetAddress().getHostAddress());
 	}
 
@@ -78,7 +76,16 @@ public class LightServer extends SimpleServer {
 				String[] dataArray = line.split(SPLITWORD);
 				switch (getInsType(dataArray)) {
 				case ZWXD:
-					String imei = dataArray[1];
+					String imei = "";
+					if(dataArray.length<=1) {
+						imei = LightService.getImei(dataArray[0]);
+						dataArray = new String[3];
+						dataArray[0] = "YTE";
+						dataArray[1] = imei;
+						dataArray[2] = INSTRUCTION_TYPE.ZWXD.toString();
+					}else {
+						imei = dataArray[1];
+					}
 					socketMap.put(imei, sc);
 					service.signIn(dataArray, sc);
 					break;
@@ -107,7 +114,6 @@ public class LightServer extends SimpleServer {
 		} catch (Exception e) {
 			e.printStackTrace();// 处理数据时发生错误
 		}
-		System.out.println(data);
 		logger.info(data);
 	}
 
@@ -129,6 +135,12 @@ public class LightServer extends SimpleServer {
 				return INSTRUCTION_TYPE.RESET;
 			} else if (dataArray[0].equalsIgnoreCase("ADD")) {
 				return INSTRUCTION_TYPE.ADD;
+			}
+		}else {
+			//如果是json
+			String imei = LightService.getImei(dataArray[0]);
+			if(!imei.isEmpty()) {
+				return INSTRUCTION_TYPE.ZWXD; 
 			}
 		}
 		return INSTRUCTION_TYPE.UNKNWON;

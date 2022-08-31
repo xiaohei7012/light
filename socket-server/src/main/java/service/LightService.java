@@ -1,17 +1,30 @@
 package service;
 
+import java.io.IOException;
 import java.nio.channels.SocketChannel;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.light.dao.DeviceDao;
 import com.light.dao.DeviceDaoInterface;
 import com.light.dao.HistoryDao;
 import com.light.dao.HistoryDaoInterface;
+import com.light.dao.PlanDao;
+import com.light.dao.PlanDaoInterface;
 import com.light.model.Device;
+import com.light.model.Plan;
 
 import server.LightServer;
 
 public class LightService {
+	private static LightServer server = LightServer.getInstance();
+
 	private static DeviceDaoInterface deviceDao = new DeviceDao();
+	private static PlanDaoInterface planDao = new PlanDao();
 	private static HistoryDaoInterface historyDao = new HistoryDao();
 
 	public final static String TURNON_INSTRUCTION = "SET";
@@ -26,6 +39,12 @@ public class LightService {
 			deviceDao.setOnline(imei);
 		}
 
+		// 在时间段中 重连补发
+		Plan plan = planDao.getPlanByImei(imei);
+		if (isInTime(plan)) {
+			deviceDao.setPlan(imei,plan);
+			sendData(imei, plan);
+		}
 	}
 
 	public void uploadStatus(String[] dataArray) {
@@ -92,6 +111,20 @@ public class LightService {
 		return result.toString();
 	}
 
+	public static void sendData(String imei, Plan plan) {
+		StringBuilder result = new StringBuilder();
+		result.append(LightServer.HEAD);
+		result.append(LightServer.SPLITWORD);
+		result.append(imei.toUpperCase());
+		result.append(LightServer.SPLITWORD);
+		result.append(TURNON_INSTRUCTION);
+		result.append(LightServer.SPLITWORD);
+		result.append(plan.getInstruction());
+		result.append(LightServer.SPLITWORD);
+		result.append(LightServer.SPLITLINE);
+		server.sendData(imei, result.toString());
+	}
+
 	public void initStatus(String[] dataArray) {
 		if (dataArray.length < 11) {
 			return;
@@ -110,6 +143,38 @@ public class LightService {
 
 	public void offline(String imei) {
 		deviceDao.setOffline(imei);
+	}
 
+	public static String getImei(String data) {
+		ObjectMapper mapper = new ObjectMapper();
+		String result = "";
+		try {
+			JsonNode node = mapper.readTree(data);
+			JsonNode imei = node.get("imei");
+			result = imei.asText();
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
+	private boolean isInTime(Plan plan) {
+		Date now = new Date();
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		SimpleDateFormat sdfs = new SimpleDateFormat("yyyyMMdd ");
+		try {
+			Date startTime = sdf.parse(sdfs.format(now) + plan.getStartTime() + ":00");
+			Date endTime = sdf.parse(sdfs.format(now) + plan.getEndTime() + ":00");
+
+			if (now.after(startTime) && now.before(endTime)) {
+				return true;
+			}
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		return false;
 	}
 }

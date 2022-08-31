@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
+import com.light.model.Device;
 import com.light.model.Group;
 import com.light.model.Plan;
 import com.light.util.JPAUtils;
@@ -61,6 +62,24 @@ public class PlanDao extends SimpleDao<Plan> implements PlanDaoInterface {
 				entityManager.close();
 		}
 		return result;
+	}
+	
+	public Plan getPlanByImei(String imei) {
+		EntityManager entityManager = null;
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			List<?> planList = entityManager.createNativeQuery("SELECT p.* FROM light.plan p left join light.dgroup g on p.id = g.planId left join light.device d on g.id = d.groupid where d.imei =  '" + imei + "'", Plan.class).getResultList();
+			if(planList.size()>=1) {
+				return (Plan)planList.get(0);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+//			throw e;
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return null;
 	}
 	
 	@Override

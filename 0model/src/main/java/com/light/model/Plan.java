@@ -11,24 +11,29 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "plan")
 public class Plan {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int id;
-	
+
 	private String pname;
-	
+
 	private String expression;
-	
+
 	private String expressioff;
-	
+
 	private String startTime;
-	
+
 	private String endTime;
-	
+
 	private String instruction;
-	
+
 	private Date createTime = new Date();
+
+	public String getInsByIndex(int index) {
+		String[] insArray = instruction.split(" ");
+		return insArray[index];
+	}
 
 	public int getId() {
 		return id;
@@ -93,6 +98,5 @@ public class Plan {
 	public void setExpressioff(String expressioff) {
 		this.expressioff = expressioff;
 	}
- 
-	
+
 }
