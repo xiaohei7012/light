@@ -1,5 +1,6 @@
 // pages/addGroup/addGroup.js
-var service = require('../../service/device');
+var deviceService = require('../../service/device');
+var service = require('../../service/group');
 
 Page({
 
@@ -13,25 +14,19 @@ Page({
   formSubmit:function(e){
     var data = e.detail.value;
     data.ids = this.data.selectedDevices;
-    console.log(data)
-    wx.request({
-      url: 'https://localhost:442/group',
-      method:'POST',
-      data:data,
-      success:function(e){
-        wx.showModal({
-          title: e.data.info,
-          content:!e.data.errMsg?"创建成功":e.data.errMsg,
-          showCancel:false,
-          success (res) {
-            if (res.confirm&&e.data.ret==true) {
-              wx.redirectTo({
-                url: '../group/group'
-              })
-            }
+    service.addGroup(data,function(data){
+      wx.showModal({
+        title: data.info,
+        content:!data.errMsg?"创建成功":data.errMsg,
+        showCancel:false,
+        success (res) {
+          if (res.confirm&&data.ret==true) {
+            wx.switchTab({
+              url: '../group/group'
+            })
           }
-        })
-      }
+        }
+      })
     })
   },
 
@@ -50,8 +45,7 @@ Page({
    */
   onReady() {
     var that = this;
-    service.getAllDeviceList(function(data){
-      console.log(data)
+    deviceService.getAllDeviceList(function(data){
       that.setData({
         deviceList:data.info
       })

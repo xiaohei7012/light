@@ -47,6 +47,22 @@ public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 	}
 
 	@Override
+	public List<Group> getGroupByPid(int pid) {
+		EntityManager entityManager = null;
+		List<Group> result = new ArrayList<Group>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			result = entityManager.createQuery("from Group where planId = " + pid, Group.class).getResultList();
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+	
+	@Override
 	public int count() {
 		EntityManager entityManager = null;
 		try {

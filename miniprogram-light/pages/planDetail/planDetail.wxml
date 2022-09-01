@@ -2,14 +2,17 @@
 <form catchsubmit="formSubmit">
 <view>方案名字</view>
 <input name="pname" value="{{plan.pname}}"/>
-<picker pmode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
+<view>----</view>
+<picker mode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
   <view class="picker">  
     开始时间:{{plan.startTime}}</view>
 </picker>
+<view>----</view>
 <picker mode="time" name="endTime" value='{{plan.endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
   <view class="picker">  
     结束时间:{{plan.endTime}}</view>
 </picker>
+<view>----</view>
 <view>开关情况</view>
 <view>灯1</view>
 <switch checked="{{l1 == 'ON'}}" bindchange="switch1Change"/>
@@ -24,8 +27,6 @@
 <view>灯6</view>
 <switch checked="{{l6 == 'ON'}}" bindchange="switch6Change"/>
 <view>风扇</view>
-{{fan}}
-{{fan == 'F4'}}
 <radio-group name="fan" bindchange="selectFan">
 1<radio checked="{{fan == 'F1'}}" value="F1"></radio>
 2<radio checked="{{fan == 'F2'}}" value="F2"></radio>

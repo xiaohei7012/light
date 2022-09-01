@@ -18,12 +18,15 @@ import com.light.dao.PlanDaoInterface;
 import com.light.model.Group;
 import com.light.model.Plan;
 
+import service.LightService;
+
 //开始调度 查询方案表与分组表关联后的每个分组生成一个调度(方案)
 public class InstructionTask extends Thread {
 	private Scheduler scheduler;
 
 	private static PlanDaoInterface planDao = new PlanDao();
 	private static GroupDaoInterface groupDao = new GroupDao();
+	private static LightService service = new LightService();
 
 	public InstructionTask() {
 	}
@@ -58,6 +61,7 @@ public class InstructionTask extends Thread {
 	}
 
 	// 重启也要重启两个
+	// 重置要根据方案补发命令，方案命令或关命令
 	public void resetPlan(String planId) {
 		try {
 			Plan plan = planDao.getById(Integer.parseInt(planId));
@@ -68,6 +72,9 @@ public class InstructionTask extends Thread {
 			Trigger off = TriggerBuilder.newTrigger().withIdentity("plan" + plan.getId() + "_off", "plan")
 					.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressioff())).build();
 			scheduler.rescheduleJob(TriggerKey.triggerKey("plan" + plan.getId() + "_off", "plan"), off);
+			
+			//方案下的每个组里面每个设备都要补发
+			service.resend4Plan(plan);
 
 		} catch (Exception e) {
 			e.printStackTrace();

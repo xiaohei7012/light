@@ -1,6 +1,6 @@
 // pages/detail2/detail.js
-var service = require('../../service/device');
 var utils = require('../../common/utils/utils');
+var service = require('../../service/device');
 var _fn;
 
 Page({

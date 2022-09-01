@@ -10,6 +10,8 @@ public interface GroupDaoInterface extends SimpleDaoInterface<Group>{
 	
 	public List<Group> getGroupWithPlan();
 	
+	public List<Group> getGroupByPid(int pid);
+	
 	public void addParentGroup();
 	
 	public Device getById();

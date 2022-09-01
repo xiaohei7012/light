@@ -1,7 +1,6 @@
 // pages/planDetail/planDetail.js
-var service = require('../../service/plan');
 var utils = require('../../common/utils/utils');
-
+var service = require('../../service/plan');
 
 Page({
 
@@ -92,11 +91,6 @@ Page({
       this.data.l6 = "OFF"
     }
   },
-  switch6Change:function(e){
-    this.setData({
-      l6:e.detail.value
-    })
-  },
   selectFan(options){
     this.data.fan = options.detail.value;
   },
@@ -111,26 +105,20 @@ Page({
     data.l6 = this.data.l6;
     data.id = this.data.id;
     data.instruction = data.l1 + " " + data.l2 + " " + data.l3 + " " + data.l4 + " " + data.l5 + " " + data.l6 + " " +data.fan;
-    console.log(data);
-    wx.request({
-      url: 'https://localhost:442/plan',
-      method:'PUT',
-      data:data,
-      success:function(e){
-        wx.showModal({
-          title: e.data.info,
-          content:!e.data.errMsg?"修改成功":e.data.errMsg,
-          showCancel:false,
-          success (res) {
-            if (res.confirm&&e.data.ret==true) {
-              wx.redirectTo({
-                url: '../plan/plan'
-              })
-            }
+    service.editPlan(data,function(e){
+      wx.showModal({
+        title: e.info,
+        content:!e.errMsg?"修改成功":e.errMsg,
+        showCancel:false,
+        success (res) {
+          if (res.confirm&&e.ret==true) {
+            wx.switchTab({
+              url: '../plan/plan'
+            })
           }
-        })
-      }
-    })
+        }
+      })
+    });
   },
   /**
    * Lifecycle function--Called when page is initially rendered

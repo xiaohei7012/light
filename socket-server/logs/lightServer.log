@@ -1673,3 +1673,100 @@ YTE 863488056201919 INIT off off off off off off f0 78.5
 2022-08-31 16:36:23 - INFO [server.LightServer]  reset 1
 2022-08-31 17:30:00 - INFO [server.LightServer]  send:YTE 863488056201919 SET OFF OFF OFF OFF OFF OFF F0 
 
+2022-09-01 12:14:42 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:14:42 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:14:42 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:14:42 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-09-01 12:14:42 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-09-01 12:14:42 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-09-01 12:14:42 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-09-01 12:14:43 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-09-01 12:14:43 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-09-01 12:14:43 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-09-01 12:14:44 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-09-01 12:14:44 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-09-01 12:14:44 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-09-01 12:14:45 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-09-01 12:14:45 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-09-01 12:14:45 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-09-01 12:14:45 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-09-01 12:14:45 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-09-01 12:14:45 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-01 12:14:45 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-09-01 12:14:45 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-09-01 12:14:45 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-09-01 12:14:56 - INFO [server.LightServer]  有新的连接:192.168.0.4
+2022-09-01 12:15:00 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON OFF OFF OFF F4 
+
+2022-09-01 12:15:00 - INFO [server.LightServer]  {"ver":"1.9.8","csq":30,"imei":"863488056201919","iccid":"89860492192070732471"}
+2022-09-01 12:15:21 - INFO [server.LightServer]  有新的连接:127.0.0.1
+2022-09-01 12:16:13 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:16:13 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:16:13 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:16:14 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-09-01 12:16:14 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-09-01 12:16:14 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-09-01 12:16:14 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-09-01 12:16:15 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-09-01 12:16:15 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-09-01 12:16:15 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-09-01 12:16:15 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-09-01 12:16:15 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-09-01 12:16:15 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-09-01 12:16:25 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:16:25 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:16:25 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-09-01 12:16:25 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-09-01 12:16:26 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-09-01 12:16:26 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-09-01 12:16:26 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-09-01 12:16:26 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-09-01 12:16:26 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-09-01 12:16:26 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-09-01 12:16:27 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-09-01 12:16:27 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-09-01 12:16:27 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-09-01 12:16:28 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-09-01 12:16:28 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-09-01 12:16:28 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-09-01 12:16:28 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-09-01 12:16:28 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-09-01 12:16:28 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-09-01 12:16:28 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-09-01 12:16:28 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-09-01 12:16:28 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-09-01 12:16:40 - INFO [server.LightServer]  有新的连接:192.168.0.4
+2022-09-01 12:16:42 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON OFF OFF OFF F4 
+
+2022-09-01 12:16:42 - INFO [server.LightServer]  {"ver":"1.9.8","csq":30,"imei":"863488056201919","iccid":"89860492192070732471"}
+2022-09-01 12:16:55 - INFO [server.LightServer]  有新的连接:127.0.0.1
+2022-09-01 12:16:56 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON OFF OFF OFF F4 
+
+2022-09-01 12:16:56 - INFO [server.LightServer]  reset 1
+2022-09-01 12:17:18 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON OFF OFF OFF F4 
+
+2022-09-01 12:17:18 - INFO [server.LightServer]  {"ver":"1.9.8","csq":30,"imei":"863488056201919","iccid":"89860492192070732471"}
+2022-09-01 12:17:26 - INFO [server.LightServer]  有新的连接:127.0.0.1
+2022-09-01 12:17:27 - INFO [server.LightServer]  send:YTE 863488056201919 SET ON ON ON OFF OFF OFF F4 
+
+2022-09-01 12:17:27 - INFO [server.LightServer]  reset 1

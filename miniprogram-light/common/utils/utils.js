@@ -25,6 +25,54 @@ handle = {
   },
   hideLoading:function(){
     wx.hideToast();
+  },
+  getData:function(param,callback){
+    wx.request({
+      url:param.url,
+      data:param.data,
+      method:'get',
+      header:{
+        'Content-Type':'application/json'
+      },
+      success:function(e){
+        callback(e.data);
+      },
+      fail:function(e){
+        callback(e.data);
+      }
+    })
+  },
+  addData:function(param,callback){
+    wx.request({
+      url: param.url,
+      data:param.data,
+      method:'post',
+      header:{
+        'Content-Type':'application/json'
+      },
+      success:function(e){
+        callback(e.data);
+      },
+      fail:function(e){
+        callback(e.data);
+      }
+    })
+  },
+  editData:function(param,callback){
+    wx.request({
+      url: param.url,
+      data:param.data,
+      method:'put',
+      header:{
+        'Content-Type':'application/json'
+      },
+      success:function(e){
+        callback(e.data);
+      },
+      fail:function(e){
+        callback(e.data);
+      }
+    })
   }
 }
 

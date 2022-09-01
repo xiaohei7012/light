@@ -40,7 +40,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		EntityManager entityManager = null;
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = 'OFFLINE' ").getSingleResult().toString());
+			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = '" + LIGHT_TYPE.OFF + "' ").getSingleResult().toString());
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -57,7 +57,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		List<Device> result = new ArrayList<Device>();
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			result = entityManager.createQuery("from Device where status = 'OFFLINE' ", Device.class).getResultList();
+			result = entityManager.createQuery("from Device where status = '"+ LIGHT_TYPE.OFF +"' ", Device.class).getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 //			throw e;
@@ -73,7 +73,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		EntityManager entityManager = null;
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = '" + LIGHT_TYPE.ON + "'", Device.class).getResultList().toString());
+			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = '" + LIGHT_TYPE.ON + "'").getResultList().toString());
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -90,7 +90,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		List<Device> result = new ArrayList<Device>();
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			result = entityManager.createQuery("from Device where status = ' "+ LIGHT_TYPE.ON + "'", Device.class).getResultList();
+			result = entityManager.createQuery("from Device where status = '"+ LIGHT_TYPE.ON + "'", Device.class).getResultList();
 		} catch (Exception e) {
 			e.printStackTrace();
 //			throw e;

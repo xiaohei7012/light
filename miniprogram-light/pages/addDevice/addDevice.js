@@ -1,4 +1,7 @@
 // pages/addDevice/addDevice.js
+var utils = require('../../common/utils/utils');
+var service = require('../../service/device');
+
 Page({
 
   /**
@@ -9,24 +12,19 @@ Page({
   },
 
   formSubmit:function(e){
-    wx.request({
-      url: 'https://localhost:442/device',
-      method:'POST',
-      data:e.detail.value,
-      success:function(e){
-        wx.showModal({
-          title: e.data.info,
-          content:!e.data.errMsg?"创建成功":e.data.errMsg,
-          showCancel:false,
-          success (res) {
-            if (res.confirm&&e.data.ret==true) {
-              wx.redirectTo({
-                url: '../device/device'
-              })
-            }
+    service.addDevice(e.detail.value,function(data){
+      wx.showModal({
+        title: data.info,
+        content:!data.errMsg?"创建成功":data.errMsg,
+        showCancel:false,
+        success (res) {
+          if (res.confirm&&data.ret==true) {
+            wx.switchTab({
+              url: '../device/device'
+            })
           }
-        })
-      }
+        }
+      })
     })
   },
 
