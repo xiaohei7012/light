@@ -6,6 +6,7 @@ import org.quartz.CronScheduleBuilder;
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
 import org.quartz.Scheduler;
+import org.quartz.SchedulerException;
 import org.quartz.Trigger;
 import org.quartz.TriggerBuilder;
 import org.quartz.TriggerKey;
@@ -54,9 +55,14 @@ public class InstructionTask extends Thread {
 						.withSchedule(CronScheduleBuilder.cronSchedule(plan.getExpressioff())).build();// 关的调度
 				scheduler.scheduleJob(offj, offt);
 			}
-			scheduler.start();
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally {
+			try {
+				scheduler.start();
+			} catch (SchedulerException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 
