@@ -7,11 +7,8 @@
     </block>
     </view>
   </view>
-  <view class="butt" >
-    <navigator url="../addDevice/addDevice">
-      添加
+    <navigator url="../deviceAdd/deviceAdd" class="addbutton">
     </navigator>
-  </view>
 </view>
 
 <view class="list basestyle">

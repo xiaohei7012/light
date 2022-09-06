@@ -1,11 +1,12 @@
 <!--pages/group/group.wxml-->
 <view class='header'>
-  <view class="nav">分组列表</view>
-  <view class="butt" >
-    <navigator url="../addGroup/addGroup">
-      添加分组
-    </navigator>
+  <view class="nav" bindtap="changeTab">
+    <view class="nav-wrapper">
+      <view class="tab current">分组列表</view>
+    </view>
   </view>
+    <navigator url="../addGroup/addGroup" class="addbutton">
+    </navigator>
 </view>
 <view class="list basestyle">
   <block wx:for="{{groups.datas}}">

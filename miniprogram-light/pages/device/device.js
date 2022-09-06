@@ -23,8 +23,9 @@ Page({
   },
 
   changeTab:function(e){
-    var targe = e.target;
-    _fn.selectTab.call(this,targe.dataset.index);
+    var target = e.target;
+    console.log(e)
+    _fn.selectTab.call(this,target.dataset.index);
   },
 
   /**

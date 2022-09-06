@@ -1,16 +1,16 @@
 {
   "pages": [
     "pages/device/device",
-    "pages/group/group",
-    "pages/addPlan/addPlan",
-    "pages/addGroup/addGroup",
-    "pages/addDevice/addDevice",
-    "pages/logs/logs",
-    "pages/index/index",
+    "pages/deviceAdd/deviceAdd",
     "pages/deviceDetail/deviceDetail",
-    "pages/plan/plan",
+    "pages/group/group",
+    "pages/groupAdd/groupAdd",
     "pages/groupDetail/groupDetail",
-    "pages/planDetail/planDetail"
+    "pages/planAdd/planAdd",
+    "pages/plan/plan",
+    "pages/planDetail/planDetail",
+    "pages/logs/logs",
+    "pages/index/index"
   ],
   "tabBar": {
     "custom": false,
@@ -33,8 +33,8 @@
       },
       {
         "pagePath": "pages/plan/plan",
-        "iconPath": "common/basestyle/images/icon_API.png",
-        "selectedIconPath": "common/basestyle/images/icon_API_HL.png",
+        "iconPath": "common/basestyle/images/plan.png",
+        "selectedIconPath": "common/basestyle/images/planS.png",
         "text": "方案"
       }
     ]

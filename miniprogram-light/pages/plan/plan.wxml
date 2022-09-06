@@ -1,10 +1,11 @@
 <view class="header">
-  <view>方案列表</view>
-  <view class="butt" >
-    <navigator url="../addPlan/addPlan">
-      添加方案
-    </navigator>
+  <view class="nav">
+    <view class="nav-wrapper">
+      <view class="tab current">方案列表</view>
+    </view>
   </view>
+  <navigator url="../addPlan/addPlan" class="addbutton">
+  </navigator>
 </view>
 <view class="list basestyle">
   <block wx:for="{{plans.datas}}">
