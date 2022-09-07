@@ -77,6 +77,7 @@
 }
 
 .list{
+  /* margin-top:91rpx; */
   display: flex;
   flex-wrap: wrap;
   /* height:100%; */
@@ -89,7 +90,8 @@
   flex-wrap: wrap;
   text-align: center;
   font-size: 24rpx;
-  height:64rpx;
+  /* height:64rpx; */
+  height:84rpx;
   width:630rpx;
   margin-top:5rpx;
   margin-bottom:5rpx;
