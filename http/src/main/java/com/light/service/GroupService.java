@@ -47,11 +47,10 @@ public class GroupService {
 		return result;
 	}
 
-
 	public Object listGroup(int pageNum,int pageSize) {
 		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
 		Map<String,Object> rmap = new HashMap<String,Object>();
-		List<Group> dlist = new ArrayList<Group>();
+		List<Map<String,Object>> dlist = new ArrayList<Map<String,Object>>();
 		try {
 			int count = groupDao.count();
 			dlist = groupDao.getList(pageNum,pageSize);
@@ -65,7 +64,6 @@ public class GroupService {
 		return result;
 	}
 
-
 	public Object getDetail(int id) {
 		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
 		Map<String,Object> map = new HashMap<String,Object>();
@@ -73,9 +71,11 @@ public class GroupService {
 			Group group = groupDao.getById(id);
 			map.put("gname", group.getGname());
 			List<Device> devices = deviceDao.getByGroupId(group.getId());
-			Plan plan = planDao.getById(group.getPlanId());
+			if(group.getParentId()!=null) {
+				Plan plan = planDao.getById(group.getPlanId());
+				map.put("plan", plan);
+			}
 			map.put("deviceList", devices);
-			map.put("plan", plan);
 			result.setInfo(map);
 			result.setRet(true);
 		} catch (Exception e) {

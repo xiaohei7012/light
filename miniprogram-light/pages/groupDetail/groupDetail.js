@@ -18,6 +18,7 @@ Page({
   onLoad(options) {
     var that = this;
     service.getGroupDetail(options.id,function(data){
+      console.log(data)
       that.setData({
         group:data.info
       })

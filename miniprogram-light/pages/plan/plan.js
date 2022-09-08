@@ -84,23 +84,26 @@ _fn = {
     utils.handle.showLoading();
     service.getPlanList(null,function(data){
       utils.handle.hideLoading();
-      console.log(data)
       _fn.renderList.call(self,data.info);
     });
   },
   renderList:function(data){
-    var listData = {
-      datas:[
-          {
-            dname:'灯设备1'
-          },
-          {
-            dname:'灯设备2'
-          }
-      ]
+    var i,listData = {
+      datas:[]
     };
     listData.datas = data.list || listData.datas;
-    console.log(data)
+    for(i in listData.datas){
+      var plan = listData.datas[i];
+      if(!plan.startTime){
+        plan.startTime = '';
+      }
+      if(!plan.endTime){
+        plan.endTime = '';
+      }
+      var d = new Date()
+      d.setTime(plan.createTime);
+      plan.createTime = utils.formatTime(d);
+    }
     this.setData({
       plans:listData
     });

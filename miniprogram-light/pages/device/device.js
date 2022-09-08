@@ -95,23 +95,29 @@ _fn = {
     utils.handle.showLoading();
     service.getDeviceList(tabs.list[index].type,function(data){
       utils.handle.hideLoading();
-      console.log(data)
       _fn.renderList.call(self,data.info);
     });
   },
   renderList:function(data){
-    var listData = {
-      datas:[
-          {
-            dname:'灯设备1'
-          },
-          {
-            dname:'灯设备2'
-          }
-      ]
+    var i,listData={
+      datas:[]
     };
-    listData.datas = data.list || listData.datas;
-    console.log(data)
+    for(i in data.list){
+      var device = data.list[i];
+      if(device.status=='ON'){
+        device.status='开机';
+      }else if(device.status='OFF'){
+        device.status='关机';
+      }else if(device.status='BAD'){
+        device.status='坏';
+      }
+
+      if(!device.gname){
+        device.gname = '';
+      }
+
+    }
+    listData.datas = data.list;
     this.setData({
       devices:listData
     });

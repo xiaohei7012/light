@@ -94,23 +94,26 @@ _fn = {
     utils.handle.showLoading();
     service.getGroupList(null,function(data){
       utils.handle.hideLoading();
-      console.log(data)
       _fn.renderList.call(self,data.info);
     });
   },
   renderList:function(data){
-    var listData = {
-      datas:[
-          {
-            dname:'灯设备1'
-          },
-          {
-            dname:'灯设备2'
-          }
-      ]
+    var i,listData = {
+      datas:[]
     };
     listData.datas = data.list || listData.datas;
-    console.log(data)
+    for(i in listData.datas){
+      var group = listData.datas[i];
+      if(!group.pname){
+        group.pname = '';
+      }
+      if(!group.createTime){
+        group.createTime = '';
+      }
+      var d = new Date()
+      d.setTime(group.createTime);
+      group.createTime = utils.formatTime(d);
+    }
     this.setData({
       groups:listData
     });

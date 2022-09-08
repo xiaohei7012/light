@@ -8,12 +8,21 @@
     <navigator url="../addGroup/addGroup" class="addbutton">
     </navigator>
 </view>
-<view class="list basestyle">
+<view class="list">
+  <view class="item">
+    <text class="item-1">分组名字</text>
+    <text class="item-2">设备数</text>
+    <text class="item-3">应用方案</text>
+    <text class="item-4">修改时间</text>
+  </view>
+  <scroll-view class="scroll" scroll-y="true">
   <block wx:for="{{groups.datas}}">
     <view class="item">
-      <navigator class="item-1" url="../groupDetail/groupDetail?id={{item.id}}">  <text>{{item.id}}</text></navigator>
-      <text class="item-2">{{item.gname}}</text>
-      <text class="item-2">{{item.createTime}}</text>
+      <navigator class="item-1" url="../groupDetail/groupDetail?id={{item.id}}">  <text>{{item.gname}}</text></navigator>
+      <text class="item-2">{{item.dcount}}</text>
+      <text class="item-3">{{item.pname}}</text>
+      <text class="item-4">{{item.createTime}}</text>
     </view>
   </block>
+  </scroll-view>
 </view>

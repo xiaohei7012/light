@@ -1,6 +1,7 @@
 package com.light.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.light.model.Device;
 import com.light.model.Plan;
@@ -10,11 +11,11 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public int countOffline();
 	
-	public List<Device> getOffline(int pageNum, int pageSize);
+	public List<Map<String, Object>> getOffline(int pageNum, int pageSize);
 	
 	public int countOnline();
 	
-	public List<Device> getOnline(int pageNum, int pageSize);
+	public List<Map<String, Object>> getOnline(int pageNum, int pageSize);
 	
 	public Device getByImei(String imei);
 	

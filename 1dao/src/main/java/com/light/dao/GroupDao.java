@@ -1,7 +1,9 @@
 package com.light.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -14,6 +16,32 @@ import com.light.util.JPAUtils;
 @Repository
 public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 
+	@Override
+	public List<Map<String,Object>> getList(int pageNum, int pageSize) {
+		EntityManager entityManager = null;
+		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			List<?> glist = entityManager.createNativeQuery("select g.gname,(select count(*) from device d where d.groupId = g.id) as dcount,p.pname,g.createTime,g.id from dgroup g left join plan p on g.planId = p.id").getResultList();
+			for(Object o: glist) {
+				Map<String,Object> map = new HashMap<String,Object>();
+				Object[] oarray = (Object[])o;
+				map.put("gname", oarray[0]);
+				map.put("dcount", oarray[1]);
+				map.put("pname", oarray[2]);
+				map.put("createTime", oarray[3]);
+				map.put("id", oarray[4]);
+				result.add(map);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if (entityManager != null)
+				entityManager.close();
+		}
+		return result;
+	}
+	
 	@Override
 	public List<Group> getAll() {
 		EntityManager entityManager = null;
@@ -77,23 +105,6 @@ public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 				entityManager.close();
 		}
 	}
-
-	@Override
-	public List<Group> getList(int pageNum, int pageSize) {
-		EntityManager entityManager = null;
-		List<Group> result = new ArrayList<Group>();
-		try {
-			entityManager = JPAUtils.getEntityManger();
-			result = entityManager.createQuery("from Group ", Group.class).getResultList();
-		} catch (Exception e) {
-			e.printStackTrace();
-//			throw e;
-		} finally {
-			if (entityManager != null)
-				entityManager.close();
-		}
-		return result;
-	}
 	
 	@Override
 	public void addParentGroup() {
@@ -135,9 +146,6 @@ public class GroupDao extends SimpleDao<Group> implements GroupDaoInterface{
 	public boolean isLeftNode() {
 		// TODO Auto-generated method stub
 		return false;
-	}
-
-	
-	
+	}	
 	
 }

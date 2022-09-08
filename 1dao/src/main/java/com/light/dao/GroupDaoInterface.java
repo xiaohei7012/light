@@ -1,12 +1,15 @@
 package com.light.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.light.model.Device;
 import com.light.model.Group;
 
 public interface GroupDaoInterface extends SimpleDaoInterface<Group>{
 	public List<Group> getAll();
+	
+	public List<Map<String, Object>> getList(int pageNum, int pageSize);
 	
 	public List<Group> getGroupWithPlan();
 	
@@ -27,7 +30,5 @@ public interface GroupDaoInterface extends SimpleDaoInterface<Group>{
 	public boolean isLeftNode();
 
 	public int count();
-
-	public List<Group> getList(int pageNum, int pageSize);
 
 }

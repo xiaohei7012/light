@@ -1,7 +1,9 @@
 package com.light.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.persistence.EntityManager;
 
@@ -52,12 +54,22 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 	
 	@Override
-	public List<Device> getOffline(int pageNum, int pageSize) {
+	public List<Map<String,Object>> getOffline(int pageNum, int pageSize) {
 		EntityManager entityManager = null;
-		List<Device> result = new ArrayList<Device>();
+		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			result = entityManager.createQuery("from Device where status = '"+ LIGHT_TYPE.OFF +"' ", Device.class).getResultList();
+			List<?> dlist = entityManager.createNativeQuery("select d.dname,d.imei,d.status,g.gname,d.id from device d left join dgroup g on g.id = d.groupId where status = '"+ LIGHT_TYPE.OFF +"' ").getResultList();
+			for(Object o: dlist) {
+				Map<String,Object> map = new HashMap<String,Object>();
+				Object[] oarray = (Object[])o;
+				map.put("dname", oarray[0]);
+				map.put("imei", oarray[1]);
+				map.put("status", oarray[2]);
+				map.put("gname", oarray[3]);
+				map.put("id", oarray[4]);
+				result.add(map);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 //			throw e;
@@ -73,7 +85,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		EntityManager entityManager = null;
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = '" + LIGHT_TYPE.ON + "'").getResultList().toString());
+			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from device where status = '" + LIGHT_TYPE.ON + "'").getSingleResult().toString());
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -85,12 +97,22 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 	
 	@Override
-	public List<Device> getOnline(int pageNum, int pageSize) {
+	public List<Map<String,Object>> getOnline(int pageNum, int pageSize) {
 		EntityManager entityManager = null;
-		List<Device> result = new ArrayList<Device>();
+		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			result = entityManager.createQuery("from Device where status = '"+ LIGHT_TYPE.ON + "'", Device.class).getResultList();
+			List<?> dlist = entityManager.createNativeQuery("select d.dname,d.imei,d.status,g.gname,g.id from device d left join dgroup g on g.id = d.groupId where status = '"+ LIGHT_TYPE.ON + "'").getResultList();
+			for(Object o: dlist) {
+				Map<String,Object> map = new HashMap<String,Object>();
+				Object[] oarray = (Object[])o;
+				map.put("dname", oarray[0]);
+				map.put("imei", oarray[1]);
+				map.put("status", oarray[2]);
+				map.put("gname", oarray[3]);
+				map.put("id", oarray[4]);
+				result.add(map);
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 //			throw e;
@@ -100,7 +122,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		}
 		return result;
 	}
-	
+
 	@Override
 	public Device getByImei(String imei) {
 		EntityManager entityManager = null;

@@ -7,8 +7,6 @@ import javax.persistence.EntityManager;
 
 import org.springframework.stereotype.Repository;
 
-import com.light.model.Device;
-import com.light.model.Group;
 import com.light.model.Plan;
 import com.light.util.JPAUtils;
 

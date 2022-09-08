@@ -11,19 +11,21 @@
     </navigator>
 </view>
 
-<view class="list basestyle">
+<view class="list">
   <view class="item">
     <text class="item-1">设备名字</text>
     <text class="item-2">设备编号</text>
     <text class="item-3">状态</text>
     <text class="item-4">所属分组</text>
   </view>
+  <scroll-view class="scroll" scroll-y="true">
   <block wx:for="{{devices.datas}}">
     <view class="item">
       <navigator class="item-1" url="../deviceDetail/deviceDetail?id={{item.id}}">{{item.dname}}</navigator>
       <text class="item-2">{{item.imei}}</text>
       <text class="item-3">{{item.status}}</text>
-      <text class="item-4">{{item.group}}</text>
+      <text class="item-4">{{item.gname}}</text>
     </view>
   </block>
+</scroll-view>
 </view>

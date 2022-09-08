@@ -34,7 +34,7 @@ public class DeviceService {
 	public Object getOfflineDevice(int pageNum,int pageSize) {
 		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
 		Map<String,Object> rmap = new HashMap<String,Object>();
-		List<Device> dlist = new ArrayList<Device>();
+		List<Map<String,Object>> dlist = new ArrayList<Map<String,Object>>();
 		try {
 			int count = deviceDao.countOffline();
 			dlist = deviceDao.getOffline(pageNum,pageSize);
@@ -51,7 +51,7 @@ public class DeviceService {
 	public Object getOnlineDevice(int pageNum,int pageSize) {
 		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
 		Map<String,Object> rmap = new HashMap<String,Object>();
-		List<Device> dlist = new ArrayList<Device>();
+		List<Map<String,Object>> dlist = new ArrayList<Map<String,Object>>();
 		try {
 			int count = deviceDao.countOnline();
 			dlist = deviceDao.getOnline(pageNum,pageSize);
