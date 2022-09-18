@@ -5,7 +5,7 @@
       <view class="tab current">分组列表</view>
     </view>
   </view>
-    <navigator url="../addGroup/addGroup" class="addbutton">
+    <navigator url="../groupAdd/groupAdd" class="addbutton">
     </navigator>
 </view>
 <view class="list">

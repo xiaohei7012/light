@@ -4,7 +4,7 @@
       <view class="tab current">方案列表</view>
     </view>
   </view>
-  <navigator url="../addPlan/addPlan" class="addbutton">
+  <navigator url="../planAdd/planAdd" class="addbutton">
   </navigator>
 </view>
 <view class="list">
