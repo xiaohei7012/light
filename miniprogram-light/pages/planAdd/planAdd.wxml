@@ -1,3 +1,4 @@
+<view class="card">
 <form catchsubmit="formSubmit">
 <view>方案名</view>
 <input name='pname'/>
@@ -39,3 +40,4 @@
 
 <button form-type="submit">创建方案</button>
 </form>
+</view>

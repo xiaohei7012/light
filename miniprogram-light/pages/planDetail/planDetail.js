@@ -15,9 +15,44 @@ Page({
     l4:"OFF",
     l5:"OFF",
     l6:"OFF",
-    fan:"F0"
+    fanIndex:0,
+    fanArray:[{
+      name:'1档',
+      value:'F1'
+    },
+    {
+      name:'2档',
+      value:'F2'
+    },
+    {
+      name:'3档',
+      value:'F3'
+    },
+    {
+      name:'4档',
+      value:'F4'
+    },
+    {
+      name:'5档',
+      value:'F5'
+    },
+    {
+      name:'6档',
+      value:'F6'
+    },
+    {
+      name:'7档',
+      value:'F7'
+    },
+    {
+      name:'8档',
+      value:'F8'
+    },
+    {
+      name:'9档',
+      value:'F9'
+    }]
   },
-
   /**
    * Lifecycle function--Called when page load
    */
@@ -26,6 +61,11 @@ Page({
     this.data.id = options.id;
     service.getPlanDetail(options.id,function(data){
       var ins = data.info.instruction.split(" ");
+      var findex = that.data.fanArray.findIndex(function(item){
+        console.log()
+        return ins[6] == item['value'];
+      });
+      console.log(findex)
       that.setData({
         plan:data.info,
         l1:ins[0],
@@ -34,7 +74,7 @@ Page({
         l4:ins[3],
         l5:ins[4],
         l6:ins[5],
-        fan:ins[6]
+        fanIndex:findex
       })
     })
   },
@@ -47,6 +87,11 @@ Page({
   bindETimeChange:function(e){
     this.setData({
       "plan.endTime":e.detail.value
+    })
+  },
+  bindFanChange:function(e){
+    this.setData({
+      fanIndex:e.detail.value
     })
   },
   switch1Change:function(e){

@@ -1,1 +1,39 @@
 /* pages/planDetail/planDetail.wxss */
+page{
+  background-color: #3f3f3f;
+  color:white;
+}
+
+picker{
+  display: inline-block;
+}
+picker.start-time{
+  width:50%;
+}
+picker.end-time{
+  width:50%;
+}
+.line .switch{
+  width:30%;
+}
+
+.head{
+  margin:20rpx 0rpx 20rpx 0rpx;
+}
+
+.line{
+  margin:20rpx 0rpx 20rpx 0rpx;
+}
+
+.switch{
+  display: inline-block;
+}
+
+.switch switch{
+  background-color: #3f3f3f;
+}
+
+.wx-switch-input::before{
+  background: #3f3f3f !important;
+  border: 0px solid #3f3f3f !important;
+}
