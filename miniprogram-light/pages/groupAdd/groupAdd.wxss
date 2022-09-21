@@ -1,1 +1,33 @@
 /* pages/addGroup/addGroup.wxss */
+page{
+  background-color: #3f3f3f;
+  color:white;
+}
+
+.line .line-item{
+  width:300rpx;
+}
+
+.line .line-item.list{
+  width:600rpx;
+  text-align: left;
+}
+
+.list-item{
+  vertical-align: top;
+  display:inline-block;
+  width:190rpx;
+  height:80rpx;
+  border: solid 1rpx grey;
+  text-align: left;
+}
+
+.list-title{
+  margin:20rpx 0 20rpx 0;
+}
+
+button{
+  background-color: grey;
+  color:white;
+  box-shadow: 8rpx 8rpx 8rpx #111;
+}

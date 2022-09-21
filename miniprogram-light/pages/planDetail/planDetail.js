@@ -15,43 +15,8 @@ Page({
     l4:"OFF",
     l5:"OFF",
     l6:"OFF",
-    fanIndex:0,
-    fanArray:[{
-      name:'1档',
-      value:'F1'
-    },
-    {
-      name:'2档',
-      value:'F2'
-    },
-    {
-      name:'3档',
-      value:'F3'
-    },
-    {
-      name:'4档',
-      value:'F4'
-    },
-    {
-      name:'5档',
-      value:'F5'
-    },
-    {
-      name:'6档',
-      value:'F6'
-    },
-    {
-      name:'7档',
-      value:'F7'
-    },
-    {
-      name:'8档',
-      value:'F8'
-    },
-    {
-      name:'9档',
-      value:'F9'
-    }]
+    fanArray:getApp().globalData.fanGear,
+    fanIndex:0
   },
   /**
    * Lifecycle function--Called when page load
@@ -61,11 +26,9 @@ Page({
     this.data.id = options.id;
     service.getPlanDetail(options.id,function(data){
       var ins = data.info.instruction.split(" ");
-      var findex = that.data.fanArray.findIndex(function(item){
-        console.log()
+      var findex = getApp().globalData.fanGear.findIndex(function(item){// findIndex是自带方法
         return ins[6] == item['value'];
       });
-      console.log(findex)
       that.setData({
         plan:data.info,
         l1:ins[0],
@@ -93,6 +56,7 @@ Page({
     this.setData({
       fanIndex:e.detail.value
     })
+    this.data.fan = this.data.fanArray[e.detail.value].value;
   },
   switch1Change:function(e){
     if(e.detail.value){
@@ -136,9 +100,6 @@ Page({
       this.data.l6 = "OFF"
     }
   },
-  selectFan(options){
-    this.data.fan = options.detail.value;
-  },
 
   formSubmit:function(e){
     var data = e.detail.value;
@@ -149,7 +110,7 @@ Page({
     data.l5 = this.data.l5;
     data.l6 = this.data.l6;
     data.id = this.data.id;
-    data.instruction = data.l1 + " " + data.l2 + " " + data.l3 + " " + data.l4 + " " + data.l5 + " " + data.l6 + " " +data.fan;
+    data.instruction = data.l1 + " " + data.l2 + " " + data.l3 + " " + data.l4 + " " + data.l5 + " " + data.l6 + " " + this.data.fan;
     service.editPlan(data,function(e){
       wx.showModal({
         title: e.info,

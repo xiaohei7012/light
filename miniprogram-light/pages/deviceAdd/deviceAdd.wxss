@@ -1,1 +1,14 @@
 /* pages/addDevice/addDevice.wxss */
+page{
+  background-color: #3f3f3f;
+  color:white;
+}
+.line .line-item{
+  width:300rpx;
+}
+
+button{
+  background-color: grey;
+  color:white;
+  box-shadow: 8rpx 8rpx 8rpx #111;
+}

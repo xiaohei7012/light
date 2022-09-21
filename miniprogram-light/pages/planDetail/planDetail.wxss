@@ -4,25 +4,12 @@ page{
   color:white;
 }
 
-picker{
-  display: inline-block;
+picker.start-time , picker.end-time{
+  width:300rpx;
 }
-picker.start-time{
-  width:50%;
-}
-picker.end-time{
-  width:50%;
-}
+
 .line .switch{
-  width:30%;
-}
-
-.head{
-  margin:20rpx 0rpx 20rpx 0rpx;
-}
-
-.line{
-  margin:20rpx 0rpx 20rpx 0rpx;
+  width:150rpx;
 }
 
 .switch{
@@ -36,4 +23,10 @@ picker.end-time{
 .wx-switch-input::before{
   background: #3f3f3f !important;
   border: 0px solid #3f3f3f !important;
+}
+
+button{
+  background-color: grey;
+  color:white;
+  box-shadow: 8rpx 8rpx 8rpx #111;
 }

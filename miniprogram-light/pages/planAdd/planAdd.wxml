@@ -1,43 +1,60 @@
 <view class="card">
-<form catchsubmit="formSubmit">
-<view>方案名</view>
-<input name='pname'/>
-<picker put mode="time" name="startTime" value='{{startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
-  <view class="picker">  
-    开始时间:{{startTime}}</view>
-</picker>
-<view>----</view>
-<picker put mode="time" name="endTime" value='{{endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
-  <view class="picker">  
-    结束时间:{{endTime}}</view>
-</picker>
-<view>----</view>
-<view>开关情况</view>
-<view>灯1</view>
-<switch checked="{{l1 == 'ON'}}" bindchange="switch1Change"/>
-<view>灯2</view>
-<switch checked="{{l2 == 'ON'}}" bindchange="switch2Change"/>
-<view>灯3</view>
-<switch checked="{{l3 == 'ON'}}" bindchange="switch3Change"/>
-<view>灯4</view>
-<switch checked="{{l4 == 'ON'}}" bindchange="switch4Change"/>
-<view>灯5</view>
-<switch checked="{{l5 == 'ON'}}" bindchange="switch5Change"/>
-<view>灯6</view>
-<switch checked="{{l6 == 'ON'}}" bindchange="switch6Change"/>
-<view>风扇</view>
-<radio-group name="fan" bindchange="selectFan">
-1<radio value="F1"></radio>
-2<radio value="F2"></radio>
-3<radio value="F3"></radio>
-4<radio value="F4"></radio>
-5<radio value="F5"></radio>
-6<radio value="F6"></radio>
-7<radio value="F7"></radio>
-8<radio value="F8"></radio>
-9<radio value="F9"></radio>
-</radio-group>
+  <form catchsubmit="formSubmit">
+    <view class="line head">
+      <view class="line-item">
+        <text>方案名</text>
+        <input class="edit-item input" name="pname" type="text" value="{{plan.pname}}" placeholder="填写方案名称"/>
+      </view>
+    </view>
+    <view class="line">
+      <picker class="start-time line-item" mode="time" name="startTime" value='{{startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
+        <text>开始时间</text>
+        <view class="picker edit-item">{{startTime}}</view>
+      </picker>
 
-<button form-type="submit">创建方案</button>
-</form>
+      <picker class="end-time line-item" mode="time" name="endTime" value='{{endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
+        <text>结束时间</text>
+        <view class="picker edit-item">{{endTime}}</view>
+      </picker>
+    </view>
+
+    <view class="line">
+      <view class="switch line-item">
+        <text>灯1</text>
+        <switch color="grey" checked="{{l1 == 'ON'}}" bindchange="switch1Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯2</text>
+        <switch color="grey" checked="{{l2 == 'ON'}}" bindchange="switch2Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯3</text>
+        <switch color="grey" checked="{{l3 == 'ON'}}" bindchange="switch3Change" />
+      </view>
+    </view>
+
+    <view class="line">
+      <view class="switch line-item">
+        <text>灯4</text>
+        <switch color="grey" checked="{{l4 == 'ON'}}" bindchange="switch4Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯5</text>
+        <switch color="grey" checked="{{l5 == 'ON'}}" bindchange="switch5Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯6</text>
+        <switch color="grey" checked="{{l6 == 'ON'}}" bindchange="switch6Change" />
+      </view>
+    </view>
+
+    <view class="line">
+      <picker class="line-item" mode="selector" range="{{fanArray}}" value="{{fanIndex}}" range-key="name" bindchange="bindFanChange">
+        <text>风扇档位</text>
+        <view class="edit-item">{{fanArray[fanIndex].name}}</view>
+      </picker>
+    </view>
+
+    <button class="line" form-type="submit">创建方案</button>
+  </form>
 </view>

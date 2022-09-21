@@ -1,5 +1,6 @@
 // pages/groupDetail/groupDetail.js
 var service = require('../../service/group');
+var deviceService = require('../../service/device');
 var utils = require('../../common/utils/utils');
 
 
@@ -17,10 +18,18 @@ Page({
    */
   onLoad(options) {
     var that = this;
-    service.getGroupDetail(options.id,function(data){
-      console.log(data)
+    deviceService.getAllDeviceList(function(data){
       that.setData({
-        group:data.info
+        deviceList:data.info
+      })
+    })
+    service.getGroupDetail(options.id,function(data){
+      that.setData({
+        group:data.info,
+        deviceSelected:data.info.deviceList
+      })
+      that.data.deviceSelected.forEach(function(item){
+        console.log(item)
       })
     })
   },

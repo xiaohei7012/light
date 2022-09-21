@@ -8,13 +8,16 @@ Page({
    * Page initial data
    */
   data: {
+    startTime:"00:00",
+    endTime:"00:00",
     l1:"OFF",
     l2:"OFF",
     l3:"OFF",
     l4:"OFF",
     l5:"OFF",
     l6:"OFF",
-    fan:"F0"
+    fanArray:getApp().globalData.fanGear,
+    fanIndex:0
   },
   bindSTimeChange:function(e){
     this.setData({
@@ -25,6 +28,12 @@ Page({
     this.setData({
       endTime:e.detail.value
     })
+  },
+  bindFanChange:function(e){
+    this.setData({
+      fanIndex:e.detail.value
+    })
+    this.data.fan = this.data.fanArray[e.detail.value].value;
   },
   switch1Change:function(e){
     if(e.detail.value){
@@ -79,7 +88,7 @@ Page({
     data.l4 = this.data.l4;
     data.l5 = this.data.l5;
     data.l6 = this.data.l6;
-    data.instruction = data.l1 + " " + data.l2 + " " + data.l3 + " " + data.l4 + " " + data.l5 + " " + data.l6 + " " +data.fan;
+    data.instruction = data.l1 + " " + data.l2 + " " + data.l3 + " " + data.l4 + " " + data.l5 + " " + data.l6 + " " + this.data.fan;
     service.addPlan(data,function(data){
       wx.showModal({
         title: data.info,

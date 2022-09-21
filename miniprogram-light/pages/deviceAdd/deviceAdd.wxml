@@ -1,8 +1,16 @@
 <!--pages/addDevice/addDevice.wxml-->
-<form catchsubmit="formSubmit">
-<view>imei编号</view>
-<input name="imei"/>
-<view>设备名</view>
-<input name="dname"/>
-<button form-type="submit" >添加设备</button>
-</form>
+<view class="card">
+  <form catchsubmit="formSubmit">
+    <view class="line">
+      <view class="line-item">
+        <text>imei编号</text>
+        <input name="imei" placeholder="填写IMEI编号"/>
+      </view>
+      <view class="line-item">
+        <text>设备名</text>
+        <input name="dname" placeholder="填写设备名"/>
+      </view>
+    </view>
+    <button class="line" form-type="submit">添加设备</button>
+  </form>
+</view>

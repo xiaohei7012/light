@@ -1,16 +1,45 @@
+<view class="card">
+  <form catchsubmit="formSubmit">
+    <view class="line">
+      <view class="line-item">
+        <text>分组名</text>
+        <input name='gname' value="{{group.gname}}" placeholder="填写名称"/>
+      </view>
+    </view>
 
-<view>
-  名字：{{group.gname}}
-</view>
-<view>
-  设备列表：
-  <block wx:for="{{group.deviceList}}">
-    <view>{{item.dname}}</view>
-  </block>
-</view>
-<view>
-  规划方案：{{group.plan.pname}}
-</view>
-<view>
-  下级列表：{{group.childGroups}}
+    <view class="line">
+      <view class="line-item">
+        <text>上级分组</text>
+        <input name='parentId' placeholder="选择上级分组"/>
+      </view>
+      <view class="line-item">
+        <text>所属分案</text>
+        <input name='planId' placeholder="选择分案"/>
+      </view>
+    </view>
+
+    <view class="line">
+      <view class="line-item list">
+        <view class="list-title"><text>设备列表</text></view>
+        <checkbox-group bindchange="selectDevice">
+          <block wx:for="{{deviceList}}">
+            <view class="list-item">
+              <checkbox value="{{item.id}}" />
+              <text>{{item.dname}}</text>
+            </view>
+          </block>
+        </checkbox-group>
+      </view>
+    </view>
+    <button class="line" form-type="submit">创建分组</button>
+
+  <!-- <view class="line">
+    <view class="line-item">
+      <text>设备列表</text>
+      <block wx:for="{{group.deviceList}}">
+        <view>{{item.dname}}</view>
+      </block>
+    </view>
+  </view> -->
+  </form>
 </view>

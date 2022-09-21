@@ -1,1 +1,32 @@
 /* pages/addPlan/addPlan.wxss */
+page{
+  background-color: #3f3f3f;
+  color:white;
+}
+
+picker.start-time , picker.end-time{
+  width:300rpx;
+}
+
+.line .switch{
+  width:150rpx;
+}
+
+.switch{
+  display: inline-block;
+}
+
+.switch switch{
+  background-color: #3f3f3f;
+}
+
+.wx-switch-input::before{
+  background: #3f3f3f !important;
+  border: 0px solid #3f3f3f !important;
+}
+
+button{
+  background-color: grey;
+  color:white;
+  box-shadow: 8rpx 8rpx 8rpx #111;
+}

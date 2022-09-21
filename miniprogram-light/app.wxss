@@ -159,3 +159,34 @@
   border-bottom: solid 1px #000;
   box-shadow: 0 2px 4px #111;
 }
+
+.head{
+  width:50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.line{
+  margin:20rpx auto 20rpx auto;
+}
+
+.line-item{
+  display: inline-block;
+  padding:10rpx 15rpx 10rpx 15rpx;
+  border:solid 5rpx grey;
+  border-radius:10rpx;
+}
+
+.line-item text{
+  margin:0 15rpx 0 15rpx;
+}
+
+.edit-item{
+  display: inline;
+  background-color: grey;
+  border-radius:10rpx;
+}
+
+.input{
+  border-bottom: solid 1rpx white;
+}

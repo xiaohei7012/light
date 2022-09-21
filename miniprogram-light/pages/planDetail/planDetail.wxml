@@ -1,56 +1,59 @@
 <!--pages/planDetail/planDetail.wxml-->
 <view class="card">
-<form catchsubmit="formSubmit">
-<view class="head">{{plan.pname}}</view>
+  <form catchsubmit="formSubmit">
+    <view class="line head">
+      <view class="line-item">
+        <input class="edit-item" name="pname" type="text" value="{{plan.pname}}" />
+      </view>
+    </view>
 
-<view class="line">
-<picker class="start-time" mode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
-  <view class="picker">开始时间:{{plan.startTime}}</view>
-</picker>
+    <view class="line">
+      <picker class="start-time line-item" mode="time" name="startTime" value='{{plan.startTime}}' start="00:00" end="23:59" bindchange="bindSTimeChange">
+        <text>开始时间</text>
+        <view class="picker edit-item">{{plan.startTime}}</view>
+      </picker>
 
-<picker class="end-time" mode="time" name="endTime" value='{{plan.endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
-  <view class="picker">结束时间:{{plan.endTime}}</view>
-</picker>
-</view>
+      <picker class="end-time line-item" mode="time" name="endTime" value='{{plan.endTime}}' start="00:00" end="23:59" bindchange="bindETimeChange">
+        <text>结束时间</text>
+        <view class="picker edit-item">{{plan.endTime}}</view>
+      </picker>
+    </view>
 
-<view class="line">
-  <view class="switch">
-    灯1<switch color="grey" checked="{{l1 == 'ON'}}" bindchange="switch1Change"/>
-  </view>
-  <view class="switch">
-    灯2<switch color="grey" checked="{{l2 == 'ON'}}" bindchange="switch2Change"/>
-  </view>
-  <view class="switch">
-    灯3<switch color="grey" checked="{{l3 == 'ON'}}" bindchange="switch3Change"/>
-  </view>
-</view>
+    <view class="line">
+      <view class="switch line-item">
+        <text>灯1</text>
+        <switch color="grey" checked="{{l1 == 'ON'}}" bindchange="switch1Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯2</text>
+        <switch color="grey" checked="{{l2 == 'ON'}}" bindchange="switch2Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯3</text>
+        <switch color="grey" checked="{{l3 == 'ON'}}" bindchange="switch3Change" />
+      </view>
+    </view>
 
-<view class="line">
-  <view class="switch">
-    灯4<switch color="grey" checked="{{l4 == 'ON'}}" bindchange="switch4Change"/>
-  </view>
-  <view class="switch">
-  灯5<switch color="grey" checked="{{l5 == 'ON'}}" bindchange="switch5Change"/>
-  </view>
-  <view class="switch">
-  灯6<switch color="grey" checked="{{l6 == 'ON'}}" bindchange="switch6Change"/>
-  </view>
-</view>
-<view>
-  <picker mode="selector" name="fan" range="{{fanArray}}" value="{{fanIndex}}" range-key="name" bindchange="bindFanChange">风扇档位:{{fanArray[fanIndex].name}}</picker>
-
-  <radio-group name="fan" bindchange="selectFan">
-  1<radio checked="{{fan == 'F1'}}" value="F1"></radio>
-  2<radio checked="{{fan == 'F2'}}" value="F2"></radio>
-  3<radio checked="{{fan == 'F3'}}" value="F3"></radio>
-  4<radio checked="{{fan == 'F4'}}" value="F4"></radio>
-  5<radio checked="{{fan == 'F5'}}" value="F5"></radio>
-  6<radio checked="{{fan == 'F6'}}" value="F6"></radio>
-  7<radio checked="{{fan == 'F7'}}" value="F7"></radio>
-  8<radio checked="{{fan == 'F8'}}" value="F8"></radio>
-  9<radio checked="{{fan == 'F9'}}" value="F9"></radio>
-  </radio-group>
-</view>
-<button form-type="submit">修改方案</button>
-</form>
+    <view class="line">
+      <view class="switch line-item">
+        <text>灯4</text>
+        <switch color="grey" checked="{{l4 == 'ON'}}" bindchange="switch4Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯5</text>
+        <switch color="grey" checked="{{l5 == 'ON'}}" bindchange="switch5Change" />
+      </view>
+      <view class="switch line-item">
+        <text>灯6</text>
+        <switch color="grey" checked="{{l6 == 'ON'}}" bindchange="switch6Change" />
+      </view>
+    </view>
+    <view class="line">
+      <picker class="line-item" mode="selector" range="{{fanArray}}" value="{{fanIndex}}" range-key="name" bindchange="bindFanChange">
+        <text>风扇档位</text>
+        <view class="edit-item">{{fanArray[fanIndex].name}}</view>
+      </picker>
+    </view>
+    <button class="line" form-type="submit">修改方案</button>
+  </form>
 </view>
