@@ -5,7 +5,8 @@ var handle,URL,LISTTYPE,_fn;
 URL = {
   groupAdd:'group',
   groupList:'group',
-  groupDetail:'group/detail'
+  groupDetail:'group/detail',
+  groupEdit:'group'
 }
 
 LISTTYPE = {
@@ -39,6 +40,13 @@ handle = {
       url:url,
       data:data
     },callback);
+  },
+  editGroup:function(data,callback){
+    var url =  getApp().globalData.url + URL.groupEdit;
+    utils.handle.editData({
+      url:url,
+      data:data
+    },callback)
   }
 }
 

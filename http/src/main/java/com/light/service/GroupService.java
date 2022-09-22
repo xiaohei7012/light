@@ -69,9 +69,12 @@ public class GroupService {
 		Map<String,Object> map = new HashMap<String,Object>();
 		try {
 			Group group = groupDao.getById(id);
+			map.put("id", group.getId());
 			map.put("gname", group.getGname());
+			map.put("parentId", group.getParentId());
+			map.put("createTime", group.getCreateTime());
 			List<Device> devices = deviceDao.getByGroupId(group.getId());
-			if(group.getParentId()!=null) {
+			if(group.getPlanId()!=null) {
 				Plan plan = planDao.getById(group.getPlanId());
 				map.put("plan", plan);
 			}
@@ -79,6 +82,29 @@ public class GroupService {
 			result.setInfo(map);
 			result.setRet(true);
 		} catch (Exception e) {
+			result.setErrMsg(e.getMessage());
+			result.setRet(false);
+		}
+		return result;
+	}
+
+	// 要先清空，再赋值
+	public Object editGroup(Group group) {
+		Result<String> result = new Result<String>();
+		try {
+			groupDao.update(group);
+			List<Device> dlist = deviceDao.getByGroupId(group.getId());
+			for(Device d:dlist) {
+				deviceDao.updateGroup(d.getId(), null);//清空
+			}
+			for(String id :group.getIds()) {
+				int did = Integer.parseInt(id);
+				deviceDao.updateGroup(did, group.getId());
+			}
+			result.setInfo("成功");
+			result.setRet(true);
+		} catch (Exception e) {
+			result.setInfo("失败");
 			result.setErrMsg(e.getMessage());
 			result.setRet(false);
 		}

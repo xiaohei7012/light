@@ -33,4 +33,9 @@ public class GroupController {
 	public Object addGroup(Model model, HttpServletRequest request, HttpSession session,@RequestBody Group group) {
 		return groupService.addGroup(group);
 	}
+	
+	@RequestMapping(value = "/group", method = RequestMethod.PUT)
+	public Object editGroup(Model model, HttpServletRequest request, HttpSession session,@RequestBody Group group) {
+		return groupService.editGroup(group);
+	}
 }

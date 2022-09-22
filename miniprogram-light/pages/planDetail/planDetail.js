@@ -23,7 +23,6 @@ Page({
    */
   onLoad(options) {
     var that = this;
-    this.data.id = options.id;
     service.getPlanDetail(options.id,function(data){
       var ins = data.info.instruction.split(" ");
       var findex = getApp().globalData.fanGear.findIndex(function(item){// findIndex是自带方法
@@ -39,6 +38,7 @@ Page({
         l6:ins[5],
         fanIndex:findex
       })
+      that.data.plan.id = options.id;//id
     })
   },
 
@@ -103,13 +103,13 @@ Page({
 
   formSubmit:function(e){
     var data = e.detail.value;
+    data.id = this.data.plan.id;// id
     data.l1 = this.data.l1;
     data.l2 = this.data.l2;
     data.l3 = this.data.l3;
     data.l4 = this.data.l4;
     data.l5 = this.data.l5;
     data.l6 = this.data.l6;
-    data.id = this.data.id;
     data.instruction = data.l1 + " " + data.l2 + " " + data.l3 + " " + data.l4 + " " + data.l5 + " " + data.l6 + " " + this.data.fan;
     service.editPlan(data,function(e){
       wx.showModal({

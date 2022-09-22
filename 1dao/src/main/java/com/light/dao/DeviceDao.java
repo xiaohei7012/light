@@ -249,9 +249,16 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 
 	@Override
-	public void updateGroup() {
-		// TODO Auto-generated method stub
-
+	public void updateGroup(Device device, Integer gid) {
+		device.setGroupId(gid);
+		update(device);
+	}
+	
+	@Override
+	public void updateGroup(int did, Integer gid) {
+		Device device = getById(did);
+		device.setGroupId(gid);
+		update(device);
 	}
 
 	@Override

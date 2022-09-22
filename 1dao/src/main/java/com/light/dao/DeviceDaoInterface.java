@@ -31,7 +31,9 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public void remove();
 	
-	public void updateGroup();
+	public void updateGroup(Device device,Integer gid);
+	
+	public void updateGroup(int did,Integer gid);// 为设备设定分组 gid为空的时候就是清空分组信息
 	
 	public List<Device> getByGroupId(int gid);
 	
