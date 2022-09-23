@@ -17,7 +17,7 @@ Page({
     l5:"OFF",
     l6:"OFF",
     fanArray:getApp().globalData.fanGear,
-    fanIndex:0
+    fanIndex:1
   },
   bindSTimeChange:function(e){
     this.setData({

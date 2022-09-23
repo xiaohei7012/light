@@ -17,6 +17,10 @@ App({
     // url:'https://localhost:442/',
     url:'https://hanshou.hskj-voc.com:442/',
     fanGear:[{
+      name:'关',
+      value:'F0'
+    },
+    {
       name:'1档',
       value:'F1'
     },
