@@ -92,7 +92,7 @@
   font-size: 24rpx;
   height:60rpx;
   /* height:84rpx; */
-  width:630rpx;
+  /* width:630rpx; */
   margin-top:5rpx;
   margin-bottom:5rpx;
   margin-left:10rpx;

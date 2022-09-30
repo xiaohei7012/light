@@ -96,7 +96,9 @@ Page({
         showCancel:false,
         success (res) {
           if (res.confirm&&data.ret==true) {
-            wx.switchTab({
+            微信小程序如何返回上一个页面并刷新上一个页面
+
+            wx.redirectTo({
               url: '../plan/plan'
             })
           }

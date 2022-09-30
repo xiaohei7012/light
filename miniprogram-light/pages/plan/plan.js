@@ -21,21 +21,21 @@ Page({
    * Lifecycle function--Called when page load
    */
   onLoad: function (options) {
-
+    
   },
 
   /**
    * Lifecycle function--Called when page is initially rendered
    */
   onReady: function () {
-    _fn.selectTab.call(this,0);
+    //_fn.selectTab.call(this,0);
   },
 
   /**
    * Lifecycle function--Called when page show
    */
   onShow: function () {
-
+    _fn.selectTab.call(this,0);
   },
 
   /**

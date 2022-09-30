@@ -1,3 +1,8 @@
 page{
   height:100%;
 }
+.scroll .item{
+  margin:0;
+  width: 748rpx ;
+  border-bottom: solid 1rpx grey;
+}
