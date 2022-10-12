@@ -96,6 +96,7 @@ _fn = {
     service.getDeviceList(tabs.list[index].type,function(data){
       utils.handle.hideLoading();
       _fn.renderList.call(self,data.info);
+      console.log(data)
     });
   },
   renderList:function(data){

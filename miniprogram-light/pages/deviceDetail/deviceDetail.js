@@ -30,7 +30,9 @@ Page({
         })
       }
     })
+    console.log(query)
     service.getDeviceDetail(query.id,function(data){
+      console.log(data);
       var deviceDetail = {
         dname:"不存在"
       }

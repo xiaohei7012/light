@@ -102,7 +102,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		List<Map<String,Object>> result = new ArrayList<Map<String,Object>>();
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			List<?> dlist = entityManager.createNativeQuery("select d.dname,d.imei,d.status,g.gname,g.id from device d left join dgroup g on g.id = d.groupId where status = '"+ LIGHT_TYPE.ON + "'").getResultList();
+			List<?> dlist = entityManager.createNativeQuery("select d.dname,d.imei,d.status,g.gname,d.id from device d left join dgroup g on g.id = d.groupId where status = '"+ LIGHT_TYPE.ON + "'").getResultList();
 			for(Object o: dlist) {
 				Map<String,Object> map = new HashMap<String,Object>();
 				Object[] oarray = (Object[])o;

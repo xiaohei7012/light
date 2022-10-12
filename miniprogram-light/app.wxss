@@ -15,8 +15,8 @@
   left:0;
   padding:10rpx 30rpx 15rpx 30rpx;
   width:691rpx;
-  background: -webkit-gradient(linear,0 0,0 100% from(#3f3f3f),to(#2f2f2f));
-  background-color: #373737;
+  background: -webkit-gradient(linear,0 0,0 100% from(#ffffff),to(#726c6c));
+  /* background-color: #d6cbcb; */
   border-bottom: solid 1px #000;
   box-shadow: 0 2px 4px #111;
 }
@@ -45,7 +45,7 @@
   font-size: 28rpx;
   border-right: solid 1px #000;
   width:50%;
-  background: -webkit-gradient(linear,0 0,0 100%, from(#636363),to(#4f4f4f));
+  background: -webkit-gradient(linear,0 0,0 100%, from(#ffffff),to(#4f4f4f));
   text-align: center;
   line-height: 60rpx;
 }
@@ -82,7 +82,7 @@
   /* flex-wrap: wrap; */
   height: calc( 100% - 90rpx );
   padding-top:90rpx;
-  background-color: #3f3f3f;
+  background-color: white;
 }
 
 .list .item{
@@ -106,7 +106,7 @@
 .list .item .item-1{
   width:20%;
   margin-top:10rpx;
-  color:#fff;
+  color:black;
   line-height:32rpx;
   white-space:nowrap;
   overflow: hidden;
@@ -116,7 +116,7 @@
 .list .item .item-2{
   width:20%;
   margin-top:10rpx;
-  color:#fff;
+  color:black;
   line-height:32rpx;
   white-space:nowrap;
   overflow: hidden;
@@ -126,7 +126,7 @@
 .list .item .item-3{
   width:20%;
   margin-top:10rpx;
-  color:#fff;
+  color:black;
   line-height:32rpx;
   white-space:nowrap;
   overflow: hidden;
@@ -136,7 +136,7 @@
 .list .item .item-4{
   width:40%;
   margin-top:10rpx;
-  color:#fff;
+  color:black;
   line-height:32rpx;
   white-space:nowrap;
   overflow: hidden;

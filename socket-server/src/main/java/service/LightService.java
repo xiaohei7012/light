@@ -20,6 +20,7 @@ import com.light.dao.PlanDao;
 import com.light.dao.PlanDaoInterface;
 import com.light.model.Device;
 import com.light.model.Group;
+import com.light.model.History;
 import com.light.model.Plan;
 
 import server.LightServer;
@@ -80,18 +81,24 @@ public class LightService {
 		if (dataArray.length < 11) {
 			return;
 		}
-		String imei = dataArray[1];
-		String l1 = dataArray[3];
-		String l2 = dataArray[4];
-		String l3 = dataArray[5];
-		String l4 = dataArray[6];
-		String l5 = dataArray[7];
-		String l6 = dataArray[8];
-		String fan = dataArray[9];
-		double temp = Double.parseDouble(dataArray[10]);
-		historyDao.create(imei, l1, l2, l3, l4, l5, l6, fan, temp);
-
+		//保存
+		History history = new History();
+		history.setImei(dataArray[1]);
+		history.setL1(dataArray[3]);
+		history.setL2(dataArray[4]);
+		history.setL3(dataArray[5]);
+		history.setL4(dataArray[6]);
+		history.setL5(dataArray[7]);
+		history.setL6(dataArray[8]);
+		history.setFan(dataArray[9]);
+		history.setTemperature(Double.parseDouble(dataArray[10]));
+		try {
+			historyDao.create(history);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		// 如果跟设备状态不一样还得改
+		deviceDao.setStatus(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7], dataArray[8], dataArray[9], Double.parseDouble(dataArray[10]));
 	}
 
 	public void confirm() {
