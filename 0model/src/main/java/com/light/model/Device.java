@@ -45,6 +45,8 @@ public class Device {
 	private Double longitude;// 经度
 
 	private Double latitude;// 纬度
+	
+	private Double rpm;
 
 	private String status = "OFFLINE";// 状态  OFFLINE ONLINE
 
@@ -202,5 +204,13 @@ public class Device {
 
 	public void setExpire(int expire) {
 		this.expire = expire;
+	}
+
+	public Double getRpm() {
+		return rpm;
+	}
+
+	public void setRpm(Double rpm) {
+		this.rpm = rpm;
 	}
 }

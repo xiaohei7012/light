@@ -36,6 +36,8 @@ public class History {
 	
 	private String l8;
 	
+	private String rpm;
+	
 	private Double temperature;//温度
 	
 	private Double longitude;//经度
@@ -44,8 +46,8 @@ public class History {
 	
 	private Date date;
 	
-	private Date dateTime;
-
+	private Date ctime;
+	
 	public int getId() {
 		return id;
 	}
@@ -150,28 +152,36 @@ public class History {
 		this.longitude = longitude;
 	}
 	
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
-	}
-
-	public Date getDateTime() {
-		return dateTime;
-	}
-
-	public void setDateTime(Date dateTime) {
-		this.dateTime = dateTime;
-	}
-
 	public String getImei() {
 		return imei;
 	}
 
 	public void setImei(String imei) {
 		this.imei = imei;
+	}
+
+	public String getRpm() {
+		return rpm;
+	}
+
+	public void setRpm(String rpm) {
+		this.rpm = rpm;
+	}
+
+	public Date getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(Date ctime) {
+		this.ctime = ctime;
+	}
+
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
 	}
 
 }

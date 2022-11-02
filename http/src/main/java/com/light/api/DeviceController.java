@@ -19,10 +19,10 @@ public class DeviceController {
 	@Autowired
 	DeviceService deviceService;
 
-	// 添加设备
-	@RequestMapping(value = "/device", method = RequestMethod.GET)
-	public Object getById(Model model, HttpServletRequest request, HttpSession session, int id) {
-		return deviceService.getById(id);
+	// 显示设备
+	@RequestMapping(value = "/device/history", method = RequestMethod.GET)
+	public Object getHistory(Model model, HttpServletRequest request, HttpSession session, int id) {
+		return deviceService.getHistoryByDid(id);
 	}
 
 	// 添加设备
@@ -31,14 +31,14 @@ public class DeviceController {
 		return deviceService.addDevice(device);
 	}
 
-	// 显示离线设备
+	// 显示离线设备列表
 	@RequestMapping(value = "/device/offline", method = RequestMethod.GET)
 	public Object getOfflineDevice(Model model, HttpServletRequest request, HttpSession session, int pageNum,
 			int pageSize) {
 		return deviceService.getOfflineDevice(pageNum, pageSize);
 	}
 
-	// 显示联机设备
+	// 显示联机设备列表
 	@RequestMapping(value = "/device/online", method = RequestMethod.GET)
 	public Object getOnlineDevice(Model model, HttpServletRequest request, HttpSession session, int pageNum,
 			int pageSize) {
@@ -51,9 +51,15 @@ public class DeviceController {
 		return deviceService.editDevice();
 	}
 
-	// 设备列表
+	// 显示全部设备列表
 	@RequestMapping(value = "/device/all", method = RequestMethod.GET)
 	public Object getAll(Model model, HttpServletRequest request, HttpSession session) {
 		return deviceService.getAll();
+	}
+	
+	// 显示设备历史
+	@RequestMapping(value = "/device", method = RequestMethod.GET)
+	public Object getById(Model model, HttpServletRequest request, HttpSession session, int id) {
+		return deviceService.getById(id);
 	}
 }

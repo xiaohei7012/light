@@ -23,6 +23,8 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public void setOnline(String imei,double lon,double lat);
 	
+	public void setFanRpm(String imei,double rpm);
+	
 	public void setOffline(String imei);
 	
 	public void setStatus(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,double temp);
@@ -47,5 +49,7 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 
 	public void setPlan(Device device, Plan plan);
 
-	
+	public void increaseUseTime(String imei);
+
+	public Device create(String imei) throws Exception;
 }

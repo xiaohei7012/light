@@ -206,3 +206,8 @@ line 1:10: expecting IDENT, found '*'
 	at server.SimpleServer.start(SimpleServer.java:61)
 	at server.LightServer.start(LightServer.java:62)
 	at server.LightServer.main(LightServer.java:48)
+2022-11-02 15:14:18 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
+2022-11-02 15:15:24 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
+2022-11-02 15:15:44 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
+2022-11-02 15:20:35 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
+2022-11-02 15:23:36 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'

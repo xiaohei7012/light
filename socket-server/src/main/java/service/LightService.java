@@ -35,8 +35,12 @@ public class LightService {
 
 	public final static String TURNON_INSTRUCTION = "SET";
 
-	public void signIn(String[] dataArray, SocketChannel sc) {
+	public void signIn(String[] dataArray, SocketChannel sc) throws Exception {
 		String imei = dataArray[1];
+
+		// 如果没有该设备 自动添加
+		autoCreate(imei);
+
 		if (dataArray.length >= 6) {
 			String lon = dataArray[4];// 经度
 			String lat = dataArray[5];// 纬度
@@ -45,7 +49,23 @@ public class LightService {
 			deviceDao.setOnline(imei);
 		}
 
-		//补发，带确认的
+		if (dataArray.length >= 7) {// 有风速
+			Double rpm = Double.parseDouble(dataArray[4]);
+			deviceDao.setFanRpm(imei, rpm);
+		}
+
+		// 补发，带确认的
+	}
+
+	private void autoCreate(String imei) {
+		Device device = deviceDao.getByImei(imei);
+		if (device == null) {
+			try {
+				deviceDao.create(imei);
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 	}
 
 	// 补发
@@ -61,15 +81,15 @@ public class LightService {
 	public void resend4Plan(Plan plan) {
 		boolean isInTime = isInTime(plan);
 		List<Group> groups = groupDao.getGroupByPid(plan.getId());
-		for(Group g:groups) {
+		for (Group g : groups) {
 			List<Device> devices = deviceDao.getByGroupId(g.getId());
-			for(Device d:devices) {
-				if(isInTime) {
+			for (Device d : devices) {
+				if (isInTime) {
 					deviceDao.setPlan(d, plan);
 					LightService.sendData(d.getImei(), plan);
-				}else {
+				} else {
 					deviceDao.turnOff(d);
-					server.sendData(d.getImei(),LightService.parseInstruction(d));
+					server.sendData(d.getImei(), LightService.parseInstruction(d));
 				}
 			}
 		}
@@ -81,8 +101,11 @@ public class LightService {
 		if (dataArray.length < 11) {
 			return;
 		}
-		//保存
+
+		// 保存
 		History history = new History();
+		history.setDate(new Date());
+		history.setCtime(new Date());
 		history.setImei(dataArray[1]);
 		history.setL1(dataArray[3]);
 		history.setL2(dataArray[4]);
@@ -92,13 +115,24 @@ public class LightService {
 		history.setL6(dataArray[8]);
 		history.setFan(dataArray[9]);
 		history.setTemperature(Double.parseDouble(dataArray[10]));
+
+		if (dataArray.length >= 12) {
+			history.setRpm(dataArray[11]);
+		}
 		try {
 			historyDao.create(history);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+
+		autoCreate(dataArray[1]);
+
 		// 如果跟设备状态不一样还得改
-		deviceDao.setStatus(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7], dataArray[8], dataArray[9], Double.parseDouble(dataArray[10]));
+		deviceDao.setStatus(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7],
+				dataArray[8], dataArray[9], Double.parseDouble(dataArray[10]));
+
+		// 设备寿命+5分钟
+		deviceDao.increaseUseTime(dataArray[1]);
 	}
 
 	public void confirm() {
@@ -106,6 +140,10 @@ public class LightService {
 	}
 
 	public void manual(String[] dataArray) {
+		if (dataArray.length >= 1) {
+			autoCreate(dataArray[1]);
+		}
+
 		if (dataArray.length < 11) {
 			return;
 		}
@@ -119,6 +157,11 @@ public class LightService {
 		String fan = dataArray[9];
 		double temp = Double.parseDouble(dataArray[10]);
 		deviceDao.setStatus(imei, l1, l2, l3, l4, l5, l6, fan, temp);
+		if (dataArray.length >= 12) {
+			Double rpm = Double.parseDouble(dataArray[11]);
+			deviceDao.setFanRpm(imei, rpm);
+		}
+
 	}
 
 	public static String parseInstruction(Device device) {
@@ -162,6 +205,10 @@ public class LightService {
 	}
 
 	public void initStatus(String[] dataArray) {
+		if (dataArray.length >= 1) {
+			autoCreate(dataArray[1]);
+		}
+
 		if (dataArray.length < 11) {
 			return;
 		}
@@ -175,7 +222,7 @@ public class LightService {
 		String fan = dataArray[9];
 		double temp = Double.parseDouble(dataArray[10]);
 		deviceDao.setStatus(imei, l1, l2, l3, l4, l5, l6, fan, temp);
-		
+
 		resend(imei);
 	}
 

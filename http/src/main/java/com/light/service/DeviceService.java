@@ -97,4 +97,8 @@ public class DeviceService {
 		}
 		return result;
 	}
+
+	public Object getHistoryByDid(int id) {
+		return null;
+	}
 }

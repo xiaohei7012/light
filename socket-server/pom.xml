@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.light</groupId>
 	<artifactId>socket-server</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>light-2022-11-02</version>
 	<name>nio socket server</name>
 
 	<properties>
