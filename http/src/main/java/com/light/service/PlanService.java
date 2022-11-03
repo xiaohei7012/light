@@ -1,8 +1,5 @@
 package com.light.service;
 
-import java.io.IOException;
-import java.io.OutputStream;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,7 +10,6 @@ import org.springframework.stereotype.Service;
 
 import com.light.dao.PlanDaoInterface;
 import com.light.model.Plan;
-import com.light.util.Util;
 
 @Service
 public class PlanService {
@@ -22,11 +18,11 @@ public class PlanService {
 	PlanDaoInterface planDao;
 
 	public static void sendPlanReset(int id) {
-		sendData("reset " + id);
+		DataService.sendData("reset " + id);
 	}
 
 	public static void sendPlanAdd(int id) {
-		sendData("add " + id);
+		DataService.sendData("add " + id);
 	}
 
 	public Object addPlan(Plan plan) {
@@ -66,27 +62,6 @@ public class PlanService {
 		return result;
 	}
 
-	private static void sendData(String data) {
-		Socket socket = null;
-		int port = Util.port;
-		try {
-			socket = new Socket("localhost", port);
-			OutputStream out = socket.getOutputStream();
-			out.write(data.getBytes());
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (socket != null) {
-				try {
-					socket.close();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-
-		}
-	}
 
 	public Object listPlan(int pageNum, int pageSize) {
 		Result<Map<String, Object>> result = new Result<Map<String, Object>>();

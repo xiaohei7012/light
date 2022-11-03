@@ -5,7 +5,8 @@ var handle,URL,LISTTYPE,_fn;
 URL = {
   deviceAdd:'device',
   deviceList:'device',
-  deviceDetail:'device'
+  deviceDetail:'device',
+  sendIns:'device/send'
 }
 
 LISTTYPE = {
@@ -46,7 +47,15 @@ handle = {
       url:url,
       data:data
     },callback);
+  },
+  sendInstruction:function(data,callback){
+    var url = getApp().globalData.url + URL.sendIns;
+    utils.handle.getData({//getData 就是get方法
+      url:url,
+      data:data
+    },callback);
   }
+
 }
 
 _fn = {

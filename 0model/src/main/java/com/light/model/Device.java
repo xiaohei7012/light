@@ -25,16 +25,28 @@ public class Device {
 	private String fan = "OFF";// on off bad
 
 	private String l1 = "OFF";// on off bad
+	
+	private int l1usedTime;
 
 	private String l2 = "OFF";
+	
+	private int l2usedTime;
 
 	private String l3 = "OFF";
+	
+	private int l3usedTime;
 
 	private String l4 = "OFF";
+	
+	private int l4usedTime;
 
 	private String l5 = "OFF";
+	
+	private int l5usedTime;
 
 	private String l6 = "OFF";
+	
+	private int l6usedTime;
 
 	private String l7 = "OFF";
 
@@ -212,5 +224,53 @@ public class Device {
 
 	public void setRpm(Double rpm) {
 		this.rpm = rpm;
+	}
+
+	public int getL1usedTime() {
+		return l1usedTime;
+	}
+
+	public void setL1usedTime(int l1usedTime) {
+		this.l1usedTime = l1usedTime;
+	}
+
+	public int getL2usedTime() {
+		return l2usedTime;
+	}
+
+	public void setL2usedTime(int l2usedTime) {
+		this.l2usedTime = l2usedTime;
+	}
+
+	public int getL3usedTime() {
+		return l3usedTime;
+	}
+
+	public void setL3usedTime(int l3usedTime) {
+		this.l3usedTime = l3usedTime;
+	}
+
+	public int getL4usedTime() {
+		return l4usedTime;
+	}
+
+	public void setL4usedTime(int l4usedTime) {
+		this.l4usedTime = l4usedTime;
+	}
+
+	public int getL5usedTime() {
+		return l5usedTime;
+	}
+
+	public void setL5usedTime(int l5usedTime) {
+		this.l5usedTime = l5usedTime;
+	}
+
+	public int getL6usedTime() {
+		return l6usedTime;
+	}
+
+	public void setL6usedTime(int l6usedTime) {
+		this.l6usedTime = l6usedTime;
 	}
 }

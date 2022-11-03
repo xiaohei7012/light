@@ -20,22 +20,16 @@ public class LightServer extends SimpleServer {
 	public final static String SPLITLINE = "\r\n";
 
 	public static enum INSTRUCTION_TYPE {
-		// 上电
-		ZWXD,
-		// 状态
-		DATA,
-		// 确认
-		ACK,
-		// 遥控
-		IRYK,
-		// 重置
-		RESET,
-		// 马上启动方案
-		ADD,
-		// 上电确认状态
-		INIT,
-		// 未知
-		UNKNWON;
+		ZWXD, //上电
+		DATA, //状态
+		ACK, //确认
+		IRYK, //遥控
+		RESET, //重置
+		ADD, //马上启动方案
+		INIT, //上电确认状态
+		SEND, //单独控制
+		SETUSETIME, //使用时间置0
+		UNKNWON; //未知
 	}
 
 	InstructionTask insTask;
@@ -77,13 +71,13 @@ public class LightServer extends SimpleServer {
 				switch (getInsType(dataArray)) {
 				case ZWXD:
 					String imei = "";
-					if(dataArray.length<=1) {
+					if (dataArray.length <= 1) {
 						imei = LightService.getImei(dataArray[0]);
 						dataArray = new String[3];
 						dataArray[0] = "YTE";
 						dataArray[1] = imei;
 						dataArray[2] = INSTRUCTION_TYPE.ZWXD.toString();
-					}else {
+					} else {
 						imei = dataArray[1];
 					}
 					socketMap.put(imei, sc);
@@ -107,6 +101,9 @@ public class LightServer extends SimpleServer {
 				case ADD:
 					insTask.addPlan(dataArray[1]);
 					break;
+				case SEND:
+					service.sendData(dataArray);
+					break;
 				default:
 					break;
 				}
@@ -129,6 +126,8 @@ public class LightServer extends SimpleServer {
 				return INSTRUCTION_TYPE.IRYK;
 			} else if (dataArray[2].equalsIgnoreCase("INIT")) {
 				return INSTRUCTION_TYPE.INIT;
+			} else if (dataArray[2].equalsIgnoreCase("SEND")) {
+				return INSTRUCTION_TYPE.SEND;
 			}
 		} else if (dataArray.length == 2) {
 			if (dataArray[0].equalsIgnoreCase("RESET")) {// 如果收到重置调度命令即删除调度再添加
@@ -136,11 +135,11 @@ public class LightServer extends SimpleServer {
 			} else if (dataArray[0].equalsIgnoreCase("ADD")) {
 				return INSTRUCTION_TYPE.ADD;
 			}
-		}else {
-			//如果是json
+		} else {
+			// 如果是json
 			String imei = LightService.getImei(dataArray[0]);
-			if(!imei.isEmpty()) {
-				return INSTRUCTION_TYPE.ZWXD; 
+			if (!imei.isEmpty()) {
+				return INSTRUCTION_TYPE.ZWXD;
 			}
 		}
 		return INSTRUCTION_TYPE.UNKNWON;

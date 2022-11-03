@@ -13,11 +13,11 @@ Page({
     tabs:{
       currentIndex:0,
       list:[{
-        text:'离线状态',
-        type:'0'
-      },{
         text:'联网中',
         type:'1'
+      },{
+        text:'离线状态',
+        type:'0'
       }]
     }
   },

@@ -8,11 +8,19 @@
     <view class="info">
       <view class="title">{{device.dname}}</view>
       <view>{{device.imei}}</view>
-      <view class="score">{{movie.rating.average}}<view>坐标</view></view>
-      <view class="subinfo">
-        <view>{{device.longitude}}</view>
-        <view>{{device.latitude}}</view>
+      <view>温度
+        <view class="subinfo">{{device.temperature}}</view>
       </view>
+      <view>转速
+        <view class="subinfo">{{device.rpm}}</view>
+      </view>
+      <view class="score">坐标
+        <view class="subinfo">
+          <view>{{device.longitude}}</view>
+          <view>{{device.latitude}}</view>
+        </view>
+      </view>
+      
       <image class="backgroud" mode="aspectFill" src="{{movie.images.large}}"></image>
     </view>
   </view>
@@ -25,36 +33,33 @@
     <view class="title">状态</view>
     <view class="title">
       <text>1灯</text>
-      <text>{{device.l1}}</text>
+      <switch color="grey" checked="{{device.l1 == 'ON'}}" bindchange="switchChange" />
     </view>
     <view class="title">
       <text>2灯</text>
-      <text>{{device.l2}}</text>
+      <switch color="grey" checked="{{device.l2 == 'ON'}}" bindchange="switchChange" />
     </view>
     <view class="title">
       <text>3灯</text>
-      <text>{{device.l3}}</text>
+      <switch color="grey" checked="{{device.l3 == 'ON'}}" bindchange="switchChange" />
     </view>
     <view class="title">
       <text>4灯</text>
-      <text>{{device.l4}}</text>
+      <switch color="grey" checked="{{device.l4 == 'ON'}}" bindchange="switchChange" />
     </view>
     <view class="title">
       <text>5灯</text>
-      <text>{{device.l5}}</text>
+      <switch color="grey" checked="{{device.l5 == 'ON'}}" bindchange="switchChange" />
     </view>
     <view class="title">
       <text>6灯</text>
-      <text>{{device.l6}}</text>
+      <switch color="grey" checked="{{device.l6 == 'ON'}}" bindchange="switchChange" />
     </view>
     <view class="title">
       <text>风扇</text>
       <text>{{device.fan}}</text>
     </view>
-    <view class="title">
-      <text>温度</text>
-      <text>{{device.temperature}}</text>
-    </view>
+
     <scroll-view srcoll-x>
       <view class="casts-wrapper" style="width:{{movie.staff.length*183}}rpx;">
         <view class="avatat" wx:for="{{movie.staff}}">

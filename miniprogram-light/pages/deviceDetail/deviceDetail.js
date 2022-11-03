@@ -43,6 +43,12 @@ Page({
     })
   },
 
+  switchChange:function(){
+    var data = {};
+    service.sendInstruction(data,function(){
+      
+    })
+  },
   /**
    * Lifecycle function--Called when page is initially rendered
    */

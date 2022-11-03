@@ -2220,3 +2220,88 @@ YTE 863488056201919 INIT off off off off off off f0 78.5
 
 2022-11-02 16:58:20 - INFO [server.LightServer]  YTE 863488056201919 DATA off off off off off off f0 78.5 2000
 
+2022-11-03 11:16:28 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-11-03 11:16:28 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-11-03 11:16:28 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-11-03 11:16:28 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-11-03 11:16:28 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-11-03 11:16:28 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-11-03 11:16:28 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-11-03 11:16:29 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-11-03 11:16:29 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-11-03 11:16:29 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-11-03 11:16:29 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-11-03 11:16:29 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-11-03 11:16:30 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-11-03 11:16:30 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-11-03 11:16:30 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-11-03 11:16:30 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-11-03 11:16:30 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-11-03 11:16:30 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-11-03 11:16:30 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-11-03 11:16:30 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-11-03 11:16:30 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-11-03 11:16:30 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-11-03 11:16:47 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-11-03 11:16:47 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-11-03 11:16:47 - WARN [org.hibernate.ejb.HibernatePersistence]  HHH015016: Encountered a deprecated javax.persistence.spi.PersistenceProvider [org.hibernate.ejb.HibernatePersistence]; use [org.hibernate.jpa.HibernatePersistenceProvider] instead.
+2022-11-03 11:16:47 - INFO [org.hibernate.jpa.internal.util.LogHelper]  HHH000204: Processing PersistenceUnitInfo [
+	name: mysql-jpa
+	...]
+2022-11-03 11:16:48 - INFO [org.hibernate.Version]  HHH000412: Hibernate Core {4.3.6.Final}
+2022-11-03 11:16:48 - INFO [org.hibernate.cfg.Environment]  HHH000206: hibernate.properties not found
+2022-11-03 11:16:48 - INFO [org.hibernate.cfg.Environment]  HHH000021: Bytecode provider name : javassist
+2022-11-03 11:16:48 - INFO [org.hibernate.annotations.common.Version]  HCANN000001: Hibernate Commons Annotations {4.0.5.Final}
+2022-11-03 11:16:48 - INFO [org.hibernate.engine.jdbc.connections.internal.ConnectionProviderInitiator]  HHH000130: Instantiating explicit connection provider: com.zaxxer.hikari.hibernate.HikariConnectionProvider
+2022-11-03 11:16:48 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Starting...
+2022-11-03 11:16:49 - INFO [com.zaxxer.hikari.HikariDataSource]  HikariPool-1 - Start completed.
+2022-11-03 11:16:49 - INFO [org.hibernate.dialect.Dialect]  HHH000400: Using dialect: org.hibernate.dialect.MySQL5Dialect
+2022-11-03 11:16:49 - INFO [org.hibernate.hql.internal.ast.ASTQueryTranslatorFactory]  HHH000397: Using ASTQueryTranslatorFactory
+2022-11-03 11:16:50 - INFO [org.quartz.impl.StdSchedulerFactory]  Using default implementation for ThreadExecutor
+2022-11-03 11:16:50 - INFO [org.quartz.simpl.SimpleThreadPool]  Job execution threads will use class loader of thread: Thread-0
+2022-11-03 11:16:50 - INFO [org.quartz.core.SchedulerSignalerImpl]  Initialized Scheduler Signaller of type: class org.quartz.core.SchedulerSignalerImpl
+2022-11-03 11:16:50 - INFO [org.quartz.core.QuartzScheduler]  Quartz Scheduler v.2.3.0 created.
+2022-11-03 11:16:50 - INFO [org.quartz.simpl.RAMJobStore]  RAMJobStore initialized.
+2022-11-03 11:16:50 - INFO [org.quartz.core.QuartzScheduler]  Scheduler meta-data: Quartz Scheduler (v2.3.0) 'DefaultQuartzScheduler' with instanceId 'NON_CLUSTERED'
+  Scheduler class: 'org.quartz.core.QuartzScheduler' - running locally.
+  NOT STARTED.
+  Currently in standby mode.
+  Number of jobs executed: 0
+  Using thread pool 'org.quartz.simpl.SimpleThreadPool' - with 10 threads.
+  Using job-store 'org.quartz.simpl.RAMJobStore' - which does not support persistence. and is not clustered.
+
+2022-11-03 11:16:50 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler 'DefaultQuartzScheduler' initialized from default resource file in Quartz package: 'quartz.properties'
+2022-11-03 11:16:50 - INFO [org.quartz.impl.StdSchedulerFactory]  Quartz scheduler version: 2.3.0
+2022-11-03 11:16:50 - INFO [org.quartz.core.QuartzScheduler]  Scheduler DefaultQuartzScheduler_$_NON_CLUSTERED started.
+2022-11-03 11:16:54 - INFO [server.LightServer]  有新的连接:192.168.0.15
+2022-11-03 11:16:56 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:16:59 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:17:00 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:17:10 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:17:11 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:18:19 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:18:19 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:18:21 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:18:40 - INFO [server.LightServer]  YTE 862167050525132 ZWXD 1 113.276897 23.080739 0
+
+2022-11-03 11:19:22 - INFO [server.LightServer]  YTE 861714059814628 ZWXD 1 113.276897 23.080739 0
+

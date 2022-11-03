@@ -131,8 +131,9 @@ public class LightService {
 		deviceDao.setStatus(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7],
 				dataArray[8], dataArray[9], Double.parseDouble(dataArray[10]));
 
-		// 设备寿命+5分钟
-		deviceDao.increaseUseTime(dataArray[1]);
+		// 设备寿命+5分钟 6个灯
+		deviceDao.increaseUseTime(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7],
+				dataArray[8]);
 	}
 
 	public void confirm() {
@@ -191,6 +192,19 @@ public class LightService {
 	}
 
 	public static void sendData(String imei, Plan plan) {
+		sendData(imei, plan.getInstruction());
+	}
+
+	public void sendData(String[] dataArray) throws ParseException {
+		Instruction ins = parseInstrution(dataArray);
+		String readySend = ins.getL1() + LightServer.SPLITWORD + ins.getL2() + LightServer.SPLITWORD + ins.getL3()
+				+ LightServer.SPLITWORD + ins.getL4() + LightServer.SPLITWORD + ins.getL5() + LightServer.SPLITWORD
+				+ ins.getL6() + LightServer.SPLITWORD + ins.getFan();
+
+		sendData(ins.getImei(), readySend);
+	}
+
+	public static void sendData(String imei, String instruction) {
 		StringBuilder result = new StringBuilder();
 		result.append(LightServer.HEAD);
 		result.append(LightServer.SPLITWORD);
@@ -198,32 +212,21 @@ public class LightService {
 		result.append(LightServer.SPLITWORD);
 		result.append(TURNON_INSTRUCTION);
 		result.append(LightServer.SPLITWORD);
-		result.append(plan.getInstruction());
+		result.append(instruction);
 		result.append(LightServer.SPLITWORD);
 		result.append(LightServer.SPLITLINE);
 		server.sendData(imei, result.toString());
 	}
 
-	public void initStatus(String[] dataArray) {
+	public void initStatus(String[] dataArray) throws ParseException {
 		if (dataArray.length >= 1) {
 			autoCreate(dataArray[1]);
 		}
-
-		if (dataArray.length < 11) {
-			return;
-		}
-		String imei = dataArray[1];
-		String l1 = dataArray[3];
-		String l2 = dataArray[4];
-		String l3 = dataArray[5];
-		String l4 = dataArray[6];
-		String l5 = dataArray[7];
-		String l6 = dataArray[8];
-		String fan = dataArray[9];
-		double temp = Double.parseDouble(dataArray[10]);
-		deviceDao.setStatus(imei, l1, l2, l3, l4, l5, l6, fan, temp);
-
-		resend(imei);
+		Instruction ins = parseInstrution(dataArray);
+		Double temp = Double.parseDouble(dataArray[10]);
+		deviceDao.setStatus(ins.getImei(), ins.getL1(), ins.getL2(), ins.getL3(), ins.getL4(), ins.getL5(), ins.getL6(),
+				ins.getFan(), temp);
+		resend(ins.getImei());
 	}
 
 	public void offline(String imei) {
@@ -261,5 +264,108 @@ public class LightService {
 		}
 
 		return false;
+	}
+
+	private static Instruction parseInstrution(String[] dataArray) throws ParseException {
+		if (dataArray.length < 11) {
+			throw new ParseException("转换出错", 0);
+		}
+		String imei = dataArray[1];
+		String l1 = dataArray[3];
+		String l2 = dataArray[4];
+		String l3 = dataArray[5];
+		String l4 = dataArray[6];
+		String l5 = dataArray[7];
+		String l6 = dataArray[8];
+		String fan = dataArray[9];
+		Instruction ins = new Instruction(imei, l1, l2, l3, l4, l5, l6, fan);
+		return ins;
+	}
+
+}
+
+class Instruction {
+	String imei;
+	String l1;
+	String l2;
+	String l3;
+	String l4;
+	String l5;
+	String l6;
+	String fan;
+
+	Instruction(String imei, String l1, String l2, String l3, String l4, String l5, String l6, String fan) {
+		this.imei = imei;
+		this.l1 = l1;
+		this.l2 = l2;
+		this.l3 = l3;
+		this.l4 = l4;
+		this.l5 = l5;
+		this.l6 = l6;
+		this.fan = fan;
+	}
+
+	public String getL1() {
+		return l1;
+	}
+
+	public void setL1(String l1) {
+		this.l1 = l1;
+	}
+
+	public String getL2() {
+		return l2;
+	}
+
+	public void setL2(String l2) {
+		this.l2 = l2;
+	}
+
+	public String getL3() {
+		return l3;
+	}
+
+	public void setL3(String l3) {
+		this.l3 = l3;
+	}
+
+	public String getL4() {
+		return l4;
+	}
+
+	public void setL4(String l4) {
+		this.l4 = l4;
+	}
+
+	public String getL5() {
+		return l5;
+	}
+
+	public void setL5(String l5) {
+		this.l5 = l5;
+	}
+
+	public String getL6() {
+		return l6;
+	}
+
+	public void setL6(String l6) {
+		this.l6 = l6;
+	}
+
+	public String getFan() {
+		return fan;
+	}
+
+	public void setFan(String fan) {
+		this.fan = fan;
+	}
+
+	public String getImei() {
+		return imei;
+	}
+
+	public void setImei(String imei) {
+		this.imei = imei;
 	}
 }

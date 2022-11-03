@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.light</groupId>
 	<artifactId>http</artifactId>
-	<version>20220922</version>
+	<version>20221103</version>
 	<name>http服务器</name>
 	<description>http请求应答</description>
 

@@ -1,5 +1,8 @@
 package com.light.service;
 
+import java.io.IOException;
+import java.io.OutputStream;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -10,9 +13,14 @@ import org.springframework.stereotype.Service;
 
 import com.light.dao.DeviceDaoInterface;
 import com.light.model.Device;
+import com.light.util.Util;
 
 @Service
 public class DeviceService {
+
+	public final static String HEAD = "YTE";
+	public final static String SPLITWORD = " ";
+	public final static String SPLITLINE = "\r\n";
 
 	@Autowired
 	DeviceDaoInterface deviceDao;
@@ -31,15 +39,15 @@ public class DeviceService {
 		return result;
 	}
 
-	public Object getOfflineDevice(int pageNum,int pageSize) {
-		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
-		Map<String,Object> rmap = new HashMap<String,Object>();
-		List<Map<String,Object>> dlist = new ArrayList<Map<String,Object>>();
+	public Object getOfflineDevice(int pageNum, int pageSize) {
+		Result<Map<String, Object>> result = new Result<Map<String, Object>>();
+		Map<String, Object> rmap = new HashMap<String, Object>();
+		List<Map<String, Object>> dlist = new ArrayList<Map<String, Object>>();
 		try {
 			int count = deviceDao.countOffline();
-			dlist = deviceDao.getOffline(pageNum,pageSize);
-			rmap.put("count",count);
-			rmap.put("list",dlist);
+			dlist = deviceDao.getOffline(pageNum, pageSize);
+			rmap.put("count", count);
+			rmap.put("list", dlist);
 			result.setRet(true);
 		} catch (Exception e) {
 			result.setRet(false);
@@ -47,16 +55,16 @@ public class DeviceService {
 		result.setInfo(rmap);
 		return result;
 	}
-	
-	public Object getOnlineDevice(int pageNum,int pageSize) {
-		Result<Map<String,Object>> result = new Result<Map<String,Object>>();
-		Map<String,Object> rmap = new HashMap<String,Object>();
-		List<Map<String,Object>> dlist = new ArrayList<Map<String,Object>>();
+
+	public Object getOnlineDevice(int pageNum, int pageSize) {
+		Result<Map<String, Object>> result = new Result<Map<String, Object>>();
+		Map<String, Object> rmap = new HashMap<String, Object>();
+		List<Map<String, Object>> dlist = new ArrayList<Map<String, Object>>();
 		try {
 			int count = deviceDao.countOnline();
-			dlist = deviceDao.getOnline(pageNum,pageSize);
-			rmap.put("count",count);
-			rmap.put("list",dlist);
+			dlist = deviceDao.getOnline(pageNum, pageSize);
+			rmap.put("count", count);
+			rmap.put("list", dlist);
 			result.setRet(true);
 		} catch (Exception e) {
 			result.setRet(false);
@@ -101,4 +109,11 @@ public class DeviceService {
 	public Object getHistoryByDid(int id) {
 		return null;
 	}
+
+	public void sendInstruction(int id, String instruction) {
+		Device device = deviceDao.getById(id);
+		DataService.sendData(
+				HEAD + SPLITWORD + device.getImei() + SPLITWORD + "SEND" + SPLITWORD + instruction + SPLITLINE);
+	}
+
 }

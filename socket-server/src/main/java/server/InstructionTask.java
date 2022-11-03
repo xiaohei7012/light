@@ -110,4 +110,9 @@ public class InstructionTask extends Thread {
 		}
 
 	}
+
+	public void send(String[] dataArray) {
+		// TODO Auto-generated method stub
+		
+	}
 }

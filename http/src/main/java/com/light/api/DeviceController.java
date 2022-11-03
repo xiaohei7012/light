@@ -20,9 +20,9 @@ public class DeviceController {
 	DeviceService deviceService;
 
 	// 显示设备
-	@RequestMapping(value = "/device/history", method = RequestMethod.GET)
-	public Object getHistory(Model model, HttpServletRequest request, HttpSession session, int id) {
-		return deviceService.getHistoryByDid(id);
+	@RequestMapping(value = "/device", method = RequestMethod.GET)
+	public Object getById(Model model, HttpServletRequest request, HttpSession session, int id) {
+		return deviceService.getById(id);
 	}
 
 	// 添加设备
@@ -56,10 +56,16 @@ public class DeviceController {
 	public Object getAll(Model model, HttpServletRequest request, HttpSession session) {
 		return deviceService.getAll();
 	}
-	
+
 	// 显示设备历史
-	@RequestMapping(value = "/device", method = RequestMethod.GET)
-	public Object getById(Model model, HttpServletRequest request, HttpSession session, int id) {
-		return deviceService.getById(id);
+	@RequestMapping(value = "/device/history", method = RequestMethod.GET)
+	public Object getHistory(Model model, HttpServletRequest request, HttpSession session, int id) {
+		return deviceService.getHistoryByDid(id);
+	}
+
+	// 发送设备命令
+	@RequestMapping(value = "/device/send", method = RequestMethod.GET)
+	public void send(Model model, HttpServletRequest request, HttpSession session, int id, String instruction) {
+		deviceService.sendInstruction(id, instruction);
 	}
 }

@@ -307,16 +307,34 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 
 	@Override
-	public void increaseUseTime(String imei) {
+	public void increaseUseTime(String imei, String l1, String l2, String l3, String l4, String l5, String l6) {
 		Device device = getByImei(imei);
 		if (device != null) {
 			device.setExpire(device.getExpire() + 5);
+			if (l1.equalsIgnoreCase(LIGHT_TYPE.ON.toString())) {
+				device.setL1usedTime(device.getL1usedTime() + 5);
+			}
+			if (l2.equalsIgnoreCase(LIGHT_TYPE.ON.toString())) {
+				device.setL1usedTime(device.getL2usedTime() + 5);
+			}
+			if (l3.equalsIgnoreCase(LIGHT_TYPE.ON.toString())) {
+				device.setL1usedTime(device.getL3usedTime() + 5);
+			}
+			if (l4.equalsIgnoreCase(LIGHT_TYPE.ON.toString())) {
+				device.setL1usedTime(device.getL4usedTime() + 5);
+			}
+			if (l5.equalsIgnoreCase(LIGHT_TYPE.ON.toString())) {
+				device.setL1usedTime(device.getL5usedTime() + 5);
+			}
+			if (l6.equalsIgnoreCase(LIGHT_TYPE.ON.toString())) {
+				device.setL1usedTime(device.getL6usedTime() + 5);
+			}
 			update(device);
 		}
 	}
 
 	@Override
-	public Device create(String imei) throws Exception{
+	public Device create(String imei) throws Exception {
 		Device device = new Device();
 		device.setCreateTime(new Date());
 		device.setDname(imei);

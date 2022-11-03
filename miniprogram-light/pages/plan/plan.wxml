@@ -9,18 +9,20 @@
 </view>
 <view class="list">
   <view class="item">
-    <text class="item-1">方案名字</text>
+    <text class="item-4">方案id</text>
+    <text class="item-3">方案名字</text>
     <text class="item-2">开始时间</text>
-    <text class="item-3">结束时间</text>
-    <text class="item-4">修改时间</text>
+    <text class="item-1">结束时间</text>
+    <!-- <text class="item-4">修改时间</text> -->
   </view>
   <scroll-view class="scroll" scroll-y="true">
   <block wx:for="{{plans.datas}}">
     <view class="item">
-      <navigator class="item-1" url="../planDetail/planDetail?id={{item.id}}"> <text>{{item.pname}}</text></navigator>
+      <navigator class="item-4" url="../planDetail/planDetail?id={{item.id}}"><text class="item-4">{{item.id}}</text></navigator>
+     <text class="item-3">{{item.pname}}</text>
      <text class="item-2">{{item.startTime}}</text>
-     <text class="item-3">{{item.endTime}}</text>
-     <text class="item-4">{{item.createTime}}</text>
+     <text class="item-1">{{item.endTime}}</text>
+     <!-- <text class="item-4">{{item.createTime}}</text> -->
     </view>
   </block>
   </scroll-view>

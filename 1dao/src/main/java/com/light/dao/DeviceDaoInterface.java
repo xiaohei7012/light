@@ -49,7 +49,7 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 
 	public void setPlan(Device device, Plan plan);
 
-	public void increaseUseTime(String imei);
+	public void increaseUseTime(String imei,String l1,String l2,String l3,String l4,String l5,String l6);
 
 	public Device create(String imei) throws Exception;
 }
