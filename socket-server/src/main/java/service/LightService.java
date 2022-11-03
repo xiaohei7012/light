@@ -131,6 +131,12 @@ public class LightService {
 		deviceDao.setStatus(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7],
 				dataArray[8], dataArray[9], Double.parseDouble(dataArray[10]));
 
+		Device device = deviceDao.getByImei(dataArray[1]);
+		if (device != null) {
+			device.setRpm(Double.parseDouble(dataArray[11]));
+			deviceDao.update(device);
+		}
+
 		// 设备寿命+5分钟 6个灯
 		deviceDao.increaseUseTime(dataArray[1], dataArray[3], dataArray[4], dataArray[5], dataArray[6], dataArray[7],
 				dataArray[8]);
@@ -226,6 +232,16 @@ public class LightService {
 		Double temp = Double.parseDouble(dataArray[10]);
 		deviceDao.setStatus(ins.getImei(), ins.getL1(), ins.getL2(), ins.getL3(), ins.getL4(), ins.getL5(), ins.getL6(),
 				ins.getFan(), temp);
+
+		if (dataArray.length >= 12) {
+			// 转速
+			Device device = deviceDao.getByImei(dataArray[1]);
+			if (device != null) {
+				device.setRpm(Double.parseDouble(dataArray[11]));
+				deviceDao.update(device);
+			}
+		}
+
 		resend(ins.getImei());
 	}
 
