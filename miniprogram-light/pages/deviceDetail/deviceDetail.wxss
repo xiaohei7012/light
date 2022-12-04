@@ -1,13 +1,5 @@
 /* pages/detail2/detail.wxss */
-.banner{
-  overflow:hidden;
-  height:535rpx;
-  background-color: #fff;
-  position: relative;
-  box-shadow: 0 0 10px #111;
-  border-bottom:solid 1px #000;
-  background-color: #222;
-}
+
 
 .banner .background{
   width:130%;
@@ -18,29 +10,13 @@
   opacity:0.7;
 }
 
-.banner .poster{
-  box-shadow:3px 3px 5px #222;
-  position: absolute;
-  left:30rpx;
-  top:40rpx;
-  z-index:1;
-  width:300rpx;
-  height:435rpx;
-  padding:10rpx;
-  background-color: rgba(255,255,255,0.4);
-}
-
-.banner .poster image{
-  width:100%;
-  height:100%;
-}
 
 .banner .info{
   position: absolute;
   color:#fff;
   z-index: 2;
   width:320rpx;
-  left:390rpx;
+  left:30rpx;
   top:40rpx;
   font-size:24rpx;
 }
@@ -49,6 +25,143 @@
   font-size: 46rpx;
   font-weight: bold;
   margin-bottom: 10rpx;
+}
+
+.center {
+  text-align: center;
+}
+
+.light {
+  position: relative;
+  height:150rpx;
+}
+
+.light-1,.light-4{
+  position: absolute;
+  margin:  0 auto 0 auto;
+  top:0rpx;
+  bottom: 0rpx;
+  left: 0rpx;
+  right:0rpx;
+  width:100rpx;
+  height:100rpx;
+}
+
+.light-center{
+    position: relative;
+    margin: auto;
+    top:0rpx;
+    bottom: 0rpx;
+    left: 0rpx;
+    right:0rpx;
+    width:250rpx;
+    height:150rpx;
+  }
+
+  .light-slider{
+    height:50rpx;
+    width:250rpx;
+    margin:0rpx;
+  }
+
+  .light-slider slider{
+    margin:0rpx;
+  }
+
+.light .light-5,.light .light-6{
+  display: inline-block;
+  position: absolute;
+  left:120rpx;
+  top:0rpx;
+  width:100rpx;
+  height:100rpx;
+}
+
+.light .light-3,.light .light-2{
+  display: inline-block;
+  position: absolute;
+  right:120rpx;
+  top:0rpx;
+  width:100rpx;
+  height:100rpx;
+}
+
+/* .temperature{
+  display: inline-block;
+  position: absolute;
+  right:120rpx;
+  top:0rpx;
+  width:100rpx;
+  height:100rpx;
+} */
+
+.timer{
+  background-color: grey;
+  position: relative;
+  height:100rpx;
+}
+
+.timer .timer-start{
+  display: inline-block;
+  position: absolute;
+  left:120rpx;
+}
+
+.timer .timer-end{
+  display: inline-block;
+  position: absolute;
+  right:120rpx;
+}
+
+
+
+.purple{
+  background-color: purple;
+}
+
+
+
+
+.salmon{
+  background-color:salmon;
+}
+
+.blue{
+  background-color: slateblue;
+}
+
+.banner{
+  position: relative;
+  height:120rpx;
+}
+
+.banner .content-left{
+  position: absolute;
+  left:120rpx;
+}
+
+.banner .content-right{
+  position: absolute;
+  right:120rpx;
+  text-align: right;
+}
+
+
+.history{
+  overflow:hidden;
+  height:535rpx;
+  background-color: #fff;
+  position: relative;
+  box-shadow: 0 0 10px #111;
+  border-bottom:solid 1px #000;
+  background-color: #222;
+}
+
+.history .history-item view{
+  display: inline-block;
+  color:white;
+  padding-left:7rpx;
+  padding-right:5rpx;
 }
 
 .banner .info .score{
@@ -121,4 +234,83 @@
   height:52rpx;
   margin-top:10rpx;
   color:#ccc;
+}
+
+.red{
+  background-color: red;
+}
+
+.large-font{
+    font-size: 80rpx;
+    font-weight: 800;
+}
+
+.small-font{
+  font-size: smaller;
+}
+
+.bolt{
+  font-size:40rpx;
+  font-weight: 800;
+}
+
+.unit{
+    font-size: 20rpx;
+}
+
+picker{
+  background-color:gold;
+}
+
+.light-bad{
+  background-image: url('https://636c-cloud1-1gmp4i3o3c5625e5-1307331440.tcb.qcloud.la/images/%E6%8D%9F%E5%9D%8F.png?sign=31a2466de637b4c563069e2370ca4969&t=1668500684');
+  background-size: 100% 100%;
+  width:100%;
+  height:100%;
+}
+
+.light-on{
+  background-image: url('https://636c-cloud1-1gmp4i3o3c5625e5-1307331440.tcb.qcloud.la/images/%E7%81%AF.png?sign=5d068442fa0227f4ac518c84969d89a5&t=1668502688');
+  background-size: 100% 100%;
+  width:100rpx;
+  height:100rpx;
+}
+
+.light-off{
+  background-image: url('https://636c-cloud1-1gmp4i3o3c5625e5-1307331440.tcb.qcloud.la/images/%E5%85%B3%E7%81%AF.png?sign=23ef53d0c3e2cf9f6ba40bdb02941d21&t=1668502697');
+  background-size: 100% 100%;
+  width:100rpx;
+  height:100rpx;
+}
+
+.fan{
+  display: inline-block;
+  position: relative;
+  background-image: url('https://636c-cloud1-1gmp4i3o3c5625e5-1307331440.tcb.qcloud.la/images/%E9%A3%8E%E6%89%87.png?sign=47a067459ccf8d5667ae7615128fb21e&t=1668506232');
+  background-size: 100% 100%;
+  width:100rpx;
+  height:100rpx;
+  left:0rpx;
+  vertical-align:top;
+}
+
+.rpm{
+  display: inline-block;
+  height: 100rpx;
+  width:150rpx;
+  vertical-align:top;
+}
+
+.light-center-content{
+  height:100rpx;
+}
+
+.number{
+  line-height: 80rpx;
+  font-size: 80rpx;
+  font-weight: 800;
+}
+
+.unit{
+  font-size:20rpx;
 }

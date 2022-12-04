@@ -19,12 +19,12 @@ public class OffInstrctionJob implements Job{
 
 	@Override
 	public void execute(JobExecutionContext context) throws JobExecutionException {
-		Group g = (Group)context.getMergedJobDataMap().get("group");
-		List<Device> deviceList = deviceDao.getByGroupId(g.getId());
-		for(Device d:deviceList) {
+		Device d = (Device)context.getMergedJobDataMap().get("device");
+//		List<Device> deviceList = deviceDao.getByGroupId(g.getId());
+//		for(Device d:deviceList) {
 			deviceDao.turnOff(d);//开了还要处理关
 			server.sendData(d.getImei(),LightService.parseInstruction(d));
 			
-		}
+//		}
 	}
 }

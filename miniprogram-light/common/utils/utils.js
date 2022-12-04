@@ -67,6 +67,10 @@ handle = {
         'Content-Type':'application/json'
       },
       success:function(e){
+        console.log("???")
+        console.log(e)
+        console.log(e.data)
+        console.log(callback)
         callback(e.data);
       },
       fail:function(e){

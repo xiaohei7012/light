@@ -27,7 +27,7 @@ public interface DeviceDaoInterface extends SimpleDaoInterface<Device>{
 	
 	public void setOffline(String imei);
 	
-	public void setStatus(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,double temp);
+	public void setStatus(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,Double temp);
 	
 	public void reset();
 	

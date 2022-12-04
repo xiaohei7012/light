@@ -1,6 +1,10 @@
 package server;
 
+import java.io.IOException;
+import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -19,17 +23,19 @@ public class LightServer extends SimpleServer {
 	public final static String SPLITWORD = " ";
 	public final static String SPLITLINE = "\r\n";
 
+	private Map<String, String> receiveCache = new HashMap<String, String>();
+
 	public static enum INSTRUCTION_TYPE {
-		ZWXD, //上电
-		DATA, //状态
-		ACK, //确认
-		IRYK, //遥控
-		RESET, //重置
-		ADD, //马上启动方案
-		INIT, //上电确认状态
-		SEND, //单独控制
-		SETUSETIME, //使用时间置0
-		UNKNWON; //未知
+		ZWXD, // 上电
+		INIT, // 上电确认状态
+		DATA, // 状态
+		ACK, // 确认
+		IRYK, // 遥控
+		RESET, // 重置
+		ADD, // 马上启动方案
+		SEND, // 单独控制
+		SETUSETIME, // 使用时间置0
+		UNKNWON; // 未知
 	}
 
 	InstructionTask insTask;
@@ -64,6 +70,8 @@ public class LightServer extends SimpleServer {
 
 	@Override
 	public void onRead(SocketChannel sc, String data) {
+		logger.info(data);
+		
 		try {
 			String[] lineArray = data.split(SPLITLINE);
 			for (String line : lineArray) {
@@ -90,11 +98,12 @@ public class LightServer extends SimpleServer {
 					service.uploadStatus(dataArray);
 					break;
 				case ACK:
-					service.confirm();
+					service.confirm(dataArray);
 					break;
 				case IRYK:
 					service.manual(dataArray);
 					break;
+				// 以下三个为http端发送，SEND命令要把socket作为参数传递，开一个线程，如果有ACK返回要发送ACK返回给http
 				case RESET:
 					insTask.resetPlan(dataArray[1]);
 					break;
@@ -102,7 +111,7 @@ public class LightServer extends SimpleServer {
 					insTask.addPlan(dataArray[1]);
 					break;
 				case SEND:
-					service.sendData(dataArray);
+					service.sendData(dataArray, sc);
 					break;
 				default:
 					break;
@@ -111,7 +120,6 @@ public class LightServer extends SimpleServer {
 		} catch (Exception e) {
 			e.printStackTrace();// 处理数据时发生错误
 		}
-		logger.info(data);
 	}
 
 	private INSTRUCTION_TYPE getInsType(String[] dataArray) {
@@ -153,6 +161,48 @@ public class LightServer extends SimpleServer {
 				service.offline(imei);
 			}
 		}
+	}
+
+	// sc为http服务器交互的连接
+	public void sendData4Ack(String imei, String data, SocketChannel sc) {
+		try {
+			SocketChannel s = socketMap.get(imei);
+			if (s != null) {
+				logger.info("send:" + data.toUpperCase());
+				s.write(ByteBuffer.wrap(data.toUpperCase().getBytes()));
+
+				new Thread(new Runnable() {
+					@Override
+					public void run() {
+						try {
+							Thread.sleep(2 * 1000);
+							String ack = receiveCache.get(imei);
+							if (ack != null) {
+								sc.write(ByteBuffer.wrap("ACK".getBytes()));
+								receiveCache.put(imei, null);
+							} else {
+								sc.write(ByteBuffer.wrap("ERROR".getBytes()));
+							}
+							sc.close();
+						} catch (InterruptedException | IOException e) {
+							e.printStackTrace();
+						}
+					}
+
+				}).start();
+
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public Map<String, String> getReceiveCache() {
+		return receiveCache;
+	}
+
+	public void setReceiveCache(Map<String, String> receiveCache) {
+		this.receiveCache = receiveCache;
 	}
 
 }

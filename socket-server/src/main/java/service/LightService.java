@@ -21,6 +21,7 @@ import com.light.dao.PlanDaoInterface;
 import com.light.model.Device;
 import com.light.model.Group;
 import com.light.model.History;
+import com.light.model.Instruction;
 import com.light.model.Plan;
 
 import server.LightServer;
@@ -33,7 +34,7 @@ public class LightService {
 	private static GroupDaoInterface groupDao = new GroupDao();
 	private static HistoryDaoInterface historyDao = new HistoryDao();
 
-	public final static String TURNON_INSTRUCTION = "SET";
+	public final static String TURN_ON_INSTRUCTION = "SET";
 
 	public void signIn(String[] dataArray, SocketChannel sc) throws Exception {
 		String imei = dataArray[1];
@@ -134,6 +135,7 @@ public class LightService {
 		Device device = deviceDao.getByImei(dataArray[1]);
 		if (device != null) {
 			device.setRpm(Double.parseDouble(dataArray[11]));
+			device.setLastupdateTime(new Date());
 			deviceDao.update(device);
 		}
 
@@ -142,8 +144,9 @@ public class LightService {
 				dataArray[8]);
 	}
 
-	public void confirm() {
-
+	public void confirm(String[] dataArray) {
+		String imei = dataArray[1];
+		LightServer.getInstance().getReceiveCache().put(imei,"ACK");
 	}
 
 	public void manual(String[] dataArray) {
@@ -177,7 +180,7 @@ public class LightService {
 		result.append(LightServer.SPLITWORD);
 		result.append(device.getImei().toUpperCase());
 		result.append(LightServer.SPLITWORD);
-		result.append(TURNON_INSTRUCTION);
+		result.append(TURN_ON_INSTRUCTION);
 		result.append(LightServer.SPLITWORD);
 		result.append(device.getL1());
 		result.append(LightServer.SPLITWORD);
@@ -197,17 +200,34 @@ public class LightService {
 		return result.toString();
 	}
 
+	private static Instruction parseInstruction(String[] dataArray) throws ParseException {
+		if (dataArray.length < 10) {
+			throw new ParseException("转换出错", 0);
+		}
+		String imei = dataArray[1];
+		String l1 = dataArray[3];
+		String l2 = dataArray[4];
+		String l3 = dataArray[5];
+		String l4 = dataArray[6];
+		String l5 = dataArray[7];
+		String l6 = dataArray[8];
+		String fan = dataArray[9];
+		Instruction ins = new Instruction(imei, l1, l2, l3, l4, l5, l6, fan);
+		return ins;
+	}
+
 	public static void sendData(String imei, Plan plan) {
 		sendData(imei, plan.getInstruction());
 	}
 
-	public void sendData(String[] dataArray) throws ParseException {
-		Instruction ins = parseInstrution(dataArray);
+	// 如果是send命令，则多开一个线程序，看在3秒内有没有ACK,有ACK的话则作为返回也发送一个ACK给http服务器
+	public void sendData(String[] dataArray, SocketChannel sc) throws ParseException {
+		Instruction ins = parseInstruction(dataArray);
 		String readySend = ins.getL1() + LightServer.SPLITWORD + ins.getL2() + LightServer.SPLITWORD + ins.getL3()
 				+ LightServer.SPLITWORD + ins.getL4() + LightServer.SPLITWORD + ins.getL5() + LightServer.SPLITWORD
 				+ ins.getL6() + LightServer.SPLITWORD + ins.getFan();
 
-		sendData(ins.getImei(), readySend);
+		sendData(ins.getImei(), readySend, sc);
 	}
 
 	public static void sendData(String imei, String instruction) {
@@ -216,19 +236,32 @@ public class LightService {
 		result.append(LightServer.SPLITWORD);
 		result.append(imei.toUpperCase());
 		result.append(LightServer.SPLITWORD);
-		result.append(TURNON_INSTRUCTION);
+		result.append(TURN_ON_INSTRUCTION);
 		result.append(LightServer.SPLITWORD);
 		result.append(instruction);
-		result.append(LightServer.SPLITWORD);
 		result.append(LightServer.SPLITLINE);
 		server.sendData(imei, result.toString());
+	}
+	
+	public static void sendData(String imei, String instruction, SocketChannel sc) {
+		StringBuilder result = new StringBuilder();
+		result.append(LightServer.HEAD);
+		result.append(LightServer.SPLITWORD);
+		result.append(imei.toUpperCase());
+		result.append(LightServer.SPLITWORD);
+		result.append(TURN_ON_INSTRUCTION);
+		result.append(LightServer.SPLITWORD);
+		result.append(instruction);
+		result.append(LightServer.SPLITLINE);
+//		server.sendData(imei, result.toString());
+		server.sendData4Ack(imei, result.toString(), sc);
 	}
 
 	public void initStatus(String[] dataArray) throws ParseException {
 		if (dataArray.length >= 1) {
 			autoCreate(dataArray[1]);
 		}
-		Instruction ins = parseInstrution(dataArray);
+		Instruction ins = parseInstruction(dataArray);
 		Double temp = Double.parseDouble(dataArray[10]);
 		deviceDao.setStatus(ins.getImei(), ins.getL1(), ins.getL2(), ins.getL3(), ins.getL4(), ins.getL5(), ins.getL6(),
 				ins.getFan(), temp);
@@ -282,106 +315,4 @@ public class LightService {
 		return false;
 	}
 
-	private static Instruction parseInstrution(String[] dataArray) throws ParseException {
-		if (dataArray.length < 11) {
-			throw new ParseException("转换出错", 0);
-		}
-		String imei = dataArray[1];
-		String l1 = dataArray[3];
-		String l2 = dataArray[4];
-		String l3 = dataArray[5];
-		String l4 = dataArray[6];
-		String l5 = dataArray[7];
-		String l6 = dataArray[8];
-		String fan = dataArray[9];
-		Instruction ins = new Instruction(imei, l1, l2, l3, l4, l5, l6, fan);
-		return ins;
-	}
-
-}
-
-class Instruction {
-	String imei;
-	String l1;
-	String l2;
-	String l3;
-	String l4;
-	String l5;
-	String l6;
-	String fan;
-
-	Instruction(String imei, String l1, String l2, String l3, String l4, String l5, String l6, String fan) {
-		this.imei = imei;
-		this.l1 = l1;
-		this.l2 = l2;
-		this.l3 = l3;
-		this.l4 = l4;
-		this.l5 = l5;
-		this.l6 = l6;
-		this.fan = fan;
-	}
-
-	public String getL1() {
-		return l1;
-	}
-
-	public void setL1(String l1) {
-		this.l1 = l1;
-	}
-
-	public String getL2() {
-		return l2;
-	}
-
-	public void setL2(String l2) {
-		this.l2 = l2;
-	}
-
-	public String getL3() {
-		return l3;
-	}
-
-	public void setL3(String l3) {
-		this.l3 = l3;
-	}
-
-	public String getL4() {
-		return l4;
-	}
-
-	public void setL4(String l4) {
-		this.l4 = l4;
-	}
-
-	public String getL5() {
-		return l5;
-	}
-
-	public void setL5(String l5) {
-		this.l5 = l5;
-	}
-
-	public String getL6() {
-		return l6;
-	}
-
-	public void setL6(String l6) {
-		this.l6 = l6;
-	}
-
-	public String getFan() {
-		return fan;
-	}
-
-	public void setFan(String fan) {
-		this.fan = fan;
-	}
-
-	public String getImei() {
-		return imei;
-	}
-
-	public void setImei(String imei) {
-		this.imei = imei;
-	}
 }

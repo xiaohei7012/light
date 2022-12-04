@@ -1,72 +1,149 @@
 <!--pages/detail/detail.wxml-->
-<view style="min-height:{{screen.minHeight}};background-color: #2f2f2f;">
-  <view class="banner">
-    <view class="poster">
-      <image mode="aspectFit" src="{{movie.images.large}}"></image>
-    </view>
+<view>
+  <view class="center">
+    <text>{{device.imei}}</text>
+    <text>({{device.dname}})</text>
+  </view>
 
-    <view class="info">
-      <view class="title">{{device.dname}}</view>
-      <view>{{device.imei}}</view>
-      <view>温度
-        <view class="subinfo">{{device.temperature}}</view>
+  <view class="light">
+    <view class="light-1">
+      <view wx:if="{{device.l1 == 'ON'}}">
+        <view class="light-on" data-light="l1" bindtap="switchChange"></view>
       </view>
-      <view>转速
-        <view class="subinfo">{{device.rpm}}</view>
+      <view wx:elif="{{device.l1 == 'OFF'}}">
+        <view class="light-off" data-light="l1" bindtap="switchChange"></view>
       </view>
-      <view class="score">坐标
-        <view class="subinfo">
-          <view>{{device.longitude}}</view>
-          <view>{{device.latitude}}</view>
-        </view>
+      <view wx:elif="{{device.l1 == 'BAD'}}" class="light-bad"></view>
+      <view wx:else>unknow</view>
+      <text>1灯({{device.l1usedTime}})</text>
+    </view>
+  </view>
+  <view class="light">
+    <view class="light-2">
+      <view wx:if="{{device.l2 == 'ON'}}">
+        <view class="light-on" data-light="l2" bindtap="switchChange"></view>
       </view>
+      <view wx:elif="{{device.l2 == 'OFF'}}">
+        <view class="light-off" data-light="l2" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l2 == 'BAD'}}" class="light-bad"></view>
+      <view wx:else>unknow</view>
+      <text>2灯({{device.l2usedTime}})</text>
+    </view>
+    
+    <view class="light-6">
+      <view wx:if="{{device.l6 == 'ON'}}">
+        <view class="light-on" data-light="l6" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l6 == 'OFF'}}">
+        <view class="light-off" data-light="l6" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l6 == 'BAD'}}" class="light-bad"></view>
+      <view wx:else>unknow</view>
+      <text>6灯({{device.l6usedTime}})</text>
+    </view>
+  </view>
+
+  <view class="light">
+    <view class="light-center">
+          <view class="light-center-content">
+          <view class="fan"></view>
+            <view class="rpm">
+              <view class="number">{{device.rpm}}</view>
+              <view class="unit"> rpm</view>
+            </view>
+          </view>
+          <view class="light-slider">
+            <slider bindchange="sliderchange" max="9" show-value value="{{gear}}"/>
+          </view>
+    </view>
+  </view>
+
+  <view class="light">
+    <view class="light-5">
+      <view wx:if="{{device.l5 == 'ON'}}">
+        <view class="light-on" data-light="l5" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l5 == 'OFF'}}">
+        <view class="light-off" data-light="l5" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l5 == 'BAD'}}" class="light-bad"></view>
+      <view wx:else>unknow</view>
+      <text>5灯({{device.l5usedTime}})</text>
+    </view>
+    <view class="light-3">
+      <view wx:if="{{device.l3 == 'ON'}}">
+        <view class="light-on" data-light="l3" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l3 == 'OFF'}}">
+        <view class="light-off" data-light="l3" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l3 == 'BAD'}}" class="light-bad"></view>
+      <view wx:else>unknow</view>
+      <text>3灯({{device.l3usedTime}})</text>
+    </view>
+  </view>
+
+  <view class="light">
+    <view class="light-4">
+      <view wx:if="{{device.l4 == 'ON'}}">
+        <view class="light-on" data-light="l4" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l4 == 'OFF'}}">
+        <view class="light-off" data-light="l4" bindtap="switchChange"></view>
+      </view>
+      <view wx:elif="{{device.l4 == 'BAD'}}" class="light-bad"></view>
+      <view wx:else>unknow</view>
+      <text>4灯({{device.l4usedTime}})</text>
+    </view>
+  </view>
+
+  <view class="timer">
+    <view class="timer-start">
+      <picker class="bolt" mode="time" bindchange="bindStartTimeChange">{{device.plan==null?'未设置':device.plan.startTime}}</picker>
+      <text class="small-font">定时开</text>
+    </view>
+    <view class="timer-end">
+      <view>
+        <picker class="bolt" mode="time" bindchange="bindEndTimeChange">{{device.plan==null?'未设置':device.plan.endTime}}</picker>
+        <text class="small-font">定时关</text>
+      </view>
+    </view>
+  </view>
+  <view class="banner purple">
+    <view class="content-left">
+      <view class="bolt">{{device.longitude}}</view>
+      <view class="bolt">经度</view>
+    </view>
+    <view class="content-right">
+      <view class="bolt">{{device.latitude}}</view>
+      <view class="bolt">纬度</view>
+    </view>
+  </view>
+  <view class="banner salmon">
+    <view class="content-left">
+      <view class="bolt">{{usedtime.hour}}<text class="small-font">小时</text></view>
+      <view>
+        <text class="bolt">{{usedtime.minute}}分钟</text>
+        <text class="small-font">己使用</text>
+      </view>
+      <view class="small-font"></view>
+    </view>
+    <view class="content-right">
       
-      <image class="backgroud" mode="aspectFill" src="{{movie.images.large}}"></image>
-    </view>
-  </view>
-  
-  <view class="summary">
-    {{movie.summary}}
-  </view>
-
-  <view class="casts">
-    <view class="title">状态</view>
-    <view class="title">
-      <text>1灯</text>
-      <switch color="grey" checked="{{device.l1 == 'ON'}}" bindchange="switchChange" />
-    </view>
-    <view class="title">
-      <text>2灯</text>
-      <switch color="grey" checked="{{device.l2 == 'ON'}}" bindchange="switchChange" />
-    </view>
-    <view class="title">
-      <text>3灯</text>
-      <switch color="grey" checked="{{device.l3 == 'ON'}}" bindchange="switchChange" />
-    </view>
-    <view class="title">
-      <text>4灯</text>
-      <switch color="grey" checked="{{device.l4 == 'ON'}}" bindchange="switchChange" />
-    </view>
-    <view class="title">
-      <text>5灯</text>
-      <switch color="grey" checked="{{device.l5 == 'ON'}}" bindchange="switchChange" />
-    </view>
-    <view class="title">
-      <text>6灯</text>
-      <switch color="grey" checked="{{device.l6 == 'ON'}}" bindchange="switchChange" />
-    </view>
-    <view class="title">
-      <text>风扇</text>
-      <text>{{device.fan}}</text>
-    </view>
-
-    <scroll-view srcoll-x>
-      <view class="casts-wrapper" style="width:{{movie.staff.length*183}}rpx;">
-        <view class="avatat" wx:for="{{movie.staff}}">
-          <image mode="aspectFill" src="{{item.avatars.large}}"></image>
-          <view>{{item.name}}</view>
-        </view>
+      <view class="bolt">{{lastUpdateTime.date}}</view>
+      <view>
+        <text class="small-font">上次更新</text>
+        <text class="bolt">{{lastUpdateTime.time}}</text>
       </view>
-    </scroll-view>
+    </view>
+  </view>
+  <view class="banner blue">
+    <view class="content-left">
+        <text class="large-font">{{device.temperature}}</text><text> ℃</text>
+    </view>
+    <view class="content-right">
+      <view class="large-font" bindtap="NavigatorHistory">历史</view>
+    </view>
   </view>
 </view>

@@ -34,7 +34,8 @@ public class PlanDao extends SimpleDao<Plan> implements PlanDaoInterface {
 		EntityManager entityManager = null;
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			int result = Integer.parseInt(entityManager.createNativeQuery("select count(*) from plan ").getSingleResult().toString());
+			int result = Integer.parseInt(
+					entityManager.createNativeQuery("select count(*) from plan ").getSingleResult().toString());
 			return result;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -61,14 +62,17 @@ public class PlanDao extends SimpleDao<Plan> implements PlanDaoInterface {
 		}
 		return result;
 	}
-	
+
 	public Plan getPlanByImei(String imei) {
 		EntityManager entityManager = null;
 		try {
 			entityManager = JPAUtils.getEntityManger();
-			List<?> planList = entityManager.createNativeQuery("SELECT p.* FROM light.plan p left join light.dgroup g on p.id = g.planId left join light.device d on g.id = d.groupid where d.imei =  '" + imei + "'", Plan.class).getResultList();
-			if(planList.size()>=1) {
-				return (Plan)planList.get(0);
+			List<?> planList = entityManager.createNativeQuery(
+					"SELECT p.* FROM light.plan p left join light.dgroup g on p.id = g.planId left join light.device d on g.id = d.groupid where d.imei =  '"
+							+ imei + "'",
+					Plan.class).getResultList();
+			if (planList.size() >= 1) {
+				return (Plan) planList.get(0);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -79,7 +83,7 @@ public class PlanDao extends SimpleDao<Plan> implements PlanDaoInterface {
 		}
 		return null;
 	}
-	
+
 	@Override
 	public void add() {
 		// TODO Auto-generated method stub
@@ -98,6 +102,11 @@ public class PlanDao extends SimpleDao<Plan> implements PlanDaoInterface {
 
 	}
 
-	
+	@Override
+	public Plan create() throws Exception {
+		Plan plan = new Plan();
+		create(plan);
+		return plan;
+	}
 
 }

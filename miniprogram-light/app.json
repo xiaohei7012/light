@@ -10,35 +10,9 @@
     "pages/plan/plan",
     "pages/planDetail/planDetail",
     "pages/logs/logs",
-    "pages/index/index"
+    "pages/index/index",
+    "pages/history/history"
   ],
-  "tabBar": {
-    "custom": false,
-    "color": "#7A7E83",
-    "selectedColor": "#3cc51f",
-    "borderStyle": "black",
-    "backgroundColor": "white",
-    "list": [
-      {
-        "pagePath": "pages/device/device",
-        "iconPath": "common/basestyle/images/icon_component.png",
-        "selectedIconPath": "common/basestyle/images/icon_component_HL.png",
-        "text": "设备"
-      },
-      {
-        "pagePath": "pages/group/group",
-        "iconPath": "common/basestyle/images/icon_API.png",
-        "selectedIconPath": "common/basestyle/images/icon_API_HL.png",
-        "text": "分组"
-      },
-      {
-        "pagePath": "pages/plan/plan",
-        "iconPath": "common/basestyle/images/plan.png",
-        "selectedIconPath": "common/basestyle/images/planS.png",
-        "text": "方案"
-      }
-    ]
-  },
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",

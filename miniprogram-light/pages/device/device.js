@@ -13,11 +13,8 @@ Page({
     tabs:{
       currentIndex:0,
       list:[{
-        text:'联网中',
+        text:'设备列表',
         type:'1'
-      },{
-        text:'离线状态',
-        type:'0'
       }]
     }
   },
@@ -93,10 +90,11 @@ _fn = {
       'tabs.currentIndex':index
     });
     utils.handle.showLoading();
+    //tabs.list[index].type,
     service.getDeviceList(tabs.list[index].type,function(data){
       utils.handle.hideLoading();
       _fn.renderList.call(self,data.info);
-      console.log(data)
+
     });
   },
   renderList:function(data){

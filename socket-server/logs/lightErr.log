@@ -211,3 +211,18 @@ line 1:10: expecting IDENT, found '*'
 2022-11-02 15:15:44 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
 2022-11-02 15:20:35 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
 2022-11-02 15:23:36 - ERROR [org.hibernate.engine.jdbc.spi.SqlExceptionHelper]  Unknown column 'dateTime' in 'field list'
+2022-11-23 12:25:00 - ERROR [org.quartz.core.JobRunShell]  Job DEFAULT.6da64b5bd2ee-836c2829-23eb-465a-a16c-d4479b00bcd3 threw an unhandled Exception: 
+java.lang.NullPointerException
+	at com.light.dao.DeviceDao.setPlan(DeviceDao.java:229)
+	at server.OnInstrctionJob.execute(OnInstrctionJob.java:38)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+2022-11-23 12:25:00 - ERROR [org.quartz.core.ErrorLogger]  Job (DEFAULT.6da64b5bd2ee-836c2829-23eb-465a-a16c-d4479b00bcd3 threw an exception.
+org.quartz.SchedulerException: Job threw an unhandled exception. [See nested exception: java.lang.NullPointerException]
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:213)
+	at org.quartz.simpl.SimpleThreadPool$WorkerThread.run(SimpleThreadPool.java:573)
+Caused by: java.lang.NullPointerException
+	at com.light.dao.DeviceDao.setPlan(DeviceDao.java:229)
+	at server.OnInstrctionJob.execute(OnInstrctionJob.java:38)
+	at org.quartz.core.JobRunShell.run(JobRunShell.java:202)
+	... 1 more

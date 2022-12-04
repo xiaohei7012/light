@@ -5,12 +5,15 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.light.model.Device;
+import com.light.model.Instruction;
+import com.light.model.Plan;
 import com.light.service.DeviceService;
 
 @RestController
@@ -64,8 +67,23 @@ public class DeviceController {
 	}
 
 	// 发送设备命令
-	@RequestMapping(value = "/device/send", method = RequestMethod.GET)
-	public void send(Model model, HttpServletRequest request, HttpSession session, int id, String instruction) {
-		deviceService.sendInstruction(id, instruction);
+	@RequestMapping(value = "/device/{did}/send", method = RequestMethod.PUT)
+	public Object send(Model model, HttpServletRequest request, HttpSession session, @PathVariable int did,
+			@RequestBody Instruction instruction) {
+		return deviceService.sendInstruction(did, instruction);
+	}
+
+	// 修改设备定时开始时间
+	@RequestMapping(value = "/device/{did}/startTime", method = RequestMethod.PUT)
+	public void updateStartTime(Model model, HttpServletRequest request, HttpSession session, @PathVariable Integer did,
+			@RequestBody Plan plan) {
+		deviceService.updateStartTime(did, plan.getStartTime());
+	}
+
+	// 修改设备定时结束时间
+	@RequestMapping(value = "/device/{did}/endTime", method = RequestMethod.PUT)
+	public void updateEndTime(Model model, HttpServletRequest request, HttpSession session, @PathVariable Integer did,
+			@RequestBody Plan plan) {
+		deviceService.updateEndTime(did, plan.getEndTime());
 	}
 }

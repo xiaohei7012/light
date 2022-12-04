@@ -1,6 +1,7 @@
 package server;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.InetSocketAddress;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
@@ -76,7 +77,7 @@ public abstract class SimpleServer implements ServerInterface {
 			}
 
 		} catch (IOException e) {
-			e.printStackTrace();//启动时出错
+			e.printStackTrace();// 启动时出错
 		}
 
 	}
@@ -101,4 +102,5 @@ public abstract class SimpleServer implements ServerInterface {
 			e.printStackTrace();
 		}
 	}
+
 }

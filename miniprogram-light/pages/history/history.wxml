@@ -1,0 +1,29 @@
+<view class="graph ec-container">
+  <ec-canvas id="mychart-dom-bar" canvas-id="echart-pie" ec="{{ ec }}"></ec-canvas>
+</view>
+<view class="list">
+  <view>
+    时间
+    1灯
+    2灯
+    3灯
+    4灯
+    5灯
+    6灯
+    风扇
+    转速
+  </view>
+  <block wx:for="{{historyList}}">
+    <view>
+      {{item.ctime}}
+      {{item.l1}}
+      {{item.l2}}
+      {{item.l3}}
+      {{item.l4}}
+      {{item.l5}}
+      {{item.l6}}
+      {{item.fan}}
+      {{item.rpm}}
+    </view>
+  </block>
+</view>

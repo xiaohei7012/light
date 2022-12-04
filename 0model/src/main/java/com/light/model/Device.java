@@ -1,11 +1,16 @@
 package com.light.model;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -25,27 +30,27 @@ public class Device {
 	private String fan = "OFF";// on off bad
 
 	private String l1 = "OFF";// on off bad
-	
+
 	private int l1usedTime;
 
 	private String l2 = "OFF";
-	
+
 	private int l2usedTime;
 
 	private String l3 = "OFF";
-	
+
 	private int l3usedTime;
 
 	private String l4 = "OFF";
-	
+
 	private int l4usedTime;
 
 	private String l5 = "OFF";
-	
+
 	private int l5usedTime;
 
 	private String l6 = "OFF";
-	
+
 	private int l6usedTime;
 
 	private String l7 = "OFF";
@@ -57,14 +62,32 @@ public class Device {
 	private Double longitude;// 经度
 
 	private Double latitude;// 纬度
-	
+
 	private Double rpm;
 
-	private String status = "OFFLINE";// 状态  OFFLINE ONLINE
+	private String status = "OFFLINE";// 状态 OFFLINE ONLINE
 
 	private int expire;// 使用时间
 
 	private Date createTime = new Date();
+
+	private Date lastupdateTime;
+
+	@OneToOne
+	@JoinColumn(name = "planId", referencedColumnName = "id")
+	private Plan plan;
+
+	@OneToMany(fetch = FetchType.LAZY)
+	@JoinColumn(name = "imei")
+	private List<History> historyList;
+
+	public static enum DeviceStatus {
+		ON, OFF
+	}
+
+	public static enum LightStatus {
+		ON, OFF, BAD
+	}
 
 	public Date getCreateTime() {
 		return createTime;
@@ -273,4 +296,29 @@ public class Device {
 	public void setL6usedTime(int l6usedTime) {
 		this.l6usedTime = l6usedTime;
 	}
+
+	public Date getLastupdateTime() {
+		return lastupdateTime;
+	}
+
+	public void setLastupdateTime(Date lastupdateTime) {
+		this.lastupdateTime = lastupdateTime;
+	}
+
+	public Plan getPlan() {
+		return plan;
+	}
+
+	public void setPlan(Plan plan) {
+		this.plan = plan;
+	}
+
+	public List<History> getHistoryList() {
+		return historyList;
+	}
+
+	public void setHistoryList(List<History> historyList) {
+		this.historyList = historyList;
+	}
+
 }

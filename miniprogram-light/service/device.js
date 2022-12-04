@@ -6,7 +6,8 @@ URL = {
   deviceAdd:'device',
   deviceList:'device',
   deviceDetail:'device',
-  sendIns:'device/send'
+  sendIns:'device',
+  history:'device/history'
 }
 
 LISTTYPE = {
@@ -49,13 +50,33 @@ handle = {
     },callback);
   },
   sendInstruction:function(data,callback){
-    var url = getApp().globalData.url + URL.sendIns;
-    utils.handle.getData({//getData 就是get方法
+    var url = getApp().globalData.url + URL.sendIns + '/' + data.id + '/send';
+    utils.handle.editData({//editData 就是put方法
+      url:url,
+      data:data
+    },callback);
+  },
+  updateStartTime:function(data,callback){
+    var url = getApp().globalData.url + 'device/' + data.deviceId + '/startTime'
+    utils.handle.editData({//editData 就是put方法
+      url:url,
+      data:data
+    },callback);
+  },
+  updateEndTime:function(data,callback){
+    var url = getApp().globalData.url + 'device/' + data.deviceId + '/endTime'
+    utils.handle.editData({//editData 就是put方法
+      url:url,
+      data:data
+    },callback);
+  },
+  getHistory:function(data,callback){
+    var url = getApp().globalData.url + URL.history;
+    utils.handle.getData({//editData 就是put方法
       url:url,
       data:data
     },callback);
   }
-
 }
 
 _fn = {

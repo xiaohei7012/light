@@ -92,7 +92,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		try {
 			entityManager = JPAUtils.getEntityManger();
 			int result = Integer.parseInt(entityManager
-					.createNativeQuery("select count(*) from device where status = '" + LIGHT_TYPE.ON + "'")
+					.createNativeQuery("select count(*) from device")
 					.getSingleResult().toString());
 			return result;
 		} catch (Exception e) {
@@ -111,8 +111,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		try {
 			entityManager = JPAUtils.getEntityManger();
 			List<?> dlist = entityManager.createNativeQuery(
-					"select d.dname,d.imei,d.status,g.gname,d.id from device d left join dgroup g on g.id = d.groupId where status = '"
-							+ LIGHT_TYPE.ON + "'")
+					"select d.dname,d.imei,d.status,g.gname,d.id from device d left join dgroup g on g.id = d.groupId")
 					.getResultList();
 			for (Object o : dlist) {
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -169,6 +168,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		device.setLongitude(lon);
 		device.setLatitude(lat);
 		device.setStatus(LIGHT_TYPE.ON.toString());
+		device.setLastupdateTime(new Date());
 		update(device);
 	}
 
@@ -182,7 +182,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 	}
 
 	public void setStatus(String imei, String l1, String l2, String l3, String l4, String l5, String l6, String fan,
-			double temp) {
+			Double temp) {
 		Device device = getByImei(imei);
 		if (device == null)
 			return;
@@ -195,6 +195,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		device.setL6(l6.toUpperCase());
 		device.setFan(fan.toUpperCase());
 		device.setTemperature(temp);
+		device.setLastupdateTime(new Date());
 		update(device);
 	}
 
@@ -302,6 +303,7 @@ public class DeviceDao extends SimpleDao<Device> implements DeviceDaoInterface {
 		Device device = getByImei(imei);
 		if (device != null) {
 			device.setRpm(rpm);
+			device.setLastupdateTime(new Date());
 			update(device);
 		}
 	}

@@ -9,58 +9,6 @@
   box-sizing: border-box;
 } 
 
-.header{
-  position: fixed;
-  top:0;
-  left:0;
-  padding:10rpx 30rpx 15rpx 30rpx;
-  width:691rpx;
-  background: -webkit-gradient(linear,0 0,0 100% from(#ffffff),to(#726c6c));
-  /* background-color: #d6cbcb; */
-  border-bottom: solid 1px #000;
-  box-shadow: 0 2px 4px #111;
-}
-
-.nav{
-  display: inline-block;
-  width:588rpx;
-  height:60rpx;
-  vertical-align: top;
-  margin-right:30rpx;
-  border:solid 1px #000;
-  border-radius: 5px;
-  box-shadow: 0 -1px 0px #777;
-}
-
-.nav .nav-wrapper{
-  width:590rpx;
-  height:100%;
-  display: flex;
-  position: relative;
-}
-
-.nav .tab{
-  color:#111;
-  flex-grow:1;
-  font-size: 28rpx;
-  border-right: solid 1px #000;
-  width:50%;
-  background: -webkit-gradient(linear,0 0,0 100%, from(#ffffff),to(#4f4f4f));
-  text-align: center;
-  line-height: 60rpx;
-}
-
-.nav .tab:first{
-  border-left:none;
-}
-
-.nav .tab.current{
-  color:#fcfc;
-  font-weight:bold;
-  background: -webkit-gradient(linear,0 0,0 100%,from(#252525),to(#2f2f2f));
-  box-shadow: inset 0 0 4px #111;text-shadow: 0 2px 3px #000;
-}
-
 .addbutton{
   display: inline-block;
   position: relative;
@@ -76,72 +24,7 @@
   /* box-shadow: 0 -1px 0px #777; */ 
 }
 
-.list{
-  /* margin-top:90rpx; */
-  /* display: flex; */
-  /* flex-wrap: wrap; */
-  height: calc( 100% - 90rpx );
-  padding-top:90rpx;
-  background-color: white;
-}
 
-.list .item{
-  display: flex;
-  flex-wrap: wrap;
-  text-align: center;
-  font-size: 24rpx;
-  height:60rpx;
-  /* height:84rpx; */
-  /* width:630rpx; */
-  margin-top:5rpx;
-  margin-bottom:5rpx;
-  margin-left:10rpx;
-  margin-right:10rpx;
-}
-
-.list navigator{
-  display: inline;
-}
-
-.list .item .item-1{
-  width:30%;
-  margin-top:10rpx;
-  color:black;
-  line-height:32rpx;
-  white-space:nowrap;
-  /* overflow: hidden; */
-  text-overflow: ellipsis;
-}
-
-.list .item .item-2{
-  width:30%;
-  margin-top:10rpx;
-  color:black;
-  line-height:32rpx;
-  white-space:nowrap;
-  /* overflow: hidden; */
-  text-overflow: ellipsis;
-}
-
-.list .item .item-3{
-  width:10%;
-  margin-top:10rpx;
-  color:black;
-  line-height:32rpx;
-  white-space:nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.list .item .item-4{
-  width:30%;
-  margin-top:10rpx;
-  color:black;
-  line-height:32rpx;
-  white-space:nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
 
 .scroll{
   display: flex;

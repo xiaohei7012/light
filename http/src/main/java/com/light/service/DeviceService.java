@@ -12,7 +12,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.light.dao.DeviceDaoInterface;
+import com.light.dao.HistoryDaoInterface;
+import com.light.dao.PlanDaoInterface;
 import com.light.model.Device;
+import com.light.model.History;
+import com.light.model.Instruction;
+import com.light.model.Plan;
 import com.light.util.Util;
 
 @Service
@@ -24,6 +29,12 @@ public class DeviceService {
 
 	@Autowired
 	DeviceDaoInterface deviceDao;
+
+	@Autowired
+	PlanDaoInterface planDao;
+	
+	@Autowired
+	HistoryDaoInterface historyDao;
 
 	public Object addDevice(Device device) {
 		Result<String> result = new Result<String>();
@@ -83,6 +94,8 @@ public class DeviceService {
 		try {
 			Device d = deviceDao.getById(id);
 			result.setInfo(d);
+//			List<History> historyList = historyDao.getByImei(d.getImei());
+			d.setHistoryList(null);
 			result.setRet(true);
 		} catch (Exception e) {
 			result.setInfo(null);
@@ -107,13 +120,86 @@ public class DeviceService {
 	}
 
 	public Object getHistoryByDid(int id) {
-		return null;
+		Device device = deviceDao.getById(id);
+		List<History> historyList = historyDao.getByImei(device.getImei());
+		return success(historyList);
+	}
+	
+	public Object sendInstruction(int id, Instruction instruction) {
+		Device device = deviceDao.getById(id);
+		deviceDao.setStatus(device.getImei(), instruction.getL1(), instruction.getL2(), instruction.getL3(), instruction.getL4(), instruction.getL5(), instruction.getL6(), instruction.getFan(), device.getTemperature());
+		boolean ack = DataService.sendData4Ack(
+				HEAD + SPLITWORD + device.getImei() + SPLITWORD + "SEND" + SPLITWORD + instruction + SPLITLINE);
+		if(ack) {
+			return success(null);
+		}else {
+			return fail("没有ack");
+		}
 	}
 
-	public void sendInstruction(int id, String instruction) {
-		Device device = deviceDao.getById(id);
-		DataService.sendData(
-				HEAD + SPLITWORD + device.getImei() + SPLITWORD + "SEND" + SPLITWORD + instruction + SPLITLINE);
+	private <T> Result<T> success(T o) {
+		Result<T> result = new Result<T>();
+		result.setInfo(o);
+		result.setRet(true);
+		return result;
+	}
+
+	private <T> Result<T> fail(String message) {
+		Result<T> result = new Result<T>();
+		result.setErrMsg(message);
+		result.setRet(false);
+		return result;
+	}
+
+	public Object updateStartTime(int deviceId, String startTime) {
+		try {
+			Device device = deviceDao.getById(deviceId);
+			Plan plan = null;
+			if (device.getPlan() == null) {
+				plan = planDao.create();
+				device.setPlan(plan);
+				deviceDao.update(device);
+			}
+			plan = device.getPlan();
+			if (plan == null) {
+				plan = planDao.create();
+			}
+			plan.setStartTime(startTime);
+			String[] exp = plan.getStartTime().split(":");
+			plan.setExpression("0" + " " + exp[1] + " " + exp[0] + " * * ?");
+			plan.setInstruction(Instruction.parseInstruction(6)); 
+			planDao.update(plan);
+			//发送reset命令
+			PlanService.sendPlanReset(plan.getId());
+			return success(null);
+		} catch (Exception e) {
+			return fail(e.getMessage());
+		}
+	}
+
+	public Object updateEndTime(int deviceId, String endTime) {
+		try {
+			Device device = deviceDao.getById(deviceId);
+			Plan plan = null;
+			if (device.getPlan() == null) {
+				plan = planDao.create();
+				device.setPlan(plan);
+				deviceDao.update(device);
+			}
+			plan = device.getPlan();
+			if (plan == null) {
+				plan = planDao.create();
+			}
+			plan.setEndTime(endTime);
+			String[] exp = plan.getEndTime().split(":");
+			plan.setExpressioff("0" + " " + exp[1] + " " + exp[0] + " * * ?");
+			planDao.update(plan);
+			//发送reset命令
+			PlanService.sendPlanReset(plan.getId());
+			return success(null);
+		} catch (Exception e) {
+			return fail(e.getMessage());
+		}
 	}
 
 }

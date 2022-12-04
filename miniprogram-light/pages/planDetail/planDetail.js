@@ -51,6 +51,8 @@ Page({
     this.setData({
       "plan.endTime":e.detail.value
     })
+
+    
   },
   bindFanChange:function(e){
     this.setData({

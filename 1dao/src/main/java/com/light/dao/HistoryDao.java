@@ -2,8 +2,14 @@ package com.light.dao;
 
 import java.util.List;
 
-import com.light.model.History;
+import javax.persistence.EntityManager;
 
+import org.springframework.stereotype.Repository;
+
+import com.light.model.History;
+import com.light.util.JPAUtils;
+
+@Repository
 public class HistoryDao extends SimpleDao<History> implements HistoryDaoInterface {
 
 	@Override
@@ -18,6 +24,22 @@ public class HistoryDao extends SimpleDao<History> implements HistoryDaoInterfac
 		return null;
 	}
 	
+	@Override
+	public List<History> getByImei(String imei) {
+		EntityManager entityManager = null;
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			List<History> historyList = entityManager.createQuery("from History where imei = '" + imei + "' order by ctime desc",History.class).setMaxResults(10).getResultList();
+			return historyList;
+		}catch(Exception e) {
+			e.printStackTrace();
+			return null;
+		}finally {
+			if(entityManager!=null)
+				entityManager.close();
+		}
+	}
+
 //	public void create(String imei,String l1,String l2,String l3,String l4,String l5,String l6,String fan,double temp) {
 //		History history = new History();
 //		history.setImei(imei);

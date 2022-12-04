@@ -2,30 +2,24 @@
   <view class="nav" bindtap="changeTab">
     <view class="nav-wrapper">
     <block wx:for="{{tabs.list}}">
-      <view class="tab current" data-type="{{item.type}}" data-index="{{index}}" wx:if="{{ index/1 == tabs.currentIndex/1 }}">{{item.text}}</view>
-      <view class="tab" data-type="{{item.type}}" data-index="{{index}}" wx:else>{{item.text}}</view>
+      <view class="tab current" data-type="{{item.type}}" data-index="{{index}}">{{item.text}}</view>
     </block>
     </view>
   </view>
-    <navigator url="../deviceAdd/deviceAdd" class="addbutton">
-    </navigator>
 </view>
 
 <view class="list">
-  <view class="item">
-    <text class="item-1">设备名字</text>
-    <text class="item-2">设备编号</text>
-    <text class="item-3">状态</text>
-    <text class="item-4">所属分组</text>
-  </view>
   <scroll-view class="scroll" scroll-y="true">
   <block wx:for="{{devices.datas}}">
-    <view class="item">
-      <navigator class="item-1" url="../deviceDetail/deviceDetail?id={{item.id}}">{{item.dname}}</navigator>
-      <text class="item-2">{{item.imei}}</text>
-      <text class="item-3">{{item.status}}</text>
-      <text class="item-4">{{item.gname}}</text>
+    <navigator url="../deviceDetail/deviceDetail?id={{item.id}}">
+    <view class="item {{item.status=='开机'?'on':'off'}}">
+        <text class="item-title">{{item.imei}}</text>
+         <text class="item-1">{{item.dname}}</text>
+        <text class="item-3">{{item.status}}</text>
+        <!--<text class="item-4">{{item.gname}}</text> -->
+      
     </view>
+  </navigator>
   </block>
 </scroll-view>
 </view>
