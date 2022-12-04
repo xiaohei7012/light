@@ -146,6 +146,10 @@ function initChart(canvas, width, height) {
     return chart;
   }
 
+  function getGraphData(){
+      
+  }
+
   function getOption() {
     var option = {
         color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
