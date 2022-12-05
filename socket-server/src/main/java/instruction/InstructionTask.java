@@ -1,4 +1,4 @@
-package server;
+package instruction;
 
 import java.util.List;
 

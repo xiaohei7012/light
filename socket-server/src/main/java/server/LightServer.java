@@ -11,6 +11,7 @@ import org.slf4j.LoggerFactory;
 
 import com.light.util.Util;
 
+import instruction.InstructionTask;
 import service.LightService;
 
 public class LightServer extends SimpleServer {
@@ -22,6 +23,7 @@ public class LightServer extends SimpleServer {
 	public final static String HEAD = "YTE";
 	public final static String SPLITWORD = " ";
 	public final static String SPLITLINE = "\r\n";
+	public final static int PERIOD = 10;
 
 	private Map<String, String> receiveCache = new HashMap<String, String>();
 
@@ -45,8 +47,9 @@ public class LightServer extends SimpleServer {
 	}
 
 	public static void main(String[] args) {
-		LightServer server = LightServer.getInstance();
-		server.start();
+		statusTimer(PERIOD);//设备状态检测
+		
+		LightServer.getInstance().start();//主工作线程
 	}
 
 	public static LightServer getInstance() {

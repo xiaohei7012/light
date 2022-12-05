@@ -5,10 +5,8 @@ var service = require('../../service/device');
 var utils = require('../../common/utils/utils');
 var chart; //拿出来作为全局变量
 var _fn = {};
-var graphData; // 图表数据
 
 Page({
-
     /**
      * Page initial data
      */
@@ -34,27 +32,15 @@ Page({
             that.setData({
                 historyList: e.info
             })
-
-            // 折线图数据
-        var series = [{
-            data: [6, 6, 6, 6, 6, 6, 6],
-            type: 'line'
-          }]
-        var option = {
-            series: series
-        }
-        graphData = series;
-        console.log("init data")
-        // 折线图数据
+            _fn.refreshGraph(e.info);
         })
-        
     },
 
     /**
      * Lifecycle function--Called when page is initially rendered
      */
     onReady() {
-
+      
     },
 
     /**
@@ -121,15 +107,30 @@ _fn = {
       return data;
     },
     refreshGraph:function(data){
-        var series = [{
-            data: [6, 6, 6, 6, 6, 6, 6],
-            type: 'line'
-          }]
-        var option = {
-            series: series
+      var Xdata = [];
+      for(var h in data){
+        var c = 0;
+        //灯
+        var l = "l";
+        var number = 1;
+        var status;
+        for(;number<=6;number++){
+          switch(data[l+number]){
+            case '开': c++;break;
+          }
         }
-        chart.setOption(option);
-        console.log("refresh data!")
+        Xdata.push(c);
+      }
+
+      var series = [{
+        data: Xdata,
+        type: 'line'
+      }]
+      var option = {
+          series: series
+      }
+      console.log("refresh data!")
+      chart.setOption(option);
     }
 }
 
@@ -139,41 +140,30 @@ function initChart(canvas, width, height) {
         height: height
     });
     canvas.setChart(chart);
-    var option = getOption();
-    option.series = graphData;
-    chart.setOption(option); //刷新图表数据
-    console.log("init chart")
-    return chart;
-  }
-
-  function getGraphData(){
-      
-  }
-
-  function getOption() {
     var option = {
-        color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
-        grid: {
-          containLabel: true
-        },
-        tooltip: {
-          show: true,
-          trigger: 'axis'
-        },
-        xAxis: {
-          type: 'category',
-          boundaryGap: false
-        },
-        yAxis: {
-          nameLocation: 'end',
-          x: 'center',
-          type: 'value',
-          splitLine: {
-            lineStyle: {
-              type: 'dashed'
-            }
+      color: ["#37A2DA", "#67E0E3", "#9FE6B8"],
+      grid: {
+        containLabel: true
+      },
+      tooltip: {
+        show: true,
+        trigger: 'axis'
+      },
+      xAxis: {
+        type: 'category',
+        boundaryGap: false
+      },
+      yAxis: {
+        nameLocation: 'end',
+        x: 'center',
+        type: 'value',
+        splitLine: {
+          lineStyle: {
+            type: 'dashed'
           }
         }
-      };
-    return option;
+      }
+    };
+    chart.setOption(option); //刷新图表数据
+    return chart;
   }

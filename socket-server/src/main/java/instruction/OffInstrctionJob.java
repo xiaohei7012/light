@@ -1,4 +1,4 @@
-package server;
+package instruction;
 
 import java.util.List;
 
@@ -11,6 +11,7 @@ import com.light.dao.DeviceDaoInterface;
 import com.light.model.Device;
 import com.light.model.Group;
 
+import server.LightServer;
 import service.LightService;
 
 public class OffInstrctionJob implements Job{

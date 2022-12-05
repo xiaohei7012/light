@@ -1,4 +1,4 @@
-package server;
+package instruction;
 
 import java.util.List;
 
@@ -14,6 +14,7 @@ import com.light.model.Device;
 import com.light.model.Group;
 import com.light.model.Plan;
 
+import server.LightServer;
 import service.LightService;
 
 public class OnInstrctionJob implements Job {

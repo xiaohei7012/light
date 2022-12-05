@@ -65,6 +65,12 @@ public class DeviceController {
 	public Object getHistory(Model model, HttpServletRequest request, HttpSession session, int id) {
 		return deviceService.getHistoryByDid(id);
 	}
+	
+	// 显示设备图表（灯数）
+	@RequestMapping(value = "/device/graph", method = RequestMethod.GET)
+	public Object getGraph(Model model, HttpServletRequest request, HttpSession session, int id) {
+		return deviceService.getGraphByDid(id);
+	}
 
 	// 发送设备命令
 	@RequestMapping(value = "/device/{did}/send", method = RequestMethod.PUT)

@@ -7,7 +7,8 @@ URL = {
   deviceList:'device',
   deviceDetail:'device',
   sendIns:'device',
-  history:'device/history'
+  history:'device/history',
+  graph:'device/graph'
 }
 
 LISTTYPE = {
@@ -72,6 +73,13 @@ handle = {
   },
   getHistory:function(data,callback){
     var url = getApp().globalData.url + URL.history;
+    utils.handle.getData({//editData 就是put方法
+      url:url,
+      data:data
+    },callback);
+  },
+  getGraph:function(data,callback){
+    var url = getApp().globalData.url + URL.graph;
     utils.handle.getData({//editData 就是put方法
       url:url,
       data:data

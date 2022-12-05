@@ -85,7 +85,7 @@ Page({
       l6: this.data.device.l6,
       fan: this.data.device.fan
     };
-    data = _fn.prepareInstruction(data);
+    // data = _fn.prepareInstruction(data);
     service.sendInstruction(data, function (r) {
       if (r.ret == true) {
         //己发送命令
@@ -121,7 +121,7 @@ Page({
       l6: this.data.device.l6,
       fan: "F" + e.detail.value
     };
-    data = _fn.prepareInstruction(data);
+    // data = _fn.prepareInstruction(data);
     service.sendInstruction(data, function (r) {
       if (r.ret == true) {
         //己发送命令

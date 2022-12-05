@@ -19,9 +19,19 @@ public class HistoryDao extends SimpleDao<History> implements HistoryDaoInterfac
 	}
 
 	@Override
-	public List<History> getByDate() {
-		// TODO Auto-generated method stub
-		return null;
+	public int getByDidInMinutes(String imei,int period) {
+		EntityManager entityManager = null;
+		try {
+			entityManager = JPAUtils.getEntityManger();
+			Object result = entityManager.createNativeQuery("select count(*) from history where date = date(now()) and imei = '" + imei + "' and ctime >= date_sub(now(), interval " + period + " minute) order by ctime desc").getSingleResult();
+			return Integer.parseInt(result.toString());
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally {
+			if(entityManager!=null)
+				entityManager.close();
+		}
+		return 0;
 	}
 	
 	@Override

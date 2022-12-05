@@ -127,10 +127,57 @@ public class DeviceService {
 	
 	public Object sendInstruction(int id, Instruction instruction) {
 		Device device = deviceDao.getById(id);
-		deviceDao.setStatus(device.getImei(), instruction.getL1(), instruction.getL2(), instruction.getL3(), instruction.getL4(), instruction.getL5(), instruction.getL6(), instruction.getFan(), device.getTemperature());
+		StringBuilder sb = new StringBuilder();
+		// 坏的发命令是要转换
+		if(instruction.getL1().equalsIgnoreCase(Device.LightStatus.BAD.toString())) {
+			sb.append(Device.LightStatus.OFF.toString());
+		}else {
+			sb.append(instruction.getL1());
+		}
+		sb.append(Instruction.SPLITWORD);
+		
+		if(instruction.getL2().equalsIgnoreCase(Device.LightStatus.BAD.toString())) {
+			sb.append(Device.LightStatus.OFF.toString());
+		}else {
+			sb.append(instruction.getL2());
+		}
+		sb.append(Instruction.SPLITWORD);
+		
+		if(instruction.getL3().equalsIgnoreCase(Device.LightStatus.BAD.toString())) {
+			sb.append(Device.LightStatus.OFF.toString());
+		}else {
+			sb.append(instruction.getL3());
+		}
+		sb.append(Instruction.SPLITWORD);
+		
+		if(instruction.getL4().equalsIgnoreCase(Device.LightStatus.BAD.toString())) {
+			sb.append(Device.LightStatus.OFF.toString());
+		}else {
+			sb.append(instruction.getL4());
+		}
+		sb.append(Instruction.SPLITWORD);
+		
+		if(instruction.getL5().equalsIgnoreCase(Device.LightStatus.BAD.toString())) {
+			sb.append(Device.LightStatus.OFF.toString());
+		}else {
+			sb.append(instruction.getL5());
+		}
+		sb.append(Instruction.SPLITWORD);
+		
+		if(instruction.getL6().equalsIgnoreCase(Device.LightStatus.BAD.toString())) {
+			sb.append(Device.LightStatus.OFF.toString());
+		}else {
+			sb.append(instruction.getL6());
+		}
+		sb.append(Instruction.SPLITWORD);
+		
+		sb.append(instruction.getFan());
+		
+		
 		boolean ack = DataService.sendData4Ack(
-				HEAD + SPLITWORD + device.getImei() + SPLITWORD + "SEND" + SPLITWORD + instruction + SPLITLINE);
+				HEAD + SPLITWORD + device.getImei() + SPLITWORD + "SEND" + SPLITWORD + sb + SPLITLINE);
 		if(ack) {
+			deviceDao.setStatus(device.getImei(), instruction.getL1(), instruction.getL2(), instruction.getL3(), instruction.getL4(), instruction.getL5(), instruction.getL6(), instruction.getFan(), device.getTemperature());
 			return success(null);
 		}else {
 			return fail("没有ack");
@@ -200,6 +247,12 @@ public class DeviceService {
 		} catch (Exception e) {
 			return fail(e.getMessage());
 		}
+	}
+
+	public Object getGraphByDid(int id) {
+		Device device = deviceDao.getById(id);
+		List<History> historyList = historyDao.getByImei(device.getImei());
+		return success(historyList);
 	}
 
 }

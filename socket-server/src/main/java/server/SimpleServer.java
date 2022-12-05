@@ -1,8 +1,8 @@
 package server;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.net.InetSocketAddress;
+import java.net.StandardSocketOptions;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -12,6 +12,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.Timer;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -48,6 +49,7 @@ public abstract class SimpleServer implements ServerInterface {
 							if (key.isAcceptable()) {
 								ServerSocketChannel channel = (ServerSocketChannel) key.channel();
 								SocketChannel socketChannel = channel.accept();
+								socketChannel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);//SO_KEEPALIVE
 								socketChannel.configureBlocking(false);
 								socketChannel.register(selector, SelectionKey.OP_READ);
 								onConnected(socketChannel);
@@ -103,4 +105,7 @@ public abstract class SimpleServer implements ServerInterface {
 		}
 	}
 
+	static void statusTimer(int period) {
+		new Timer().schedule(new StatusnTimerTask(period), 5 * 1000, period * 60 * 1000);
+	}
 }

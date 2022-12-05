@@ -8,7 +8,8 @@ public interface HistoryDaoInterface extends SimpleDaoInterface<History>{
 
 	public void add();
 	
-	public List<History> getByDate();
+	//专门用来检测在线 大于0就不重置离线
+	public int getByDidInMinutes(String imei,int period);
 
 	List<History> getByImei(String imei);
 	

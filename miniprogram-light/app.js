@@ -14,8 +14,8 @@ App({
     })
   },
   globalData: {
-    url:'https://localhost:442/',
-    //url:'https://hanshou.hskj-voc.com:442/',
+    // url:'https://localhost:442/',
+    url:'https://hanshou.hskj-voc.com:442/',
     fanGear:[{
       name:'关',
       value:'F0'
